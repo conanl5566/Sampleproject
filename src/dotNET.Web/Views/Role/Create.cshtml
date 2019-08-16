@@ -1,0 +1,240 @@
+﻿@using  dotNET.Web.Host.Model
+@model Rolemodel
+@{
+    Layout = "_LayoutForm";
+    ViewData["title"] = "角色添加";
+}
+
+@section headers{
+<link rel="stylesheet" href="~/lib/wizard/wizard.css" />
+<link rel="stylesheet" href="~/lib/wdtree/tree.css" />
+
+}
+
+
+
+<form id="form1">
+  
+    
+    @Html.HiddenFor(o => o.GoBackUrl)
+
+
+
+
+
+
+
+    <div class="widget-body">
+        <div id="wizard" class="wizard" data-target="#wizard-steps" style="border-left: none; border-top: none; border-right: none;">
+            <ul class="steps">
+                <li data-target="#step-1" class="active"><span class="step">1</span>角色信息<span class="chevron"></span></li>
+                <li data-target="#step-2"><span class="step">2</span>功能权限<span class="chevron"></span></li>
+            </ul>
+        </div>
+
+
+        <div class="step-content" id="wizard-steps" style="border-left: none; border-bottom: none; border-right: none; height:380px">
+            <div class="step-pane active" id="step-1" style="margin: 10px; margin-bottom: 0px;">
+
+                <table class="form">
+                    <tr>
+                        <th class="formTitle"> <span class="field-item-required light-red">*</span>角色名称</th>
+                        <td class="formValue">
+                         
+                            @Html.TextBoxFor(model => model.Name, new { placeholder = "请输入角色名称", @class = "form-control" })
+
+
+
+
+                            
+                        
+                        
+                        </td>
+
+                        <td>
+                           
+                            @Html.ValidationMessageFor(o => o.Name, null, new { @class = "help-inline" })
+
+
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th class="formTitle">显示顺序</th>
+                        <td class="formValue">
+                            
+                            @Html.TextBoxFor(model => model.SortCode, new { placeholder = "请输入显示顺序", @class = "form-control" })
+
+
+                        </td>
+                        <td>
+                            @Html.ValidationMessageFor(o => o.SortCode, null, new { @class = "help-inline" })
+
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <th class="formTitle" style="height: 35px;">选项</th>
+                        <td class="formValue" style="padding-top: 1px;">
+                            <div class="ckbox">
+                                @Html.CheckBoxFor(model => model.AllowEdit, new { placeholder = "允许编辑" })
+
+                              <label for="AllowEdit">允许编辑</label>
+                            </div>
+                            <div class="ckbox">
+                                @Html.CheckBoxFor(model => model.AllowDelete, new { placeholder = "允许删除" })
+
+
+                              
+                                
+                                <label for="AllowDelete">允许删除</label>
+                            </div>
+                         
+                        </td>
+
+
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th class="formTitle" valign="top" style="padding-top: 5px;">
+                            备注
+                        </th>
+                        <td class="formValue">
+                           
+                        
+                            @Html.TextAreaFor(o => o.Description, new { placeholder = "备注", @style = "height:60px;" , @class = "form-control" })
+
+                        </td>
+
+                        <td>
+
+                            @Html.ValidationMessageFor(o => o.Description, null, new { @class = "help-inline" })
+
+
+
+
+
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="step-pane" id="step-2" style="margin: 10px; margin-bottom: 0px;">
+                <div id="permissionTree"></div>
+            </div>
+      
+        
+        </div>
+
+
+        <div class="form-button col-md-12" id="wizard-actions" style=" text-align:right">
+            <a id="btn_last" disabled class="btn btn-default btn-prev">上一步</a>
+            <a id="btn_next" class="btn btn-default btn-next">下一步</a>
+           
+            <button class="btn btn-info" style="display: none;"  type="button" id="btn_finish">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                完成
+            </button>
+            <a href="@Model.GoBackUrl" class="btn"><i class="ace-icon fa fa-arrow-left icon-on-left bigger-110"></i>返回</a>
+
+        
+        </div>
+
+    </div>
+
+</form>
+
+@section scripts{
+    <script src="~/lib/wizard/wizard.js"></script>
+    <script src="~/lib/wdtree/tree.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            initControl();
+           
+        });
+
+        function initControl() {
+            $('#wizard').wizard().on('change', function (e, data) {
+                var $finish = $("#btn_finish");
+                var $next = $("#btn_next");
+                if (data.direction == "next") {
+                    switch (data.step) {
+                        case 1:
+                            if (!$('#form1').valid()) {
+                                return false;
+                            }
+                            $finish.show();
+                            $next.hide();
+                            break;
+                        default:
+                            break;
+                    }
+                } else {
+                    $finish.hide();
+                    $next.show();
+                }
+            });
+
+            $("#permissionTree").treeview({
+                height: 360,
+                showcheck: true,
+                data:@Html.Raw(ViewData["tree"])
+            });
+        };
+
+
+        // 提交操作
+        $("#btn_finish").click(function (ev) {
+            var $form = $("#form1");
+            var postData = $("#form1").formSerialize();
+            postData["permissionIds"] = $("#permissionTree").getCheckedNodes();
+
+
+            if ($form.valid()) {
+
+                //禁用提交按钮，避免重复提交
+                $.ajax({
+                    url: "/role/Create",
+                    data: postData,
+                    type: "POST",
+                    cache: false,
+                    async: false,
+                    beforeSend: function () {
+                        $("#btn_finish").attr("disabled", "disabled");
+                    },
+                    success: function (r) {
+
+                        if (r.code == 0) {
+                            location.href = "@ViewBag.GoBackUrl";// "/Employee/index?ram=" + Math.random();// r.GoBackUrl;
+                        }
+                        else  // 其他问题
+                        {
+                            $.MsgBox.Alert(r.msg);
+                        }
+                        $("#btn_finish").removeAttr("disabled");
+                    },
+                    error: function () {
+
+                        $.MsgBox.Alert("保存失败");
+                        $("#btn_finish").removeAttr("disabled");
+                    }
+                });
+
+            }
+            else {
+                //alert(5);
+                //移除禁止按钮。
+                $("#btn_finish").removeAttr("disabled");
+
+            }
+        });
+
+
+
+      
+    </script>
+}

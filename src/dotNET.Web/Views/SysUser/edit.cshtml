@@ -1,0 +1,288 @@
+﻿@using  dotNET.Web.Host.Model
+@model UserEditModel
+@{
+    Layout = "_LayoutForm"; 
+     ViewData["title"] = "系统用户编辑";
+}
+
+@section headers{
+ 
+}
+    
+
+
+<form id="form1"  >
+
+
+    @Html.HiddenFor(o => o.Id)
+
+    @Html.HiddenFor(o => o.GoBackUrl)
+
+
+    <div style="padding-top: 0px; margin-right: 30px;">
+        <table class="form">
+            <tr>
+                <th class="formTitle"><span class="field-item-required light-red">*</span>账户</th>
+                <td class="formValue">
+                  
+                            @Html.TextBoxFor(model => model.Account, new { placeholder = "请输入账户", @class = "form-control" })
+
+              
+                </td>
+                <td >
+                    @Html.ValidationMessageFor(o => o.Account, null, new { @class = "help-inline" })
+
+
+                </td>
+            
+<th class="formTitle"><span class="field-item-required light-red">*</span>角色</th>
+                <td class="formValue">
+                    @Html.DropDownListFor(model => model.RoleId, Model.Rolelist, "==请选择==", new { @class = "form-control" })
+
+
+
+           
+                </td>
+                <td >
+                    @Html.ValidationMessageFor(o => o.RoleId, null, new { @class = "help-inline" })
+
+
+                </td>
+</tr>
+          
+        
+       
+            <tr>
+                <th class="formTitle"><span class="field-item-required light-red"></span>姓名</th>
+                <td class="formValue">
+
+                    @Html.TextBoxFor(model => model.RealName, new { placeholder = "请输入姓名", @class = "form-control" })
+
+
+
+
+
+
+
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(o => o.RealName, null, new { @class = "help-inline" })
+
+
+                </td>
+
+                <th class="formTitle"><span class="field-item-required light-red"></span>手机</th>
+                <td class="formValue">
+
+                    @Html.TextBoxFor(model => model.Tel, new { placeholder = "请输入手机", @class = "form-control" })
+
+
+
+
+
+
+
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(o => o.Tel, null, new { @class = "help-inline" })
+
+
+                </td>
+            </tr>
+           
+
+            <tr>
+                <th class="formTitle"><span class="field-item-required light-red">*</span>类型</th>
+                <td class="formValue">
+                    <select id="IsSys" name="IsSys" class="form-control">
+                        @if (Model.IsSys == false)
+                        {
+
+                            <option value="false" selected>普通用户</option>
+                            <option value="true">系统管理员</option>
+                        }
+                        else
+                        {
+                            <option value="false" >普通用户</option>
+                            <option value="true" selected>系统管理员</option>
+
+                        }
+
+
+                      
+                    </select>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(o => o.IsSys, null, new { @class = "help-inline" })
+
+
+                </td>
+
+<th class="formTitle"><span class="field-item-required light-red">*</span>允许登录</th>
+                <td class="formValue">
+                    <select id="State" name="State" class="form-control">
+@if (Model.State == 0)
+{
+    <option value="1">是</option>
+    <option value="0" selected>否</option>
+}
+else
+{
+    <option value="1" selected>是</option>
+    <option value="0">否</option>
+}
+                      
+                    </select>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(o => o.State, null, new { @class = "help-inline" })
+
+
+                </td>
+            </tr>
+
+            <tr>
+                <th class="formTitle">部门</th>
+                <td class="formValue">
+
+                    @Html.DropDownListFor(model => model.DepartmentId, Model.deptlist, new { @class = "form-control" })
+
+
+
+
+                </td>
+                <td></td>
+
+                <th class="formTitle"><span class="field-item-required light-red"></span></th>
+                <td class="formValue"></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th class="formTitle">头像</th>
+                <td class="formValue">
+
+                    <div class="form-group GiftImg">
+                    
+                        <div class="col-sm-9">
+                            <div class="upbox">
+                                <div class="btn btn-white btn-info btn-bold" type="button" id="updiv0" data-imgdiv="#imgdiv0" data-field="Avatar" style="background: #928e8e; width: 102px; height: 102px; padding: 0; border: #b2b2b2 1px solid" title="点击上传">
+                                    <div id="imgdiv0" style="width: 100%; height: 100%; text-align: center; display: table">
+                                        @if (Model.Avatar != null)
+                                    {
+                                        <img style="width: 100%; height: 100%" src="@Model.Avatar" />
+                                    }
+                                    else
+                                    {
+                                        <span style="display: table-cell; vertical-align: middle">点击上传</span>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div>只能上传jpg图片，大小不能大于500kb 建议尺寸 100*100</div>
+                            <div style="width: 0;height: 0;position: relative;top: -9999px">
+                                <input name="Avatar" value="@Model.Avatar" id="Avatar" type="hidden" />
+                            
+                            </div>
+                            <span class="help-block">
+                            
+                            </span>
+                        </div>
+
+                    </div>
+
+
+
+                </td>
+                <td></td>
+
+                <th class="formTitle"><span class="field-item-required light-red"></span></th>
+                <td class="formValue"></td>
+                <td></td>
+            </tr>
+        </table>
+        <div class="clearfix form-actions">
+            <label class="col-sm-3 control-label" for="form-field-1"> &nbsp; </label>
+            <div class="col-md-9">
+                <button class="btn btn-info" type="button" id="btnSave">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    确定
+                </button>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <a href="@ViewBag.GoBackUrl" class="btn"><i class="ace-icon fa fa-arrow-left icon-on-left bigger-110"></i>返回</a>
+            </div>
+        </div>
+     
+    </div>
+
+</form>
+
+@section scripts{
+
+
+
+    <script type="text/javascript">
+
+        $(function () {
+
+
+            $("#updiv0").imagePlupload({ savesize: "[100x100]" });
+        });
+
+      
+
+
+    </script>
+
+<script>
+        
+          $("#btnSave").click(function (ev) {
+              var $form = $("#form1");
+            
+             if ($form.valid()) {
+           
+                  $.ajax({
+                      url: "/SysUser/edit",
+                      data: $form.serialize(),
+                      type: "POST",
+                      cache: false,
+                      async: false,
+                      beforeSend: function () {
+                          $("#btnSave").attr("disabled", "disabled");
+                      },
+                      success: function (r) {
+                        
+                          if (r.code == 0) 
+                          {
+                              location.href = "@ViewBag.GoBackUrl";
+                           
+                          }
+                          else  // 其他问题
+                          {
+                              $.MsgBox.Alert(r.msg);
+                          }
+                          $("#btnSave").removeAttr("disabled");
+                      },
+                      error: function () {
+                       
+                          $.MsgBox.Alert("保存失败");
+                          $("#btnSave").removeAttr("disabled");
+                      }
+                  });
+
+              }
+              else {
+               
+                  $("#btnSave").removeAttr("disabled");
+
+                }
+          });
+
+        
+</script>
+
+
+}

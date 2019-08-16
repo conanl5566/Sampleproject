@@ -1,0 +1,113 @@
+﻿@{
+    Layout = "_LayoutTable";
+}
+<link href="~/mgr/css/app.css" rel="stylesheet" asp-append-version="true" />
+<div style="padding:0 8px">
+    <table id="table"
+           data-classes="table"
+           data-search="true"
+           data-search-align="left"
+           data-toggle="table"
+           data-toolbar="#toolbar"
+           data-show-refresh="true"
+           data-url="/ModuleButton/Index?moduleId=@ViewData["ModuleId"]&parentId=@ViewData["ParentId"]"
+           data-side-pagination="server"
+           data-pagination="false">
+        <thead>
+            <tr>
+                <th data-field="fullName">名称</th>
+                <th data-field="location">位置</th>
+                <th data-field="urlAddress">连接</th>
+                <th data-field="split">分开</th>
+                <th data-field="isPublic">公共</th>
+                <th data-field="enabledMark">有效</th>
+                <th data-field="description">备注</th>
+                <th data-formatter="optFormatter" data-width="100px">操作</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section scripts{
+<script type="text/javascript">
+    $(function () {
+        $('<button class="btn btn-default" onclick="funAdd()" type="button" name="Add" title="添加"><i class="glyphicon glyphicon-plus-sign"></i></button>').insertAfter("button[name='refresh']");
+    });
+
+    //格式化
+    function optFormatter(value, row, index) {
+        return [
+            '<a class="edit" href="javascript:funBtns(\'' + row.id + '\')" title="按钮管理">',
+            '<i class="fa fa-gavel"></i>',
+            '</a>  ',
+            '<span class="btn_split"></span>',
+            '<a class="edit" href="javascript:funEdit(\'' + row.id + '\')" title="编辑">',
+            '<i class="glyphicon glyphicon-edit"></i>',
+            '</a>  ',
+            '<span class="btn_split"></span>',
+            '<a class="remove" href="javascript:funDel(\'' + row.id + '\')" title="删除">',
+            '<i class="glyphicon glyphicon-remove"></i>',
+            '</a>'
+        ].join('');
+    }
+    //添加
+    var funAdd = function () {
+        $.fn.modalOpen({
+            id: "ModuleButtonCreate",
+            title: '添加按钮模块',
+            url: '/ModuleButton/Create?moduleId=@ViewData["ModuleId"]&parentId=@ViewData["ParentId"]',
+            width: "700px",
+            height: "400px",
+            callBack: function (iframeId) {
+                top.frames[iframeId].submitForm();
+            }
+        });
+    };
+    //编辑
+    var funEdit = function (id) {
+        $.fn.modalOpen({
+            id: "ModuleButtonEdit",
+            title: '编辑按钮模块',
+            url: '/ModuleButton/Edit?Id=' + id,
+            width: "700px",
+            height: "400px",
+            callBack: function (iframeId) {
+                top.frames[iframeId].submitForm();
+            }
+        });
+    }
+    //删除
+    var funDel = function (id) {
+
+        var target = "body";
+        //当前模态窗口 外层div的id
+        var mp = top.$('#moduleBtns').parent();
+        if (mp != undefined)
+            target = "#" + mp.attr("id");
+
+        $.fn.deleteForm({
+            target: target,
+            prompt: "注：您确定要删除该项数据吗？",
+            url: "/ModuleButton/Delete",
+            param: {Id:id},
+            loading: "正在删除数据...",
+            success: function (iframeId) {
+                $('#table').bootstrapTable('refresh');
+            }
+        });
+    }
+    //按钮管理
+    var funBtns=function(id){
+        $.fn.modalOpen({
+            id: "ModuleButtonBtns",
+            title: '按钮管理',
+            url: '/ModuleButton/Index?ModuleId=' + id,
+            width: "900px",
+            height: "400px",
+            btn: null
+        });
+    }
+</script>
+}
+
+

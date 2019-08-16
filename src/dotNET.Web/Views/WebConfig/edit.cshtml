@@ -1,0 +1,137 @@
+﻿@using dotNET.Dto.WebConfig
+@using  dotNET.Web.Host.Model
+@model dotNET.Dto.WebConfig.WebConfigDto
+@{
+    Layout = "_LayoutForm"; 
+     ViewData["title"] = "配置编辑";
+}
+
+@section headers{
+ 
+}
+    
+
+
+<form id="form1"  >
+
+
+    @Html.HiddenFor(o => o.Id)
+
+    @*@Html.HiddenFor(o => o.GoBackUrl)*@
+
+
+    <div style="padding-top: 0px; margin-right: 30px;">
+        <table class="form">
+            <tr>
+                <th class="formTitle"><span class="field-item-required light-red">*</span>key</th>
+                <td class="formValue">
+                    @Html.TextBoxFor(model => model.ConfigKey, new { placeholder = "请输入key", @class = "form-control" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(o => o.ConfigKey, null, new { @class = "help-inline" })
+                </td>
+            </tr>
+
+            <tr>
+                <th class="formTitle"><span class="field-item-required light-red">*</span>值</th>
+                <td class="formValue">
+                    @Html.TextBoxFor(model => model.ConfigValue, new { placeholder = "请输入值", @class = "form-control" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(o => o.ConfigValue, null, new { @class = "help-inline" })
+                </td>
+            </tr>
+
+
+            <tr>
+                <th class="formTitle"><span class="field-item-required light-red">*</span>环境</th>
+                <td class="formValue">
+                    @Html.TextBoxFor(model => model.ConfigType, new { placeholder = "请输入环境", @class = "form-control" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(o => o.ConfigType, null, new { @class = "help-inline" })
+                </td>
+            </tr>
+
+
+            <tr>
+                <th class="formTitle"><span class="field-item-required light-red">*</span>备注</th>
+                <td class="formValue">
+                    @Html.TextBoxFor(model => model.ConfigDetail, new { placeholder = "请输入备注", @class = "form-control" })
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(o => o.ConfigDetail, null, new { @class = "help-inline" })
+                </td>
+            </tr>
+
+        </table>
+        <div class="clearfix form-actions">
+            <label class="col-sm-3 control-label" for="form-field-1"> &nbsp; </label>
+            <div class="col-md-9">
+                <button class="btn btn-info" type="button" id="btnSave">
+                    <i class="ace-icon fa fa-check bigger-110"></i>
+                    确定
+                </button>
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <a href="/WebConfig/index" class="btn"><i class="ace-icon fa fa-arrow-left icon-on-left bigger-110"></i>返回</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section scripts{
+
+<script>
+          // 提交操作
+          $("#btnSave").click(function (ev) {
+              var $form = $("#form1");
+              ////ev.preventDefault();
+            
+             if ($form.valid()) {
+             //  if (true) {
+                  //禁用提交按钮，避免重复提交
+                  $.ajax({
+                      url: "/WebConfig/edit",
+                      data: $form.serialize(),
+                      type: "POST",
+                      cache: false,
+                      async: false,
+                      beforeSend: function () {
+                          $("#btnSave").attr("disabled", "disabled");
+                      },
+                      success: function (r) {
+                        
+                          if (r.code == 0) 
+                          {
+                              location.href = "/WebConfig/index?ram=" + Math.random();// r.GoBackUrl;
+                            }
+                          else  // 其他问题
+                          {
+                              $.MsgBox.Alert(r.msg);
+                          }
+                          $("#btnSave").removeAttr("disabled");
+                      },
+                      error: function () {
+                       
+                          $.MsgBox.Alert("保存失败");
+                          $("#btnSave").removeAttr("disabled");
+                      }
+                  });
+
+              }
+              else {
+                  //alert(5);
+                  //移除禁止按钮。
+                  $("#btnSave").removeAttr("disabled");
+
+                }
+          });
+
+        
+</script>
+
+
+}

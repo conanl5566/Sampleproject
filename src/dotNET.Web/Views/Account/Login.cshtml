@@ -1,0 +1,118 @@
+﻿@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] dotNET.Web.Host</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/mgr/css/login.css" asp-append-version="true"/>
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/mgr/css/login.min.css" asp-append-version="true" />
+    </environment>
+
+
+    
+</head>
+<body>
+    @User.Claims.SingleOrDefault(s => s.Type == System.Security.Claims.ClaimTypes.Sid)?.Value
+
+
+  <div class="wrapper">
+
+        <div class="container">
+            <div class="logo">
+                <i class="fa fa-xing"></i>
+                <h1><span></span>dotNET.Web.Host </h1>
+            </div>
+            <form class="form">
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <input id="txt_account" type="text" value="admin" placeholder="登录帐号">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="row">
+                    <input id="txt_password" type="password" value="1" placeholder="登录密码">
+                    <i class="fa fa-key"></i>
+                </div>
+                @*<div class="row">
+                    <input id="txt_code" maxlength="4" type="text" placeholder="验证码" style="width: 190px; float: left;">
+                    <div style="width: 110px; float: right; padding-top: 14px; padding-left: 14px;">
+                        看不清？<a id="switchCode" href="javascript:void();" style="text-decoration: none;">换一张</a>
+                        <img id="imgcode" class="authcode" src="/Account/GetAuthCode" width="80" height="25" />
+                    </div>
+                </div>*@
+                <div class="row">
+                    @if (Convert.ToBoolean( ViewBag.IsIdentity) == false)
+                    {
+                        <button id="login_button" type="button">登录</button>
+                    }
+                    else
+                    {
+                        <a href="/Account/IdentityAuth">服务器启用了Identity认证，强制在这里登录>></a>
+                    }
+
+
+                </div>
+                <div class="row"></div>
+            </form>
+            <div class="login_tips"></div>
+        </div>
+
+        <div class="bubbles">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+    </div>
+
+    <div class="copyright" style="text-align:center">&copy; 2016－2026 版权所有</div>
+
+
+    <!--[if lt IE 9]>
+    <div id="header_upgrade_browers" class="text-warning">
+        <strong>您正在使用低版本浏览器，</strong> 在本页面的显示效果可能有差异。
+        建议您下载使用
+        <a href="http://www.google.cn/intl/zh-CN/chrome/" target="_blank">Chrome</a>
+        或：
+        <a href="www.mozilla.org/en-US/firefox/" target="_blank">Firefox</a>
+    </div>
+    <![endif]-->
+
+
+
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-md5/jquery.md5.js" ></script>
+        <script src="~/mgr/js/module/login.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="~/lib/jquery-md5/jquery.md5.min.js"></script>
+        <script src="~/mgr/js/module/login.min.js" asp-append-version="true"></script>
+    </environment>
+  
+
+    <script src="~/js/placeholder.js"></script>
+
+
+</body>
+</html>

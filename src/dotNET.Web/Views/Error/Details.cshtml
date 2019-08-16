@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "_LayoutForm";
+    ViewData["title"] = "错误日志查看";
+}
+
+
+@section headers{
+  
+}
+
+<form id="form1">
+   
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 20px;">
+        <table class="form">
+        
+            <tr>
+
+                <th class="formTitle">文件名称</th>
+                <td class="formValue">
+                @ViewBag.filename
+                </td>
+            </tr>
+            <tr>
+                <th class="formTitle" valign="top" style="padding-top: 5px;">
+                    错误详情
+                </th>
+                <td class="formValue">
+                    <textarea id="Remarks" name="Remarks" class="form-control" style="height: 300px;" readonly="readonly"  placeholder="错误详情">@ViewBag.content </textarea>
+                </td>
+            </tr>
+        </table>
+
+        <div class="clearfix form-actions">
+            <label class="col-sm-3 control-label" for="form-field-1"> &nbsp; </label>
+            <div class="col-md-9">
+            
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <a href="@ViewBag.GoBackUrl" class="btn"><i class="ace-icon fa fa-arrow-left icon-on-left bigger-110"></i>返回</a>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@section scripts{
+ <script type="text/javascript">
+  
+</script>
+}

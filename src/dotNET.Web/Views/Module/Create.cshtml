@@ -1,0 +1,133 @@
+﻿@{
+    Layout = "_LayoutalertForm";
+    ViewData["title"] = "模块添加";
+}
+
+<form id="form1">
+    <div style="margin-top: 10px; margin-left: 10px; margin-right: 20px;">
+        <table class="form">
+            <tr>
+                <th class="formTitle">上级</th>
+                <td class="formValue">
+                    <select id="ParentId" name="ParentId" class="form-control required">
+                        <option value="0">父节点</option>
+                    </select>
+                </td>
+                <th class="formTitle">名称</th>
+                <td class="formValue">
+                    <input id="FullName" name="FullName" type="text" class="form-control required"  maxlength="50" placeholder="请输入名称"  />
+                </td>
+            </tr>
+            <tr>
+                <th class="formTitle">连接</th>
+                <td class="formValue">
+                    <input id="UrlAddress" name="UrlAddress" type="text" class="form-control" required="#IsMenu" maxlength="100" />
+                </td>
+                <th class="formTitle">目标</th>
+                <td class="formValue">
+                    <select id="Target" name="Target" class="form-control required" >
+                        <option value="">==请选择==</option>
+                        <option value="expand" title="expand">无页面</option>
+                        <option value="iframe" title="iframe">框架页</option>
+                        <option value="open" title="open">弹出页</option>
+                        <option value="blank" title="blank">新窗口</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th class="formTitle">图标</th>
+                <td class="formValue">
+                    <div class="input-group">
+                        <input id="Icon" name="Icon" type="text" class="form-control" maxlength="50" />
+                        <span class="input-group-btn">
+                            <a class="btn  btn-primary"><i class="fa fa-ellipsis-h"></i></a>
+                        </span>
+                    </div>
+                </td>
+                <th class="formTitle">排序</th>
+                <td class="formValue">
+                    <input id="SortCode" name="SortCode" type="text" value="1" class="form-control required number" max="9999" placeholder="请输入排序" />
+                </td>
+            </tr>
+            <tr>
+                <th class="formTitle" style="height: 35px;">选项</th>
+                <td class="formValue" colspan="3" style="padding-top: 1px;">
+                    <div class="ckbox">
+                        <input id="IsMenu" name="IsMenu" type="checkbox"><label for="IsMenu">菜单</label>
+                    </div>
+                    <div class="ckbox">
+                        <input id="IsPublic" name="IsPublic" type="checkbox"><label for="IsPublic">公共</label>
+                    </div>
+                    <div class="ckbox">
+                        <input id="IsExpand" name="IsExpand" type="checkbox"><label for="IsExpand">展开</label>
+                    </div>
+                    <div class="ckbox">
+                        <input id="IsEnabled" name="IsEnabled" type="checkbox" checked="checked"><label for="IsEnabled">有效</label>
+                    </div>
+                    <!--<div class="ckbox">
+                        <input id="AllowEdit" name="AllowEdit" type="checkbox"><label for="AllowEdit">允许编辑</label>
+                    </div>
+                    <div class="ckbox">
+                        <input id="AllowDelete" name="AllowDelete" type="checkbox"><label for="AllowDelete">允许删除</label>
+                    </div>
+                    -->
+                </td>
+            </tr>
+            <tr>
+                <th class="formTitle" valign="top" style="padding-top: 5px;">
+                    备注
+                </th>
+                <td class="formValue" colspan="3">
+                    <textarea id="Description" name="Descriptions" class="form-control" maxlength="100" style="height: 100px;"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+@section scripts{
+<script type="text/javascript">
+    $(function () {
+        $("#form1").formValid()
+        initControl();
+    });
+
+    function initControl() {
+        $("#Target").select2();
+        $("#ParentId").bindSelect({ data:@Html.Raw(ViewData["ParentIdSelect"]) });
+        //$("#IsMenu").on("change", function () {
+        //    if ($(this).prop("checked"))
+        //        $("#Target > option[value='expand']").prop("disabled", true)
+        //    else
+        //        $("#Target > option[value='expand']").prop("disabled", false)
+        //    $('#Target').val("")
+        //    $("#Target").select2();
+        //});
+        $("#Target").on("select2:select", function () { 
+            $("#form1").valid("#Target");
+        })
+    }
+
+    function submitForm() {
+        if (!$("#form1").valid()) {
+            return false;
+        }
+
+        var target = "body";
+        //当前模态窗口 外层div的id
+        var mp = top.$('#moduleCreate').parent();
+        if (mp != undefined)
+            target = "#" + mp.attr("id");
+
+        $.fn.submitForm({
+            target: target,
+            url: "/Module/Create",
+            param: $("#form1").formSerialize(),
+            loading: "正在保存数据...",
+            success: function () {
+                $.currentIframe().$('#table').bootstrapTable('refresh');
+            }
+        });
+    };
+</script>
+}
