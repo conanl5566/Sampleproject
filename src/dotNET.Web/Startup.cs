@@ -24,6 +24,7 @@ using dotNET.Application;
 using System.Reflection;
 using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
+using Exceptionless;
 #endregion
 namespace dotNET.Web.Host
 {
@@ -146,6 +147,12 @@ namespace dotNET.Web.Host
             };
 
             app.UseHangfireServer(jobOptions);
+
+            ExceptionlessClient.Default.Configuration.ApiKey = Configuration.GetSection("Exceptionless:ApiKey").Value;
+
+            // ExceptionlessClient.Default.Configuration.ServerUrl = Configuration.GetSection("Exceptionless:ServerUrl").Value;
+            app.UseExceptionless();
+
         }
     }
 }
