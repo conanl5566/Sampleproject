@@ -23,9 +23,7 @@ namespace dotNET.Web.Host.Controllers
     {
         public IItemsDataApp ItemsDataApp { get; set; }
 
-        public ItemsDataController(IConfiguration configuration) : base(configuration)
-        {
-        }
+    
 
         #region tree
         [IgnoreAuthorize]

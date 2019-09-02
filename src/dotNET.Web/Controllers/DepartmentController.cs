@@ -23,9 +23,7 @@ namespace dotNET.Web.Host.Controllers
         public IDepartmentApp DepartmentApp { get; set; }
         #endregion
 
-        public DepartmentController(IConfiguration configuration) : base(configuration)
-        {
-        }
+   
 
         #region tree
         [IgnoreAuthorize]

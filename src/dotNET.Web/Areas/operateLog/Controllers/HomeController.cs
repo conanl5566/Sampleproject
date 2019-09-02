@@ -19,7 +19,7 @@ namespace dotNET.Web.Host.Areas.operateLog.Controllers
         #region ini
         public IOperateLogApp OperateLogApp { get; set; }
         public SiteConfig Config;
-        public HomeController(IOptions<SiteConfig> option, IConfiguration configuration):base(configuration)
+        public HomeController(IOptions<SiteConfig> option )
         {
             Config = option.Value;
             DefaultPageSize = ZConvert.StrToInt(Config.Configlist.FirstOrDefault(o => o.Key == "pagesize")?.Values);

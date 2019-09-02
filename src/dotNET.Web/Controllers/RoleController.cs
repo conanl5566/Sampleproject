@@ -24,7 +24,7 @@ namespace dotNET.Web.Host.Controllers
         public SiteConfig Config;
      
 
-        public RoleController(IOptions<SiteConfig> option, IConfiguration configuration) : base(configuration)
+        public RoleController(IOptions<SiteConfig> option ) 
         {
             Config = option.Value;
             DefaultPageSize = ZConvert.StrToInt(Config.Configlist.FirstOrDefault(o => o.Key == "pagesize")?.Values);

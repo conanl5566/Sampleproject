@@ -20,10 +20,7 @@ namespace dotNET.Web.Host.Controllers
 
         #endregion
 
-        public ExportExcelController(IConfiguration configuration) : base(configuration)
-        {
-        }
-
+    
 
         #region 用户导出
         [HttpPost]

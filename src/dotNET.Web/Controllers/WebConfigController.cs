@@ -20,7 +20,7 @@ namespace dotNET.Web.Host.Controllers
         public IWebConfigApp WebConfigApp { get; set; }
         public IUserApp UserApp { get; set; }
         public SiteConfig Config;
-        public WebConfigController(IOptions<SiteConfig> option, IConfiguration configuration) : base(configuration)
+        public WebConfigController(IOptions<SiteConfig> option ) 
         {
             Config = option.Value;
             DefaultPageSize = ZConvert.StrToInt(Config.Configlist.FirstOrDefault(o => o.Key == "pagesize")?.Values);

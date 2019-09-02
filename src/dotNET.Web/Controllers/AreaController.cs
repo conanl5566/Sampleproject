@@ -21,10 +21,7 @@ namespace dotNET.Web.Host.Controllers
       
         #endregion
 
-        public AreaController(IConfiguration configuration) : base(configuration)
-        {
-          
-        }
+    
 
         #region tree
         [IgnoreAuthorize]

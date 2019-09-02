@@ -22,9 +22,7 @@ namespace dotNET.Web.Host.Controllers
         public IRoleAuthorizeApp RoleAuthorizeApp { get; set; }
         #endregion
 
-        public HomeController(IConfiguration configuration) : base(configuration)
-        {
-        }
+  
 
 
         #region Index

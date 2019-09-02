@@ -22,10 +22,7 @@ namespace dotNET.Web.Host.Controllers
         public IModuleApp ModuleApp { get; set; }
         public IModuleButtonApp ModuleButtonApp { get; set; }
 
-        public ModuleController(IConfiguration configuration) : base(configuration)
-        {
-        }
-
+    
 
         // 列表
         // GET: /<controller>/     [Bind(Prefix ="")]

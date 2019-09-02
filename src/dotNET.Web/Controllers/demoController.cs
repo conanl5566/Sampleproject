@@ -24,9 +24,7 @@ namespace dotNET.Web.Host.Controllers
         public IWebConfigApp WebConfigApp { get; set; }
 
 
-        public demoController(IConfiguration configuration) : base(configuration)
-        {
-        }
+ 
 
         #region 发邮件
         public async Task<IActionResult> sendmail()

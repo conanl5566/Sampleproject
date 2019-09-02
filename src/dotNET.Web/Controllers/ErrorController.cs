@@ -18,9 +18,7 @@ namespace dotNET.Web.Host.Controllers
 {
     public class ErrorController : CustomController
     {
-        public ErrorController(IConfiguration configuration) : base(configuration)
-        {
-        }
+  
 
         #region Index
         // GET: /<controller>/

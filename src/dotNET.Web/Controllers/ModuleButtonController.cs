@@ -16,9 +16,7 @@ namespace dotNET.Web.Host.Controllers
     {
         public IModuleButtonApp ModuleButtonApp { get; set; }
 
-        public ModuleButtonController(IConfiguration configuration) : base(configuration)
-        {
-        }
+  
 
         // 列表
         // GET: /<controller>/

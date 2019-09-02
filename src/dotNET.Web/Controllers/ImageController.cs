@@ -17,10 +17,7 @@ namespace dotNET.Web.Host.Controllers
     public class ImageController : CustomController
     {
 
-        public ImageController(IConfiguration configuration) : base(configuration)
-        {
-        }
-
+     
 
         /// <summary>
         /// 图片上传

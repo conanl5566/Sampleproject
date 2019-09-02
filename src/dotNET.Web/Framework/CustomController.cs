@@ -14,12 +14,8 @@ namespace dotNET.Web.Host.Framework
     public class CustomController : Controller
     {
         public IUserApp UserApp { get; set; }
-        public IConfiguration Configuration { get; }
-        public CustomController(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
+        public IConfiguration Configuration { get; set; }
+     
         //·ÖÒ³ÊýÁ¿
         public int DefaultPageSize = 5;
         /// <summary>

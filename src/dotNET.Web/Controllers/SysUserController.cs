@@ -23,7 +23,7 @@ namespace dotNET.Web.Host.Controllers
         public IRoleApp RoleApp { get; set; }
         public SiteConfig Config;
         public IDepartmentApp DepartmentApp { get; set; }
-        public SysUserController(IOptions<SiteConfig> option, IConfiguration configuration) : base(configuration)
+        public SysUserController(IOptions<SiteConfig> option ) 
         {
             Config = option.Value;
             DefaultPageSize = ZConvert.StrToInt(Config.Configlist.FirstOrDefault(o => o.Key == "pagesize")?.Values);
