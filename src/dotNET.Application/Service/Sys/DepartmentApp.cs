@@ -56,15 +56,15 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<R> DeleteAsync(long id)
+        public async Task<ResultDto> DeleteAsync(long id)
         {
             if (await DepartmentRep.GetCountAsync(o => o.ParentId == id) > 0)
             {
-                return R.Err(msg: "含有子部门不能删除");
+                return ResultDto.Err(msg: "含有子部门不能删除");
             }
             await DepartmentRep.DeleteAsync(o => o.Id == id);
             await RemoveCacheAsync();
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        public async Task<R> CreateAsync(Department moduleEntity)
+        public async Task<ResultDto> CreateAsync(Department moduleEntity)
         {
             moduleEntity.Name = moduleEntity.Name?.Trim();
             moduleEntity.Code = moduleEntity.Code?.Trim();
@@ -92,11 +92,11 @@ namespace dotNET.Application.Sys
             int count = await DepartmentRep.GetCountAsync(o => o.Code == moduleEntity.Code);
             if (count > 0)
             {
-                return R.Err(msg: moduleEntity.Code + " 已存在");
+                return ResultDto.Err(msg: moduleEntity.Code + " 已存在");
             }
             await DepartmentRep.AddAsync(moduleEntity);
             await RemoveCacheAsync();
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        public async Task<R> UpdateAsync(Department moduleEntity)
+        public async Task<ResultDto> UpdateAsync(Department moduleEntity)
         {
             moduleEntity.Name = moduleEntity.Name?.Trim();
             moduleEntity.Code = moduleEntity.Code?.Trim();
@@ -113,11 +113,11 @@ namespace dotNET.Application.Sys
             int count = await DepartmentRep.GetCountAsync(o => o.Code == moduleEntity.Code && o.Id != moduleEntity.Id);
             if (count > 0)
             {
-                return R.Err(msg: moduleEntity.Code + " 已存在");
+                return ResultDto.Err(msg: moduleEntity.Code + " 已存在");
             }
             await DepartmentRep.UpdateAsync(moduleEntity);
             await RemoveCacheAsync();
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>

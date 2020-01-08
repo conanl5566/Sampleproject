@@ -64,14 +64,14 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<R> DeleteAsync(long id)
+        public async Task<ResultDto> DeleteAsync(long id)
         {
             if (await ModuleButtonRep.GetCountAsync(o => o.ParentId == id) > 0)
             {
-                return R.Err(msg: "删除失败！操作的对象包含了下级数据。");
+                return ResultDto.Err(msg: "删除失败！操作的对象包含了下级数据。");
             }
             await ModuleButtonRep.DeleteAsync(o => o.Id == id);
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -79,12 +79,12 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="moduleButton"></param>
         /// <returns></returns>
-        public async Task<R> CreateAsync(ModuleButton moduleButton)
+        public async Task<ResultDto> CreateAsync(ModuleButton moduleButton)
         {
             moduleButton.Id = moduleButton.CreateId();
             moduleButton.CreatorTime = DateTime.Now;
             await ModuleButtonRep.AddAsync(moduleButton);
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -92,10 +92,10 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="moduleButton"></param>
         /// <returns></returns>
-        public async Task<R> UpdateAsync(ModuleButton moduleButton)
+        public async Task<ResultDto> UpdateAsync(ModuleButton moduleButton)
         {
             await ModuleButtonRep.UpdateAsync(moduleButton);
-            return R.Suc();
+            return ResultDto.Suc();
         }
     }
 }

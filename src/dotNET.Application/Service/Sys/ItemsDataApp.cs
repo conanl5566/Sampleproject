@@ -56,16 +56,16 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<R> DeleteAsync(long id)
+        public async Task<ResultDto> DeleteAsync(long id)
         {
             if (await ItemsDataRep.GetCountAsync(o => o.ParentId == id) > 0)
             {
-                return R.Err(msg: "含有子数据不能删除");
+                return ResultDto.Err(msg: "含有子数据不能删除");
             }
             await ItemsDataRep.DeleteAsync(o => o.Id == id);
 
             await RemoveCacheAsync();
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -84,19 +84,19 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        public async Task<R> CreateAsync(ItemsData moduleEntity)
+        public async Task<ResultDto> CreateAsync(ItemsData moduleEntity)
         {
             moduleEntity.Name = moduleEntity.Name?.Trim();
             moduleEntity.Remarks = moduleEntity.Remarks?.Trim();
             int count = await ItemsDataRep.GetCountAsync(o => o.Name == moduleEntity.Name && o.ParentId == moduleEntity.ParentId);
             if (count > 0)
             {
-                return R.Err(msg: moduleEntity.Name + " 已存在");
+                return ResultDto.Err(msg: moduleEntity.Name + " 已存在");
             }
             await ItemsDataRep.AddAsync(moduleEntity);
 
             await RemoveCacheAsync();
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -104,19 +104,19 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        public async Task<R> UpdateAsync(ItemsData moduleEntity)
+        public async Task<ResultDto> UpdateAsync(ItemsData moduleEntity)
         {
             moduleEntity.Name = moduleEntity.Name?.Trim();
             moduleEntity.Remarks = moduleEntity.Remarks?.Trim();
             int count = await ItemsDataRep.GetCountAsync(o => o.Name == moduleEntity.Name && o.Id != moduleEntity.Id && o.ParentId == moduleEntity.ParentId);
             if (count > 0)
             {
-                return R.Err(msg: moduleEntity.Name + " 已存在");
+                return ResultDto.Err(msg: moduleEntity.Name + " 已存在");
             }
             await ItemsDataRep.UpdateAsync(moduleEntity);
 
             await RemoveCacheAsync();
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>

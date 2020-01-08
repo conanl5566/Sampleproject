@@ -26,10 +26,10 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<R> CreateAsync(RoleAuthorize entity)
+        public async Task<ResultDto> CreateAsync(RoleAuthorize entity)
         {
             await RoleAuthorizeRep.AddAsync(entity);
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>

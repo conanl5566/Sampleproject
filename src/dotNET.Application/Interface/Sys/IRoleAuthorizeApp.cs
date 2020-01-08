@@ -1,4 +1,5 @@
 ﻿using dotNET.Domain.Entities.Sys;
+using dotNET.Dto;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        Task<R> CreateAsync(RoleAuthorize entity);
+        Task<ResultDto> CreateAsync(RoleAuthorize entity);
 
         /// <summary>
         ///

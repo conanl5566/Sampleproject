@@ -12,7 +12,7 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        Task<R> DeleteAsync(long key);
+        Task<ResultDto> DeleteAsync(long key);
 
         /// <summary>
         ///
@@ -39,13 +39,13 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        Task<R> CreateAsync(Module moduleEntity);
+        Task<ResultDto> CreateAsync(Module moduleEntity);
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        Task<R> UpdateAsync(Module moduleEntity);
+        Task<ResultDto> UpdateAsync(Module moduleEntity);
     }
 }

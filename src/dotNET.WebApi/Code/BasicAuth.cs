@@ -1,4 +1,5 @@
 ﻿using dotNET.Application;
+using dotNET.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
@@ -22,7 +23,7 @@ namespace dotNET.HttpApi.Host
                 var token = context.HttpContext.Request.Headers["Authorization"];
                 if (string.IsNullOrWhiteSpace(token))
                 {
-                    R meta = R.Err("Unauthorized");
+                    ResultDto meta = ResultDto.Err("Unauthorized");
                     JsonResult json = new JsonResult(new
                     {
                         Meta = meta
@@ -49,7 +50,7 @@ namespace dotNET.HttpApi.Host
             }
             else
             {
-                R meta = R.Err("Unauthorized");
+                ResultDto meta = ResultDto.Err("Unauthorized");
                 JsonResult json = new JsonResult(new
                 {
                     Meta = meta

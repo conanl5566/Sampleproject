@@ -1,6 +1,7 @@
 ﻿#region using
 
 using dotNET.Core;
+using dotNET.Dto;
 using dotNET.Dto.WebConfig;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ namespace dotNET.Application.Sys
         /// <param name="entity"></param>
         /// <param name="currentUser"></param>
         /// <returns></returns>
-        Task<R<long>> CreateAsync(CreateWebConfigDto entityDto, CurrentUser currentUser);
+        Task<ResultDto<long>> CreateAsync(CreateWebConfigDto entityDto, CurrentUser currentUser);
 
         /// <summary>
         /// 修改
@@ -27,7 +28,7 @@ namespace dotNET.Application.Sys
         /// <param name="entity"></param>
         /// <param name="currentUser"></param>
         /// <returns></returns>
-        Task<R> UpdateAsync(UpdateWebConfigDto entityDto, CurrentUser currentUser);
+        Task<ResultDto> UpdateAsync(UpdateWebConfigDto entityDto, CurrentUser currentUser);
 
         /// <summary>
         /// 删除
@@ -35,7 +36,7 @@ namespace dotNET.Application.Sys
         /// <param name="Id"></param>
         /// <param name="currentUser"></param>
         /// <returns></returns>
-        Task<R> DeleteAsync(long Id, CurrentUser currentUser);
+        Task<ResultDto> DeleteAsync(long Id, CurrentUser currentUser);
 
         /// <summary>
         /// 分页
@@ -44,13 +45,13 @@ namespace dotNET.Application.Sys
         /// <param name="rowsPrePage"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        Task<R<PageResult<WebConfigDto>>> GetPageAsync(WebConfigOption filter);
+        Task<ResultDto<PageResult<WebConfigDto>>> GetPageAsync(WebConfigOption filter);
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        Task<R<WebConfigDto>> GetDetailAsync(long id);
+        Task<ResultDto<WebConfigDto>> GetDetailAsync(long id);
     }
 }

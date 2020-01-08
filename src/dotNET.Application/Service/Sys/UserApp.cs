@@ -35,18 +35,18 @@ namespace dotNET.Application.Sys
         /// <param name="agentId"></param>
         /// <param name="curUser"></param>
         /// <returns></returns>
-        public async Task<R> Updatestatus(long Id, CurrentUser curUser)
+        public async Task<ResultDto> Updatestatus(long Id, CurrentUser curUser)
         {
             var entry = await GetAsync(Id);
             if (entry == null)
-                return R.Err(msg: "该用户不存在");
+                return ResultDto.Err(msg: "该用户不存在");
             int s = 1;
             if (entry.State == 1)
             {
                 s = 0;
             }
             await UserRep.UpdateAsync(u => u.Id == Id, u => new User { State = s });
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         #endregion 修改登录状态
@@ -140,7 +140,7 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<R> InsertAsync(User entity, CurrentUser curUser)
+        public async Task<ResultDto> InsertAsync(User entity, CurrentUser curUser)
         {
             entity.Id = entity.CreateId();
             entity.UserSecretkey = "";
@@ -149,10 +149,10 @@ namespace dotNET.Application.Sys
             var r = await InsertAsync(entity);
             if (!string.IsNullOrEmpty(r.Error))
             {
-                return R.Err(msg: r.Error);
+                return ResultDto.Err(msg: r.Error);
             }
             await OperateLogApp.InsertLogAsync<User>(curUser, "添加用户", entity);
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -179,11 +179,11 @@ namespace dotNET.Application.Sys
         /// <param name="entity"></param>
         /// <param name="curUser"></param>
         /// <returns></returns>
-        public async Task<R> UpdateUserInfoAsync(User entity, CurrentUser curUser)
+        public async Task<ResultDto> UpdateUserInfoAsync(User entity, CurrentUser curUser)
         {
             await UserRep.UpdateAsync(entity);
 
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -191,14 +191,14 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public async Task<R> DeleteAsync(long Id, long agentId, CurrentUser curUser)
+        public async Task<ResultDto> DeleteAsync(long Id, long agentId, CurrentUser curUser)
         {
             var r = await DeleteAsync(Id, agentId, curUser.Id);
             if (!string.IsNullOrEmpty(r.Error))
             {
-                return R.Err(msg: r.Error);
+                return ResultDto.Err(msg: r.Error);
             }
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -262,21 +262,21 @@ namespace dotNET.Application.Sys
         /// <param name="password">旧密码</param>
         /// <param name="newPassword">新密码</param>
         /// <returns></returns>
-        public async Task<R> ChangePasswordAsync(long Id, string password, string newPassword, long agentId, CurrentUser curUser)
+        public async Task<ResultDto> ChangePasswordAsync(long Id, string password, string newPassword, long agentId, CurrentUser curUser)
         {
             User user = await UserRep.FindSingleAsync(o => o.Id == Id);
             if (user == null || user.DeleteMark == true)
             {
-                return R.Err($"帐号({Id})不存在");
+                return ResultDto.Err($"帐号({Id})不存在");
             }
             if (user.Password != MD5Encrypt.MD5(password))
             {
-                return R.Err($"原密码不正确");
+                return ResultDto.Err($"原密码不正确");
             }
             newPassword = MD5Encrypt.MD5(newPassword);
             await UserRep.UpdateAsync(o => o.Id == Id, o => new User() { Password = newPassword });
 
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -286,17 +286,17 @@ namespace dotNET.Application.Sys
         /// <param name="newPassword"></param>
         /// <param name="agentId"></param>
         /// <returns></returns>
-        public async Task<R> ResetPasswordAsync(long Id, string password, long agentId, CurrentUser curUser)
+        public async Task<ResultDto> ResetPasswordAsync(long Id, string password, long agentId, CurrentUser curUser)
         {
             User user = await UserRep.FindSingleAsync(o => o.Id == Id);
             if (user == null)
             {
-                return R.Err($"帐号({Id})不存在");
+                return ResultDto.Err($"帐号({Id})不存在");
             }
             password = MD5Encrypt.MD5(password);
             await UserRep.UpdateAsync(o => o.Id == Id, o => new User() { Password = password });
 
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>

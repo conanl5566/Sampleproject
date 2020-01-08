@@ -1,5 +1,6 @@
 ﻿using dotNET.Application;
 using dotNET.Core;
+using dotNET.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
@@ -23,7 +24,7 @@ namespace dotNET.HttpApi.Host.Code
             string url = request.Path + (request.QueryString.HasValue ? $"?{request.QueryString.Value}" : "");
             NLogger.Error("" + url + "\r\n" + context.Exception.Message + "\r\n" + context.Exception.StackTrace + "");
             //context.ExceptionHandled = true;
-            R Meta = R.Err();
+            ResultDto Meta = ResultDto.Err();
             JsonResult json = new JsonResult(new
             {
                 Meta

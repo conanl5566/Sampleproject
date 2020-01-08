@@ -26,20 +26,20 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<R> DeleteAsync(long id);
+        Task<ResultDto> DeleteAsync(long id);
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="moduleButton"></param>
         /// <returns></returns>
-        Task<R> CreateAsync(ModuleButton moduleButton);
+        Task<ResultDto> CreateAsync(ModuleButton moduleButton);
 
         /// <summary>
         ///
         /// </summary>
         /// <param name="moduleButton"></param>
         /// <returns></returns>
-        Task<R> UpdateAsync(ModuleButton moduleButton);
+        Task<ResultDto> UpdateAsync(ModuleButton moduleButton);
     }
 }

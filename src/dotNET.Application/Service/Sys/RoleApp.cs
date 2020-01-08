@@ -38,7 +38,7 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<R<Role>> CreateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser)
+        public async Task<ResultDto<Role>> CreateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser)
         {
             entity.Id = entity.CreateId();
             entity.CreatorTime = DateTime.Now;
@@ -91,14 +91,14 @@ namespace dotNET.Application.Sys
 
             if (currentUser != null)
                 await OperateLogApp.InsertLogAsync<Role>(currentUser, "添加角色", entity);
-            return R<Role>.Suc(entity);
+            return ResultDto<Role>.Suc(entity);
         }
 
         #endregion 添加
 
         #region 修改
 
-        public async Task<R<Role>> UpdateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser)
+        public async Task<ResultDto<Role>> UpdateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser)
         {
             var moduledata = await ModuleApp.GetSaasModuleListAsync();
             var buttondata = await ModuleButtonApp.GetSaasModuleListAsync();
@@ -159,7 +159,7 @@ namespace dotNET.Application.Sys
             if (currentUser != null)
                 await OperateLogApp.InsertLogAsync<Role>(currentUser, "修改角色", entity);
             await RemoveCacheAsync(entity.Id);
-            return R<Role>.Suc(entity);
+            return ResultDto<Role>.Suc(entity);
         }
 
         private async Task<List<long>> Fibonacci(long permissionIds)

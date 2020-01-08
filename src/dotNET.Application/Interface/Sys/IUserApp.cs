@@ -31,7 +31,7 @@ namespace dotNET.Application.Sys
         /// <param name="agentId"></param>
         /// <param name="curUser"></param>
         /// <returns></returns>
-        Task<R> Updatestatus(long Id, CurrentUser curUser);
+        Task<ResultDto> Updatestatus(long Id, CurrentUser curUser);
 
         #endregion 修改登录状态
 
@@ -68,7 +68,7 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        Task<R> InsertAsync(User entity, CurrentUser curUser);
+        Task<ResultDto> InsertAsync(User entity, CurrentUser curUser);
 
         /// <summary>
         ///  更新用户信息
@@ -76,14 +76,14 @@ namespace dotNET.Application.Sys
         /// <param name="entity"></param>
         /// <param name="curUser"></param>
         /// <returns></returns>
-        Task<R> UpdateUserInfoAsync(User entity, CurrentUser curUser);
+        Task<ResultDto> UpdateUserInfoAsync(User entity, CurrentUser curUser);
 
         /// <summary>
         /// 删除管理人员
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        Task<R> DeleteAsync(long Id, long agentId, CurrentUser curUser);
+        Task<ResultDto> DeleteAsync(long Id, long agentId, CurrentUser curUser);
 
         /// <summary>
         /// Saas后台管理登录
@@ -100,7 +100,7 @@ namespace dotNET.Application.Sys
         /// <param name="password">旧密码</param>
         /// <param name="newPassword">新密码</param>
         /// <returns></returns>
-        Task<R> ChangePasswordAsync(long Id, string password, string newPassword, long agentId, CurrentUser curUser);
+        Task<ResultDto> ChangePasswordAsync(long Id, string password, string newPassword, long agentId, CurrentUser curUser);
 
         /// <summary>
         /// 重置密码
@@ -109,7 +109,7 @@ namespace dotNET.Application.Sys
         /// <param name="newPassword"></param>
         /// <param name="agentId"></param>
         /// <returns></returns>
-        Task<R> ResetPasswordAsync(long Id, string password, long agentId, CurrentUser curUser);
+        Task<ResultDto> ResetPasswordAsync(long Id, string password, long agentId, CurrentUser curUser);
 
         /// <summary>
         ///

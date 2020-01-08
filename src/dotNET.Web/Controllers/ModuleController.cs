@@ -74,7 +74,7 @@ namespace dotNET.Web.Host.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(R.Err("数据验证失败"));
+                return Json(ResultDto.Err("数据验证失败"));
             }
             var module = model.MapTo<Module>();
             module.Id = module.CreateId();
@@ -117,13 +117,13 @@ namespace dotNET.Web.Host.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(R.Err((GetErrorFromModelStateStr())));
+                return Json(ResultDto.Err((GetErrorFromModelStateStr())));
             }
 
             var m = await ModuleApp.GetAsync(model.Id);
             if (m == null)
             {
-                return Json(R.Err(("数据不存在或已被删除")));
+                return Json(ResultDto.Err(("数据不存在或已被删除")));
             }
 
             m = model.MapToMeg<ModuleModel, Module>(m);

@@ -1,4 +1,5 @@
 ﻿using dotNET.Application;
+using dotNET.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
@@ -32,7 +33,7 @@ namespace dotNET.HttpApi.Host.Code
                         break;
                     }
                 }
-                R Meta = R.Err();
+                ResultDto Meta = ResultDto.Err();
                 JsonResult json = new JsonResult(new
                 {
                     Meta

@@ -1,6 +1,7 @@
 ﻿using dotNET.Application;
 using dotNET.Application.Sys;
 using dotNET.Core;
+using dotNET.Dto;
 using dotNET.Dto.WebConfig;
 using dotNET.HttpApi.Host.Code;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ namespace dotNET.HttpApi.Host.Controllers
         [ModelValidationAttribute]
         [ApiExplorerSettings(GroupName = "v1")]
         [HttpPost, Route("Create")]
-        public async Task<R<long>> CreateAsync([FromBody]CreateWebConfigDto model)
+        public async Task<ResultDto<long>> CreateAsync([FromBody]CreateWebConfigDto model)
         {
             return await _webConfigApp.CreateAsync(model, new Core.CurrentUser());
         }
@@ -43,7 +44,7 @@ namespace dotNET.HttpApi.Host.Controllers
         [ModelValidationAttribute]
         [ApiExplorerSettings(GroupName = "v1")]
         [HttpPost, Route("Update")]
-        public async Task<R> UpdateAsync([FromBody]UpdateWebConfigDto model)
+        public async Task<ResultDto> UpdateAsync([FromBody]UpdateWebConfigDto model)
         {
             return await _webConfigApp.UpdateAsync(model, new Core.CurrentUser());
         }
@@ -57,7 +58,7 @@ namespace dotNET.HttpApi.Host.Controllers
         [ModelValidationAttribute]
         [ApiExplorerSettings(GroupName = "v1")]
         [HttpPost, Route("Delete")]
-        public async Task<R> DeleteAsync([FromBody]DeleteWebConfigDto model)
+        public async Task<ResultDto> DeleteAsync([FromBody]DeleteWebConfigDto model)
         {
             return await _webConfigApp.DeleteAsync(model.Id, new CurrentUser());
         }
@@ -71,7 +72,7 @@ namespace dotNET.HttpApi.Host.Controllers
         [ModelValidationAttribute]
         [ApiExplorerSettings(GroupName = "v1")]
         [HttpGet, Route("GetPage")]
-        public async Task<R<PageResult<WebConfigDto>>> GetPageAsync([FromQuery]WebConfigOption model)
+        public async Task<ResultDto<PageResult<WebConfigDto>>> GetPageAsync([FromQuery]WebConfigOption model)
         {
             return await _webConfigApp.GetPageAsync(model);
         }
@@ -85,7 +86,7 @@ namespace dotNET.HttpApi.Host.Controllers
         [ModelValidationAttribute]
         [ApiExplorerSettings(GroupName = "v1")]
         [HttpGet, Route("GetDetail")]
-        public async Task<R<WebConfigDto>> GetDetailAsync([FromQuery]long id)
+        public async Task<ResultDto<WebConfigDto>> GetDetailAsync([FromQuery]long id)
         {
             return await _webConfigApp.GetDetailAsync(id);
         }

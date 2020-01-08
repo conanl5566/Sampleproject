@@ -150,12 +150,12 @@ namespace dotNET.Web.Host.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(R.Err(GetErrorFromModelStateStr()));
+                return Json(ResultDto.Err(GetErrorFromModelStateStr()));
             }
             var m = await ItemsDataApp.GetAsync(model.Id);
             if (m == null)
             {
-                return Json(R.Err("数据不存在或已被删除"));
+                return Json(ResultDto.Err("数据不存在或已被删除"));
             }
             m = model.MapToMeg<ItemsDataModel, ItemsData>(m);
             var r = await ItemsDataApp.UpdateAsync(m);

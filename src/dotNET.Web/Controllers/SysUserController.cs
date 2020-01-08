@@ -85,7 +85,7 @@ namespace dotNET.Web.Host.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(R.Err("数据验证失败;" + GetErrorFromModelStateStr()));
+                return Json(ResultDto.Err("数据验证失败;" + GetErrorFromModelStateStr()));
             }
             var user = model.MapTo<User>();
             user.Password = dotNET.Core.Security.MD5Encrypt.MD5(user.Password);
@@ -162,7 +162,7 @@ namespace dotNET.Web.Host.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(R.Err(GetErrorFromModelStateStr()));
+                return Json(ResultDto.Err(GetErrorFromModelStateStr()));
             }
 
             if (!string.IsNullOrWhiteSpace(model.Avatar))
@@ -178,7 +178,7 @@ namespace dotNET.Web.Host.Controllers
 
             if (m == null)
             {
-                return Json(R.Err("数据不存在或已被删除"));
+                return Json(ResultDto.Err("数据不存在或已被删除"));
             }
 
             m = model.MapToMeg<UserEditModel, User>(m);
@@ -205,7 +205,7 @@ namespace dotNET.Web.Host.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(R.Err(GetErrorFromModelStateStr()));
+                return Json(ResultDto.Err(GetErrorFromModelStateStr()));
             }
             var c = await CurrentUser();
             var r = await UserApp.ChangePasswordAsync(c.Id, model.Password, model.NewPassword, 0, c);

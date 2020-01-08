@@ -73,11 +73,11 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<R> DeleteAsync(long id)
+        public async Task<ResultDto> DeleteAsync(long id)
         {
             if (await ModuleRep.GetCountAsync(o => o.ParentId == id) > 0)
             {
-                return R.Err("含有子菜单不能删除");
+                return ResultDto.Err("含有子菜单不能删除");
             }
             try
             {
@@ -87,10 +87,10 @@ namespace dotNET.Application.Sys
             }
             catch (Exception exc)
             {
-                return R.Err(exc.Message);
+                return ResultDto.Err(exc.Message);
             }
             await RemoveCacheAsync();
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        public async Task<R> CreateAsync(Module moduleEntity)
+        public async Task<ResultDto> CreateAsync(Module moduleEntity)
         {
             moduleEntity.FullName = moduleEntity.FullName?.Trim();
             moduleEntity.UrlAddress = moduleEntity.UrlAddress?.Trim();
@@ -117,13 +117,13 @@ namespace dotNET.Application.Sys
             int count = await ModuleRep.GetCountAsync(o => o.FullName == moduleEntity.FullName);
             if (count > 0)
             {
-                return R.Err(msg: moduleEntity.FullName + " 已存在");
+                return ResultDto.Err(msg: moduleEntity.FullName + " 已存在");
             }
 
             await ModuleRep.AddAsync(moduleEntity);
 
             await RemoveCacheAsync();
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>
@@ -131,19 +131,19 @@ namespace dotNET.Application.Sys
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        public async Task<R> UpdateAsync(Module moduleEntity)
+        public async Task<ResultDto> UpdateAsync(Module moduleEntity)
         {
             moduleEntity.FullName = moduleEntity.FullName?.Trim();
             moduleEntity.UrlAddress = moduleEntity.UrlAddress?.Trim();
             int count = await ModuleRep.GetCountAsync(o => o.FullName == moduleEntity.FullName && o.Id != moduleEntity.Id);
             if (count > 0)
             {
-                return R.Err(msg: moduleEntity.FullName + " 已存在");
+                return ResultDto.Err(msg: moduleEntity.FullName + " 已存在");
             }
             await ModuleRep.UpdateAsync(moduleEntity);
 
             await RemoveCacheAsync();
-            return R.Suc();
+            return ResultDto.Suc();
         }
 
         /// <summary>

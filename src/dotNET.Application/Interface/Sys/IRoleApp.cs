@@ -24,7 +24,7 @@ namespace dotNET.Application.Sys
         /// <param name="permissionIds"></param>
         /// <param name="currentUser"></param>
         /// <returns></returns>
-        Task<R<Role>> CreateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser);
+        Task<ResultDto<Role>> CreateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser);
 
         #endregion 添加Role
 
@@ -37,7 +37,7 @@ namespace dotNET.Application.Sys
         /// <param name="permissionIds"></param>
         /// <param name="currentUser"></param>
         /// <returns></returns>
-        Task<R<Role>> UpdateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser);
+        Task<ResultDto<Role>> UpdateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser);
 
         #endregion 修改
 
