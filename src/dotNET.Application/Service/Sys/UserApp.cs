@@ -1,30 +1,33 @@
 ﻿#region using
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using dotNET.Core;
 using dotNET.Core.Security;
 using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
 using dotNET.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
 
 namespace dotNET.Application.Sys
 {
     public class UserApp : IUserApp
     {
         #region 注入
+
         public IBaseRepository<User> UserRep { get; set; }
         public IBaseRepository<Role> RoleRep { get; set; }
         public IBaseRepository<Department> DepartmentRep { get; set; }
         public IOperateLogApp OperateLogApp { get; set; }
-        #endregion
+
+        #endregion 注入
 
         #region 修改登录状态
+
         /// <summary>
         /// 修改登录状态
         /// </summary>
@@ -44,11 +47,12 @@ namespace dotNET.Application.Sys
             }
             await UserRep.UpdateAsync(u => u.Id == Id, u => new User { State = s });
             return R.Suc();
-
         }
-        #endregion
+
+        #endregion 修改登录状态
 
         #region 用户退出操作
+
         /// <summary>
         /// 用户退出操作
         /// </summary>
@@ -58,7 +62,8 @@ namespace dotNET.Application.Sys
         {
             await OperateLogApp.CustomLogAsync(curUser, "用户退出", curUser.RealName + "进行了退出操作");
         }
-        #endregion
+
+        #endregion 用户退出操作
 
         /// <summary>
         ///  根据账号模糊查询获取列表
@@ -79,9 +84,8 @@ namespace dotNET.Application.Sys
             return result.Select(o => new IdAccountDto() { Id = o.Id, Account = o.Account }).ToList();
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="rowsPrePage"></param>
@@ -131,7 +135,6 @@ namespace dotNET.Application.Sys
             return list;
         }
 
-
         /// <summary>
         /// 添加管理人员
         /// </summary>
@@ -169,7 +172,6 @@ namespace dotNET.Application.Sys
 
             return (string.Empty, null);
         }
-
 
         /// <summary>
         ///  更新用户信息
@@ -229,7 +231,6 @@ namespace dotNET.Application.Sys
         /// <returns></returns>
         public async Task<(string Error, User User)> SaasLoginAsync(string account, string password, string ip = "")
         {
-
             User user = await UserRep.FindSingleAsync(o => o.Account == account);
             if (user == null)
             {
@@ -248,14 +249,11 @@ namespace dotNET.Application.Sys
                 Id = user.Id,
                 RealName = user.Account,
                 LoginIPAddress = ip
-
             };
             await OperateLogApp.CustomLogAsync(curUser, "用户登录", user.RealName + "进行了登录操作");
             await UserRep.UpdateAsync(o => o.Id == user.Id, o => new User() { LastLoginTime = DateTime.Now });
             return (string.Empty, user);
         }
-
-
 
         /// <summary>
         /// 修改密码
@@ -269,11 +267,11 @@ namespace dotNET.Application.Sys
             User user = await UserRep.FindSingleAsync(o => o.Id == Id);
             if (user == null || user.DeleteMark == true)
             {
-                return R.Err( $"帐号({Id})不存在");
+                return R.Err($"帐号({Id})不存在");
             }
             if (user.Password != MD5Encrypt.MD5(password))
             {
-                return R.Err( $"原密码不正确");
+                return R.Err($"原密码不正确");
             }
             newPassword = MD5Encrypt.MD5(newPassword);
             await UserRep.UpdateAsync(o => o.Id == Id, o => new User() { Password = newPassword });
@@ -293,15 +291,16 @@ namespace dotNET.Application.Sys
             User user = await UserRep.FindSingleAsync(o => o.Id == Id);
             if (user == null)
             {
-                return R.Err( $"帐号({Id})不存在");
+                return R.Err($"帐号({Id})不存在");
             }
             password = MD5Encrypt.MD5(password);
             await UserRep.UpdateAsync(o => o.Id == Id, o => new User() { Password = password });
 
             return R.Suc();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
@@ -311,7 +310,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>

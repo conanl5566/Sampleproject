@@ -1,23 +1,24 @@
 ﻿using dotNET.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Linq.Dynamic.Core;
-using Z.EntityFramework.Plus;
-using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Linq;
+using System.Linq.Dynamic.Core;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using Z.EntityFramework.Plus;
 
 namespace dotNET.EntityFrameworkCore
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class BaseRepository<T> : IBaseRepository<T> where T : Entity
     {
         private readonly DbSet<T> _dbSet;
         private readonly EFCoreDBContext _context;
+
         public BaseRepository(EFCoreDBContext context)
         {
             _context = context;
@@ -39,8 +40,9 @@ namespace dotNET.EntityFrameworkCore
         {
             return Filter(exp).TagWith(GetCodeLineAndFileName());
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
@@ -81,7 +83,7 @@ namespace dotNET.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -103,7 +105,7 @@ namespace dotNET.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -122,7 +124,7 @@ namespace dotNET.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -144,7 +146,7 @@ namespace dotNET.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
@@ -154,7 +156,7 @@ namespace dotNET.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public async Task SaveAsync()
@@ -170,7 +172,7 @@ namespace dotNET.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
@@ -183,7 +185,7 @@ namespace dotNET.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>

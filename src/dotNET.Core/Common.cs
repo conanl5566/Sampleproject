@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace dotNET.Core
 {
-   public class TaskEx
+    public class TaskEx
     {
         public static Task Run(Action action)
         {
             var tcs = new TaskCompletionSource<object>();
-            new Thread(() => {
+            new Thread(() =>
+            {
                 try
                 {
                     action();
@@ -25,6 +24,7 @@ namespace dotNET.Core
             { IsBackground = true }.Start();
             return tcs.Task;
         }
+
         public static Task<TResult> Run<TResult>(Func<TResult> function)
         {
             var tcs = new TaskCompletionSource<TResult>();
@@ -42,6 +42,5 @@ namespace dotNET.Core
             { IsBackground = true }.Start();
             return tcs.Task;
         }
-      
     }
 }

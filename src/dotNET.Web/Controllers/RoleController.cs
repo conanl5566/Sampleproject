@@ -1,16 +1,16 @@
-﻿using System.Linq;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using dotNET.Application;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
+﻿using dotNET.Application;
 using dotNET.Application.Sys;
-using dotNET.Dto;
 using dotNET.Core;
 using dotNET.Domain.Entities.Sys;
+using dotNET.Dto;
+using dotNET.Web.Host.Framework;
 using dotNET.Web.Host.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace dotNET.Web.Host.Controllers
@@ -22,13 +22,11 @@ namespace dotNET.Web.Host.Controllers
         public IModuleApp ModuleApp { get; set; }
         public IModuleButtonApp ModuleButtonApp { get; set; }
         public SiteConfig Config;
-     
 
-        public RoleController(IOptions<SiteConfig> option ) 
+        public RoleController(IOptions<SiteConfig> option)
         {
             Config = option.Value;
             DefaultPageSize = ZConvert.StrToInt(Config.Configlist.FirstOrDefault(o => o.Key == "pagesize")?.Values);
-
         }
 
         //
@@ -52,6 +50,7 @@ namespace dotNET.Web.Host.Controllers
         }
 
         #region 添加
+
         /// <summary>
         /// 添加
         /// </summary>
@@ -73,21 +72,25 @@ namespace dotNET.Web.Host.Controllers
                 return Operation(false, "数据验证失败" + GetErrorFromModelStateStr());
             }
             var m = model.MapTo<Role>();
-            var r = await RoleApp.CreateAsync(m, permissionIds,await  CurrentUser());
+            var r = await RoleApp.CreateAsync(m, permissionIds, await CurrentUser());
             return Json(r);
         }
-        #endregion
+
+        #endregion 添加
 
         #region 删除
+
         [HttpPost]
         public async Task<IActionResult> Delete(long Id)
         {
-            var r = await RoleApp.DeleteAsync(Id,await  CurrentUser());
+            var r = await RoleApp.DeleteAsync(Id, await CurrentUser());
             return Json(r);
         }
-        #endregion
+
+        #endregion 删除
 
         #region 修改
+
         public async Task<IActionResult> Edit(long Id)
         {
             var role = await RoleApp.GetAsync(Id);
@@ -122,10 +125,11 @@ namespace dotNET.Web.Host.Controllers
 
             return Json(r);
         }
-        #endregion
+
+        #endregion 修改
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="roleId"></param>
         /// <returns></returns>

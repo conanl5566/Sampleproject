@@ -1,12 +1,12 @@
 ﻿#region using
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using dotNET.Core;
 using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
 
 namespace dotNET.Application.Sys
 {
@@ -15,7 +15,6 @@ namespace dotNET.Application.Sys
     /// </summary>
     public interface IRoleApp : IAppService
     {
-
         #region 添加Role
 
         /// <summary>
@@ -27,7 +26,7 @@ namespace dotNET.Application.Sys
         /// <returns></returns>
         Task<R<Role>> CreateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser);
 
-        #endregion
+        #endregion 添加Role
 
         #region 修改
 
@@ -40,7 +39,7 @@ namespace dotNET.Application.Sys
         /// <returns></returns>
         Task<R<Role>> UpdateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser);
 
-        #endregion
+        #endregion 修改
 
         #region 删除Role
 
@@ -52,21 +51,23 @@ namespace dotNET.Application.Sys
         /// <returns></returns>
         Task<(bool s, string msg)> DeleteAsync(long id, CurrentUser currentUser);
 
-        #endregion
+        #endregion 删除Role
 
         #region 分页
+
         /// <summary>
         /// 分页
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
         Task<IEnumerable<Role>> GetListAsync(RoleOption option);
+
         Task<PageResult<Role>> GetPageAsync(int pageNumber, int rowsPrePage, RoleOption filter);
 
-
-        #endregion
+        #endregion 分页
 
         #region 名称是否存在
+
         /// <summary>
         /// 名称是否存在
         /// </summary>
@@ -75,16 +76,17 @@ namespace dotNET.Application.Sys
         /// <returns></returns>
         Task<bool> CheckCode(string name, long id);
 
-        #endregion
+        #endregion 名称是否存在
 
         #region 获取
+
         /// <summary>
         /// 获取
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         Task<Role> GetAsync(long id);
-        #endregion
 
+        #endregion 获取
     }
 }

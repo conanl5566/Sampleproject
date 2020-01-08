@@ -1,49 +1,49 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Autofac.Extensions.DependencyInjection;
+using dotNET.Application;
+using dotNET.EntityFrameworkCore;
+using dotNET.HttpApi.Host.Code;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
-using System.IO;
 using Newtonsoft.Json.Serialization;
-using System.Text;
 using NLog.Extensions.Logging;
 using NLog.Web;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Swashbuckle.AspNetCore.Swagger;
-using System.Reflection;
 using System;
-using dotNET.HttpApi.Host.Code;
-using dotNET.Application;
-using Autofac.Extensions.DependencyInjection;
-using Autofac;
-using dotNET.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.IO;
+using System.Reflection;
+using System.Text;
 
 namespace dotNET.HttpApi.Host
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class Startup
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IConfiguration Configuration { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="services"></param>
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -74,6 +74,7 @@ namespace dotNET.HttpApi.Host
             {
                 options.Filters.Add(new CorsAuthorizationFilterFactory("AllowSameDomain"));
             });
+
             #region Swagger
 
             services.AddSwaggerGen(c =>
@@ -123,12 +124,12 @@ namespace dotNET.HttpApi.Host
               var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
               c.IncludeXmlComments(xmlPath);
               c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"dotNET.Dto.xml"));
-
           });
 
-            #endregion
+            #endregion Swagger
 
             #region MiniProfiler
+
             if (bool.Parse(Configuration["IsUseMiniProfiler"]))
             {
                 //https://www.cnblogs.com/lwqlun/p/10222505.html
@@ -136,13 +137,16 @@ namespace dotNET.HttpApi.Host
     options.RouteBasePath = "/profiler"
  ).AddEntityFramework();
             }
-            #endregion
+
+            #endregion MiniProfiler
+
             services.AddDbContext<EFCoreDBContext>(options => options.UseMySql(Configuration["Data:MyCat:ConnectionString"]));
             var container = AutofacExt.InitAutofac(services, Assembly.GetExecutingAssembly());
             return new AutofacServiceProvider(container);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="app"></param>
         /// <param name="env"></param>
@@ -158,7 +162,9 @@ namespace dotNET.HttpApi.Host
             {
                 app.UseDeveloperExceptionPage();
             }
+
             #region Swagger
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -167,7 +173,9 @@ namespace dotNET.HttpApi.Host
                 c.RoutePrefix = string.Empty;//设置后直接输入IP就可以进入接口文档
                 c.IndexStream = () => GetType().GetTypeInfo().Assembly.GetManifestResourceStream("dotNET.HttpApi.Host.index.html");
             });
-            #endregion
+
+            #endregion Swagger
+
             app.UseCors("AllowSameDomain");
             if (bool.Parse(Configuration["IsUseMiniProfiler"]))
             {

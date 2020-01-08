@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace dotNET.Web.Host
 {
@@ -15,7 +12,6 @@ namespace dotNET.Web.Host
 
         static MyHttpContext()
         { }
-
 
         public static HttpContext Current
         {

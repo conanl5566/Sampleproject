@@ -1,10 +1,10 @@
 ﻿#region using
 
+using dotNET.Domain.Entities.Sys;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using dotNET.Domain.Entities.Sys;
 
-#endregion
+#endregion using
 
 namespace dotNET.Application.Sys
 {
@@ -14,12 +14,13 @@ namespace dotNET.Application.Sys
     public interface IAreaListApp : IAppService
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         Task TestAsync();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         Task Test2Async();

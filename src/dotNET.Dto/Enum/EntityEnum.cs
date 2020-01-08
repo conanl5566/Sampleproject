@@ -4,6 +4,7 @@
     {
         //sys
         Other = 1,
+
         Module,
         ModuleButton,
         RoleAuthorize,
@@ -15,6 +16,7 @@
 
         //agent
         User,
+
         Agent,
         Member,
         LoginLog,

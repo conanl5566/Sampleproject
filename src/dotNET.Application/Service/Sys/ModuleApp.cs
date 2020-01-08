@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using dotNET.Domain.Entities.Sys;
+﻿using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
 using dotNET.EntityFrameworkCore;
 using dotNET.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace dotNET.Application.Sys
 {
     public class ModuleApp : IModuleApp
     {
         #region 注入
+
         public IBaseRepository<Module> ModuleRep { get; set; }
         public IUnitWork UnitWork { get; set; }
-        #endregion
+
+        #endregion 注入
 
         /// <summary>
-        /// Saas模块  
+        /// Saas模块
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
@@ -28,7 +30,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="isSaas"></param>
         /// <param name="option"></param>
@@ -42,17 +44,14 @@ namespace dotNET.Application.Sys
                 if (!string.IsNullOrEmpty(option.FullName))
                 {
                     predicate = predicate.And(o => o.FullName.Contains(option.FullName));
-
                 }
                 if (option.ParentId.HasValue)
                 {
                     predicate = predicate.And(o => o.ParentId == option.ParentId);
-
                 }
                 if (option.IsEnabled.HasValue)
                 {
                     predicate = predicate.And(o => o.IsEnabled == option.IsEnabled);
-
                 }
             }
             var t = (await ModuleRep.Find(predicate).ToListAsync()).OrderBy(o => o.SortCode).ToList();
@@ -70,7 +69,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -85,7 +84,6 @@ namespace dotNET.Application.Sys
                 UnitWork.Delete<Module>(o => o.Id == id);
                 UnitWork.Delete<ModuleButton>(o => o.ModuleId == id);
                 UnitWork.Save();
-
             }
             catch (Exception exc)
             {
@@ -96,7 +94,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -107,7 +105,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
@@ -129,7 +127,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
@@ -147,7 +145,6 @@ namespace dotNET.Application.Sys
             await RemoveCacheAsync();
             return R.Suc();
         }
-
 
         /// <summary>
         /// 移除缓存

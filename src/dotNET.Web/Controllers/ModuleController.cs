@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using dotNET.Application;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
+﻿using dotNET.Application;
 using dotNET.Application.Sys;
-using dotNET.Web.Host.Model;
 using dotNET.Core;
 using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
-using Microsoft.Extensions.Configuration;
+using dotNET.Web.Host.Framework;
+using dotNET.Web.Host.Model;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,8 +20,6 @@ namespace dotNET.Web.Host.Controllers
     {
         public IModuleApp ModuleApp { get; set; }
         public IModuleButtonApp ModuleButtonApp { get; set; }
-
-    
 
         // 列表
         // GET: /<controller>/     [Bind(Prefix ="")]
@@ -40,7 +37,8 @@ namespace dotNET.Web.Host.Controllers
             return View();
         }
 
-        #region  Details
+        #region Details
+
         public async Task<IActionResult> Details(long Id)
         {
             var module = await ModuleApp.GetAsync(Id);
@@ -54,9 +52,11 @@ namespace dotNET.Web.Host.Controllers
             ViewData["ParentIdSelect"] = SelectModel.ToJson(selectList);
             return View();
         }
-        #endregion
+
+        #endregion Details
 
         #region 添加
+
         /// <summary>
         /// 添加
         /// </summary>
@@ -82,18 +82,22 @@ namespace dotNET.Web.Host.Controllers
             var r = await ModuleApp.CreateAsync(module);
             return Json(r);
         }
-        #endregion
+
+        #endregion 添加
 
         #region 删除
+
         [HttpPost]
         public async Task<IActionResult> Delete(long Id)
         {
             var r = await ModuleApp.DeleteAsync(Id);
             return Json(r);
         }
-        #endregion
+
+        #endregion 删除
 
         #region 修改
+
         public async Task<IActionResult> Edit(long Id)
         {
             var module = await ModuleApp.GetAsync(Id);
@@ -120,7 +124,6 @@ namespace dotNET.Web.Host.Controllers
             if (m == null)
             {
                 return Json(R.Err(("数据不存在或已被删除")));
-
             }
 
             m = model.MapToMeg<ModuleModel, Module>(m);
@@ -128,7 +131,8 @@ namespace dotNET.Web.Host.Controllers
 
             return Json(r);
         }
-        #endregion
+
+        #endregion 修改
 
         #region 内部方法
 
@@ -164,6 +168,7 @@ namespace dotNET.Web.Host.Controllers
             }
             return treeList;
         }
-        #endregion
+
+        #endregion 内部方法
     }
 }

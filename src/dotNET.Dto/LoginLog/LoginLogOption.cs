@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace dotNET.Dto
 {
@@ -22,14 +19,10 @@ namespace dotNET.Dto
         /// </summary>
         public string AgentId { get; set; }
 
-      
-
         /// <summary>
         /// 登录时间
         /// </summary>
         public DateTime? kCreatorTime { get; set; }
-
-
 
         /// <summary>
         /// 登录时间

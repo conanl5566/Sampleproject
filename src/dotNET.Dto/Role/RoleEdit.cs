@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace dotNET.Domain.Input
 {
     public partial class RoleEdit
     {
-
         public long Id { get; set; }
 
         public string Name { get; set; }

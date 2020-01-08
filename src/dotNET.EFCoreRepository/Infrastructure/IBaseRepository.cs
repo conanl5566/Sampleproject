@@ -6,32 +6,34 @@ using System.Threading.Tasks;
 namespace dotNET.EntityFrameworkCore
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IBaseRepository<T> where T : class
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
         Task<T> FindSingleAsync(Expression<Func<T, bool>> exp = null);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
         Task<bool> IsExistAsync(Expression<Func<T, bool>> exp);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
         IQueryable<T> Find(Expression<Func<T, bool>> exp = null);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pageindex"></param>
         /// <param name="pagesize"></param>
@@ -42,20 +44,20 @@ namespace dotNET.EntityFrameworkCore
             Expression<Func<T, bool>> exp = null);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
         Task<int> GetCountAsync(Expression<Func<T, bool>> exp = null);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="entity"></param>
         Task AddAsync(T entity);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="entities"></param>
         Task BatchAddAsync(T[] entities);
@@ -66,11 +68,10 @@ namespace dotNET.EntityFrameworkCore
         Task UpdateAsync(T entity);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="entity"></param>
         Task DeleteAsync(T entity);
-
 
         /// <summary>
         /// 实现按需要只更新部分更新
@@ -79,17 +80,19 @@ namespace dotNET.EntityFrameworkCore
         /// <param name="where">更新条件</param>
         /// <param name="entity">更新后的实体</param>
         Task UpdateAsync(Expression<Func<T, bool>> where, Expression<Func<T, T>> entity);
+
         /// <summary>
         /// 批量删除
         /// </summary>
         Task DeleteAsync(Expression<Func<T, bool>> exp);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Task SaveAsync();
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>

@@ -10,7 +10,6 @@
 
     AreaListlistmodel ItemsDatalistmodel = ViewBag.ItemsData as AreaListlistmodel;
 
-
     List<AreaList> ItemsDatalist = new List<AreaList>();
     if (ItemsDatalistmodel != null && ItemsDatalistmodel.AreaListlist != null)
     {
@@ -18,11 +17,7 @@
         ItemsDatalist = ItemsDatalistmodel.AreaListlist;
     }
 
-
-
     areaOption filer = ViewBag.filter as areaOption;
-
-
 
 }
 
@@ -55,7 +50,6 @@
     </style>
 }
 
-
 <section class="content">
 
     <div class="ui-layout ui-layout-container">
@@ -79,14 +73,11 @@
                                 <div class="form-inline">
                                     <form action="/area/index" style="display:none;" method="get" id="searchform">
 
-
                                         <input type="hidden" id="ParentId" name="ParentId" value="@filer.ParentId">
                                         <div class="form-group ">
                                             <label class="control-label  label-lg label-md">名称:</label>
                                             @Html.TextBox("Name", @filer.Name, new { placeholder = "名称", @class = "form-control input-small input-sm" })
                                         </div>
-
-
 
                                         <span class="form-group btn-group">
                                             <button class="btn btn-sm btn-info" id="btnSearch" type="submit"><i class="fa fa-search"></i> 搜索</button>
@@ -97,21 +88,17 @@
                         </div>
 
                         @*<div style="  position: relative;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            line-height: 34px;">
-                            <div id="toolbar" class="btn-group">
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            line-height: 34px;">
+                                            <div id="toolbar" class="btn-group">
 
+                                                <button id="btn_add" type="button" class="btn btn-default">
 
-                                <button id="btn_add" type="button" class="btn btn-default">
-
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-                                </button>
-
-
-                            </div>
-
-                        </div>*@
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                                                </button>
+                                            </div>
+                                        </div>*@
                     </div>
                 </div>
 
@@ -124,21 +111,9 @@
                                 <th>名称</th>
                                 <th> 代码</th>
                                 <th>关键字</th>
-                             
-
-
-
-
-
-
-
-
-
-                             
                             </tr>
                         </thead>
                         <tbody id="tbody">
-
 
                             @if (ItemsDatalist != null && ItemsDatalist.Count > 0)
                             {
@@ -149,64 +124,43 @@
                                         <td>@s.AreaName</td>
                                         <td>@s.Postcode</td>
                                         <td>@s.AreaKeys</td>
-
-                                      
                                     </tr>
                                 }
                             }
                         </tbody>
                     </table>
-
-
                 </div>
-
             </div>
         </div>
-
     </div>
 </section>
 @section scripts{
     <script src="~/lib/wdtree/tree.min.js"></script>
     <script type="text/javascript">
 
+        $(function () {
 
+            var w = $(window).width() - 30 - 200 - 8;
+            $('.west-Panel,.center-Panel').height(top.App.getIframeLayoutHeight() - 35);
 
+            loadTree();
+        });
 
+        var loadTree = function () {
 
-
-            $(function () {
-
-                var w = $(window).width() - 30 - 200 - 8;
-                $('.west-Panel,.center-Panel').height(top.App.getIframeLayoutHeight() - 35);
-
-
-
-
-
-
-
-                loadTree();
+            var pid = $('#ParentId').val();
+            $("#itemTree").treeview({
+                url: "/area/loadtree?ParentId=" + $('#ParentId').val(),
+                onnodeclick: function (item) {
+                    $("#ParentId").val(item.id);
+                    $('#btnSearch').trigger("click");
+                }
             });
-
-
-
-
-
-            var loadTree = function () {
-
-                var pid = $('#ParentId').val();
-                $("#itemTree").treeview({
-                    url: "/area/loadtree?ParentId=" + $('#ParentId').val(),
-                    onnodeclick: function (item) {
-                        $("#ParentId").val(item.id);
-                        $('#btnSearch').trigger("click");
-                    }
-                });
-                //var u=  $("#itemTree_" + pid).find("ul");
-                //u.removeAttr("style");
-                //u.css({ "z-index": "0", "position": "static", "visibility": "visible", "top": "auto", "left": "auto"});
-                //u.addClass("bbit-tree-node-ct");
-                $("#itemTree_" + pid).addClass("bbit-tree-selected");
-            };
+            //var u=  $("#itemTree_" + pid).find("ul");
+            //u.removeAttr("style");
+            //u.css({ "z-index": "0", "position": "static", "visibility": "visible", "top": "auto", "left": "auto"});
+            //u.addClass("bbit-tree-node-ct");
+            $("#itemTree_" + pid).addClass("bbit-tree-selected");
+        };
     </script>
 }

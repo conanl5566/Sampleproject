@@ -1,7 +1,5 @@
 ﻿using MailKit.Net.Smtp;
 using MimeKit;
-using NETCore.MailKit;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -12,7 +10,7 @@ namespace dotNET.Core
     /// <summary>
     /// 发邮件
     /// </summary>
-  public  class Mailhelper
+    public class Mailhelper
     {
         /// <summary>
         /// 发邮件
@@ -32,7 +30,6 @@ namespace dotNET.Core
                 emailMessage.To.Add(to as MailAddress);
 
             emailMessage.Subject = subject;
-
 
             var alternative = new Multipart("alternative");
             if (config.IsHtml)
@@ -58,21 +55,14 @@ namespace dotNET.Core
 
             using (var client = new SmtpClient())
             {
-
-
-             
-               
                 await client.ConnectAsync(config.Host, config.Port, config.UseSsl).ConfigureAwait(false);// SecureSocketOptions.None
-                   client.AuthenticationMechanisms.Remove("XOAUTH2");
+                client.AuthenticationMechanisms.Remove("XOAUTH2");
 
                 await client.AuthenticateAsync(config.MailFromAccount, config.MailPassword);
                 await client.SendAsync(emailMessage).ConfigureAwait(false);
                 await client.DisconnectAsync(true).ConfigureAwait(false);
             }
         }
-
-
-
     }
 
     public class Config
@@ -91,11 +81,16 @@ namespace dotNET.Core
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class MailAddress : MailboxAddress
     {
-        public MailAddress(string name, string address) : base(name, address) { }
-        public MailAddress(Encoding encoding, string name, string address) : base(encoding, name, address) { }
+        public MailAddress(string name, string address) : base(name, address)
+        {
+        }
+
+        public MailAddress(Encoding encoding, string name, string address) : base(encoding, name, address)
+        {
+        }
     }
 }

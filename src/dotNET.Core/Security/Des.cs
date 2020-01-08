@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,17 +10,17 @@ namespace dotNET.Core
     /// </summary>
     public class Des
     {
-
         #region 加密解密法一
-        //默认密钥向量 
+
+        //默认密钥向量
         private static byte[] Keys = { 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F };
 
-        /// <summary> 
-        /// DES加密字符串 
-        /// </summary> 
-        /// <param name="encryptString">待加密的字符串</param> 
-        /// <param name="encryptKey">加密密钥,要求为8位</param> 
-        /// <returns>加密成功返回加密后的字符串，失败返回源串</returns> 
+        /// <summary>
+        /// DES加密字符串
+        /// </summary>
+        /// <param name="encryptString">待加密的字符串</param>
+        /// <param name="encryptKey">加密密钥,要求为8位</param>
+        /// <returns>加密成功返回加密后的字符串，失败返回源串</returns>
 
         public static string EncryptDES(string encryptString, string encryptKey = "Key123Ace#321Key")
         {
@@ -41,15 +40,14 @@ namespace dotNET.Core
             {
                 return ex.Message + encryptString;
             }
-
         }
 
-        /// <summary> 
-        /// DES解密字符串 
-        /// </summary> 
-        /// <param name="decryptString">待解密的字符串</param> 
-        /// <param name="decryptKey">解密密钥,要求为8位,和加密密钥相同</param> 
-        /// <returns>解密成功返回解密后的字符串，失败返源串</returns> 
+        /// <summary>
+        /// DES解密字符串
+        /// </summary>
+        /// <param name="decryptString">待解密的字符串</param>
+        /// <param name="decryptKey">解密密钥,要求为8位,和加密密钥相同</param>
+        /// <returns>解密成功返回解密后的字符串，失败返源串</returns>
 
         public static string DecryptDES(string decryptString, string decryptKey = "Key123Ace#321Key")
         {
@@ -70,8 +68,8 @@ namespace dotNET.Core
             {
                 return ex.Message + decryptString;
             }
-
         }
-        #endregion 
+
+        #endregion 加密解密法一
     }
 }

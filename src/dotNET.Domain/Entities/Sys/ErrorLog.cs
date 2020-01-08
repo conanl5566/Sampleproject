@@ -1,13 +1,12 @@
 ﻿/**************************************************************************
- * 作者：X   
- * 日期：2017.01.18   
+ * 作者：X
+ * 日期：2017.01.18
  * 描述：
- * 修改记录：    
+ * 修改记录：
  * ***********************************************************************/
 
 using dotNET.Dto.Enum;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dotNET.Domain.Entities.Sys
 {
@@ -19,20 +18,19 @@ namespace dotNET.Domain.Entities.Sys
         public string Origin { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string LogLevel { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Message { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string StackTrace { get; set; }
-
 
         public DateTime CreatorTime { get; set; }
 

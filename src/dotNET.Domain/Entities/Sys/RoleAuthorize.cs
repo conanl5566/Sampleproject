@@ -1,13 +1,12 @@
 ﻿/**************************************************************************
- * 作者：X   
- * 日期：2017.01.18   
+ * 作者：X
+ * 日期：2017.01.18
  * 描述：
- * 修改记录：    
+ * 修改记录：
  * ***********************************************************************/
 
 using dotNET.Dto.Enum;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dotNET.Domain.Entities.Sys
 {
@@ -17,8 +16,9 @@ namespace dotNET.Domain.Entities.Sys
         /// 项目类型 1-模块 2-按钮 3-列表
         /// </summary>
         public int? ItemType { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public long ItemId { get; set; }
 
@@ -26,12 +26,14 @@ namespace dotNET.Domain.Entities.Sys
         /// 对象分类 1-角色 2-部门 3-用户
         /// </summary>
         public int? ObjectType { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public long ObjectId { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DateTime? CreatorTime { get; set; }
 

@@ -1,26 +1,27 @@
 ﻿#region using
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
-using dotNET.Dto;
+
 using dotNET.Core;
-using System.IO;
+using dotNET.Dto;
+using dotNET.Web.Host.Framework;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Configuration;
-#endregion
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+
+#endregion using
+
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace dotNET.Web.Host.Controllers
 {
     public class ErrorController : CustomController
     {
-  
-
         #region Index
+
         // GET: /<controller>/
         public async Task<IActionResult> Index(ErrorLogOption filter)
         {
@@ -63,9 +64,10 @@ namespace dotNET.Web.Host.Controllers
             return View(model);
         }
 
-        #endregion
+        #endregion Index
 
         #region 查看
+
         [IgnoreAuthorize]
         public async Task<IActionResult> Details(string Id)
         {
@@ -82,6 +84,7 @@ namespace dotNET.Web.Host.Controllers
             ViewBag.GoBackUrl = SetingBackUrl(this.HttpContext.Request);
             return View();
         }
-        #endregion
+
+        #endregion 查看
     }
 }

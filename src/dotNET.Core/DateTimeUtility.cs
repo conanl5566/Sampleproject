@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace dotNET.Core
 {
@@ -17,7 +14,7 @@ namespace dotNET.Core
         /// <returns></returns>
         public static long ConvertToTimeStamp(DateTime time)
         {
-            DateTime Jan1st1970 = new DateTime  (1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            DateTime Jan1st1970 = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return (long)(time.AddHours(-8) - Jan1st1970).TotalMilliseconds;
         }
 
@@ -31,6 +28,5 @@ namespace dotNET.Core
             var start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return start.AddMilliseconds(timeStamp).AddHours(8);
         }
-
     }
 }

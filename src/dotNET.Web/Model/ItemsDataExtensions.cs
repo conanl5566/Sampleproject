@@ -1,9 +1,7 @@
-﻿using dotNET.Domain.Entities;
+﻿using dotNET.Domain.Entities.Sys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using dotNET.Domain.Entities.Sys;
 
 namespace dotNET.Web.Host.Model
 {
@@ -24,7 +22,6 @@ namespace dotNET.Web.Host.Model
 
             string result = string.Empty;
 
-
             var alreadyProcessedDepartmentIds = new List<long>();
 
             while (department != null &&
@@ -48,6 +45,7 @@ namespace dotNET.Web.Host.Model
             }
             return result;
         }
+
         public static string GetFormattedBreadCrumb(this ItemsData department,
             IList<ItemsData> allDepartments,
             string separator = ">>")
@@ -59,7 +57,6 @@ namespace dotNET.Web.Host.Model
                 throw new ArgumentNullException("Department");
 
             string result = string.Empty;
-
 
             var alreadyProcessedDepartmentIds = new List<long>();
 
@@ -84,6 +81,7 @@ namespace dotNET.Web.Host.Model
             }
             return result;
         }
+
         public static IList<ItemsData> SortDepartmentsForTree(this IList<ItemsData> source, long parentId = 0, bool ignoreDepartmentsWithoutExistingParent = false)
         {
             if (source == null)
@@ -104,7 +102,6 @@ namespace dotNET.Web.Host.Model
             }
             return result;
         }
-
     }
 
     public static class DepartmentExtensions
@@ -120,7 +117,6 @@ namespace dotNET.Web.Host.Model
                 throw new ArgumentNullException("Department");
 
             string result = string.Empty;
-
 
             var alreadyProcessedDepartmentIds = new List<long>();
 
@@ -145,6 +141,7 @@ namespace dotNET.Web.Host.Model
             }
             return result;
         }
+
         public static string GetFormattedBreadCrumb(this Department department,
             IList<Department> allDepartments,
             string separator = ">>")
@@ -156,7 +153,6 @@ namespace dotNET.Web.Host.Model
                 throw new ArgumentNullException("Department");
 
             string result = string.Empty;
-
 
             var alreadyProcessedDepartmentIds = new List<long>();
 
@@ -181,6 +177,7 @@ namespace dotNET.Web.Host.Model
             }
             return result;
         }
+
         public static IList<Department> SortDepartmentsForTree(this IList<Department> source, long parentId = 0, bool ignoreDepartmentsWithoutExistingParent = false)
         {
             if (source == null)
@@ -201,7 +198,5 @@ namespace dotNET.Web.Host.Model
             }
             return result;
         }
-
     }
-
 }

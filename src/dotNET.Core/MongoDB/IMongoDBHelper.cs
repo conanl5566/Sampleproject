@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
+using System.Collections.Generic;
 
 namespace dotNET.Core
 {
@@ -71,7 +71,7 @@ namespace dotNET.Core
         List<T> QueryAll<T>();
 
         /// <summary>
-        /// 根据条件 查询数据+排序 
+        /// 根据条件 查询数据+排序
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="filter"></param>
@@ -90,6 +90,5 @@ namespace dotNET.Core
         /// <param name="Total"></param>
         /// <returns></returns>
         List<T> GetManyByPageCondition<T>(FilterDefinition<T> filter, SortDefinition<T> sort, int pageIndex, int pageSize, out int Total);
-
     }
 }

@@ -1,29 +1,31 @@
 ﻿#region using
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
+
 using dotNET.Application.Sys;
-using dotNET.Web.Host.Model;
 using dotNET.Core;
 using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
-using Microsoft.Extensions.Configuration;
-#endregion
+using dotNET.Web.Host.Framework;
+using dotNET.Web.Host.Model;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+#endregion using
+
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 namespace dotNET.Web.Host.Controllers
 {
     public class AreaController : CustomController
-    { 
+    {
         #region ini
-        public IAreaListApp AreaListApp { get; set; }
-      
-        #endregion
 
-    
+        public IAreaListApp AreaListApp { get; set; }
+
+        #endregion ini
 
         #region tree
+
         [IgnoreAuthorize]
         public async Task<IActionResult> Loadtree(long parentId)
         {
@@ -34,11 +36,12 @@ namespace dotNET.Web.Host.Controllers
             return Content(treedata);
         }
 
-        #endregion
+        #endregion tree
 
         #region Index
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
@@ -52,9 +55,10 @@ namespace dotNET.Web.Host.Controllers
             return View();
         }
 
-        #endregion
+        #endregion Index
 
         #region 内部方法
+
         private async Task<List<TreeModel>> Trees(List<AreaList> data, long parentnodes, long sid)
         {
             var treeList = new List<TreeModel>();
@@ -85,6 +89,7 @@ namespace dotNET.Web.Host.Controllers
             }
             return treeList;
         }
-        #endregion
+
+        #endregion 内部方法
     }
 }

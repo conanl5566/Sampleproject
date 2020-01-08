@@ -1,18 +1,18 @@
 ﻿#region using
 
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
 using dotNET.Application.Sys;
-using dotNET.Web.Host.Model;
 using dotNET.Core;
 using dotNET.Dto.Enum;
 using dotNET.Dto.WebConfig;
+using dotNET.Web.Host.Framework;
+using dotNET.Web.Host.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
+using System.Linq;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
+
 namespace dotNET.Web.Host.Controllers
 {
     public class WebConfigController : CustomController
@@ -20,18 +20,18 @@ namespace dotNET.Web.Host.Controllers
         public IWebConfigApp WebConfigApp { get; set; }
         public IUserApp UserApp { get; set; }
         public SiteConfig Config;
-        public WebConfigController(IOptions<SiteConfig> option ) 
+
+        public WebConfigController(IOptions<SiteConfig> option)
         {
             Config = option.Value;
             DefaultPageSize = ZConvert.StrToInt(Config.Configlist.FirstOrDefault(o => o.Key == "pagesize")?.Values);
-
         }
 
         #region Index
+
         // GET: /<controller>/
         public async Task<IActionResult> Index(WebConfigOption filter, int? page)
         {
-
             ViewBag.filter = filter;
             var currentPageNum = page ?? 1;
             filter.RowsPrePage = DefaultPageSize;
@@ -49,15 +49,16 @@ namespace dotNET.Web.Host.Controllers
             };
             return View(model);
         }
-        #endregion
+
+        #endregion Index
 
         #region Create
+
         public async Task<IActionResult> Create()
         {
             CreateWebConfigDto model = new CreateWebConfigDto();
             return View(model);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateWebConfigDto model)
@@ -70,16 +71,16 @@ namespace dotNET.Web.Host.Controllers
             return Json(r);
         }
 
-        #endregion
+        #endregion Create
 
         #region 删除
+
         [HttpPost]
         public async Task<IActionResult> Delete(long Id)
         {
             var r = await WebConfigApp.DeleteAsync(Id, await CurrentUser());
             return Json(r);
         }
-
 
         /// <summary>
         /// 修改用户登录状态
@@ -92,9 +93,11 @@ namespace dotNET.Web.Host.Controllers
             var r = await UserApp.Updatestatus(id, await CurrentUser());
             return Json(r);
         }
-        #endregion
+
+        #endregion 删除
 
         #region 修改
+
         public async Task<IActionResult> Edit(long Id)
         {
             var r = await WebConfigApp.GetDetailAsync(Id);
@@ -111,8 +114,7 @@ namespace dotNET.Web.Host.Controllers
             var r = await WebConfigApp.UpdateAsync(model, await CurrentUser());
             return Json(r);
         }
-        #endregion
 
-
+        #endregion 修改
     }
 }

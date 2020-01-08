@@ -1,9 +1,5 @@
 ﻿#region using
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using dotNET.Core;
 using dotNET.Core.Cache;
 using dotNET.Domain.Entities.Sys;
@@ -11,14 +7,19 @@ using dotNET.Dto;
 using dotNET.EntityFrameworkCore;
 using dotNET.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
 
 namespace dotNET.Application.Sys
 {
     public class RoleApp : IAppService, IRoleApp
     {
         #region 注入
+
         public IBaseRepository<RoleAuthorize> RoleAuthorizeRep { get; set; }
         public IBaseRepository<Role> RoleRep { get; set; }
         public IRoleAuthorizeApp RoleAuthorizeApp { get; set; }
@@ -27,9 +28,11 @@ namespace dotNET.Application.Sys
         public IModuleButtonApp ModuleButtonApp { get; set; }
         public ICacheService Cache { get; set; }
         public IUnitWork UnitWork { get; set; }
-        #endregion
+
+        #endregion 注入
 
         #region 添加
+
         /// <summary>
         /// 角色添加
         /// </summary>
@@ -86,13 +89,12 @@ namespace dotNET.Application.Sys
             UnitWork.BatchAdd<RoleAuthorize>(ras.ToArray());
             UnitWork.Save();
 
-
             if (currentUser != null)
                 await OperateLogApp.InsertLogAsync<Role>(currentUser, "添加角色", entity);
             return R<Role>.Suc(entity);
         }
 
-        #endregion
+        #endregion 添加
 
         #region 修改
 
@@ -119,7 +121,7 @@ namespace dotNET.Application.Sys
                 }
             }
             allpermissionIds = allpermissionIds.Distinct().ToList();
-            //现有 
+            //现有
             List<long> itemIds = authorizs.Select(o => o.ItemId).ToList();
             List<long> deleteIds = authorizs.Where(o => !allpermissionIds.Contains(o.ItemId) && o.ObjectId == entity.Id && o.ObjectType == 1).Select(o => o.Id).ToList();
             List<RoleAuthorize> ras = new List<RoleAuthorize>();
@@ -149,7 +151,6 @@ namespace dotNET.Application.Sys
                 }
             }
 
-
             UnitWork.Update<Role>(entity);
             UnitWork.BatchAdd<RoleAuthorize>(ras.ToArray());
             UnitWork.Delete<RoleAuthorize>(o => deleteIds.Contains(o.Id));
@@ -176,8 +177,7 @@ namespace dotNET.Application.Sys
             return a;
         }
 
-
-        #endregion
+        #endregion 修改
 
         #region 删除
 
@@ -199,11 +199,12 @@ namespace dotNET.Application.Sys
             return (true, "操作成功");
         }
 
-        #endregion
+        #endregion 删除
 
         #region 列表
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="rowsPrePage"></param>
@@ -219,7 +220,6 @@ namespace dotNET.Application.Sys
             if (!string.IsNullOrWhiteSpace(filter.Name))
             {
                 predicate = predicate.And(o => o.Name.Contains(filter.Name));
-
             }
             var tlist = await RoleRep.Find(pageNumber, rowsPrePage, orderby, predicate).ToListAsync();
             list.Data = tlist.ToList();
@@ -227,8 +227,9 @@ namespace dotNET.Application.Sys
             list.ItemCount = total;
             return list;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
@@ -242,14 +243,14 @@ namespace dotNET.Application.Sys
             {
                 return await RoleRep.Find(null).ToListAsync();
             }
-
         }
 
-        #endregion
+        #endregion 列表
 
         #region 检测名称是否存在
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Name"></param>
         /// <param name="Id"></param>
@@ -273,11 +274,13 @@ namespace dotNET.Application.Sys
             else
                 return false;
         }
-        #endregion
+
+        #endregion 检测名称是否存在
 
         #region 获取角色
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
@@ -286,7 +289,8 @@ namespace dotNET.Application.Sys
             var r = await RoleRep.FindSingleAsync(o => o.Id == Id);
             return r;
         }
-        #endregion
+
+        #endregion 获取角色
 
         /// <summary>
         /// 移除缓存

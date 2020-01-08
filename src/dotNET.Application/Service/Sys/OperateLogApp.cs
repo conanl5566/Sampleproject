@@ -1,23 +1,25 @@
-﻿using System;
+﻿using dotNET.Core;
+using dotNET.Domain.Entities.Sys;
+using dotNET.Dto;
+using dotNET.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using dotNET.Core;
-using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
-using dotNET.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 
 namespace dotNET.Application.Sys
 {
     public class OperateLogApp : IAppService, IOperateLogApp
     {
         #region 注入
+
         public IBaseRepository<OperateLog> OperateLogRep { get; set; }
         public IBaseRepository<User> UserRep { get; set; }
-        #endregion
+
+        #endregion 注入
 
         /// <summary>
         /// 自定义 日志内容
@@ -106,7 +108,6 @@ namespace dotNET.Application.Sys
                 await OperateLogRep.AddAsync(log);
         }
 
-
         /// <summary>
         /// 获取对象的修改值
         /// </summary>
@@ -138,7 +139,9 @@ namespace dotNET.Application.Sys
                     }
                     continue;
                 }
+
                 #region 判断
+
                 if (v1 == null && v2 == null)
                 {
                     continue;
@@ -147,13 +150,11 @@ namespace dotNET.Application.Sys
                           if (v1 == null && v2 != null)
                 {
                     sb.AppendFormat($"修改了 {cnname} 旧值为 \"{v1}\",新值为 \"{v2}\"\r\n", cnname ?? name, v1 ?? "", v2 ?? "");
-
                 }
                 else
                        if (v1 != null && v2 == null)
                 {
                     sb.AppendFormat($"修改了 {cnname} 旧值为 \"{v1}\",新值为 \"{v2}\"\r\n", cnname ?? name, v1 ?? "", v2 ?? "");
-
                 }
                 else
                        if (v1 != null && v2 != null)
@@ -162,9 +163,9 @@ namespace dotNET.Application.Sys
                         continue;
                     else
                         sb.AppendFormat($"修改了 {cnname} 旧值为 \"{v1}\",新值为 \"{v2}\"\r\n", cnname ?? name, v1 ?? "", v2 ?? "");
-
                 }
-                #endregion
+
+                #endregion 判断
             }
             return sb.ToString();
         }
@@ -205,9 +206,8 @@ namespace dotNET.Application.Sys
             return JsonHelper.DeserializeObject<T>(s);
         }
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
@@ -231,7 +231,7 @@ namespace dotNET.Application.Sys
             if (total > 0)
             {
                 IEnumerable<OperateLog> result = (await OperateLogRep.Find(option.PageIndex, option.Limit, option.OrderBy, predicate).ToListAsync());
-                data =AutoMapperExt.MapToList<OperateLog, OperateLogDto>(result.ToList());
+                data = AutoMapperExt.MapToList<OperateLog, OperateLogDto>(result.ToList());
                 if (data != null && data.Count > 0)
                 {
                     var list = data.Select(o => o.OperatorId).ToList();
@@ -248,8 +248,9 @@ namespace dotNET.Application.Sys
             }
             return new Page<OperateLogDto>(total, data);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="rowsPrePage"></param>
@@ -265,7 +266,6 @@ namespace dotNET.Application.Sys
             if (option.StartDateTime != null)
             {
                 predicate = predicate.And(o => o.CreateTime >= option.StartDateTime.Value);
-
             }
             if (option.EndDateTime != null)
             {
@@ -273,12 +273,10 @@ namespace dotNET.Application.Sys
             }
             if (!string.IsNullOrWhiteSpace(option.Tag))
             {
-
                 predicate = predicate.And(o => o.Tag == option.Tag);
-
             }
             var tlist = await OperateLogRep.Find(pageNumber, rowsPrePage, orderby, predicate).ToListAsync();
-            data =tlist.ToList().MapToList < OperateLogDto>();
+            data = tlist.ToList().MapToList<OperateLogDto>();
             if (data != null && data.Count > 0)
             {
                 var operatorIds = data.Select(o => o.OperatorId).ToList();

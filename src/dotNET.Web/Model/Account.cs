@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace dotNET.Web.Host.Web.Model
 {
-
     public class demock
     {
         [UIHint("kindeditor")]
-
         public virtual string rules { get; set; } = "<p>与一月又一月一月又一月一月又一月</p>";
 
         [UIHint("kindeditor")]
-
         public virtual string Text { get; set; }
     }
-
 
     /// <summary>
     /// 登录

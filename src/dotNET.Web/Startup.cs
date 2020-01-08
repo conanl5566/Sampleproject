@@ -1,31 +1,34 @@
 ﻿#region using
-using System;
+
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
+using dotNET.Application;
+using dotNET.Core;
+using dotNET.EntityFrameworkCore;
+using dotNET.Web.Host.Framework;
+using dotNET.Web.Host.Framework.Middlewares;
+using Exceptionless;
+using Hangfire;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using dotNET.Web.Host.Framework;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Text;
 using Microsoft.Extensions.Logging;
-using dotNET.Core;
-using NLog.Web;
-using NLog.Extensions.Logging;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using dotNET.Web.Host.Framework.Middlewares;
-using Microsoft.AspNetCore.Mvc.ViewEngines;
-using Autofac.Extensions.DependencyInjection;
-using Autofac;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using dotNET.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Hangfire;
-using dotNET.Application;
-using System.Reflection;
-using AutoMapper;
 using Microsoft.IdentityModel.Tokens;
-using Exceptionless;
-#endregion
+using NLog.Extensions.Logging;
+using NLog.Web;
+using System;
+using System.Reflection;
+using System.Text;
+
+#endregion using
+
 namespace dotNET.Web.Host
 {
     public class Startup
@@ -34,8 +37,10 @@ namespace dotNET.Web.Host
         {
             Configuration = configuration;
         }
+
         public IConfiguration Configuration { get; }
         public IContainer ApplicationContainer { get; private set; }
+
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             if (bool.Parse(Configuration["IsIdentity"]))
@@ -95,7 +100,6 @@ namespace dotNET.Web.Host
             {
                 var connectionString = Configuration["Data:Redis:ConnectionString"];
                 x.UseRedisStorage(connectionString, new Hangfire.Redis.RedisStorageOptions() { Db = int.Parse(Configuration["Data:Redis:Db"]) });
-
             });
             services.AddDbContext<EFCoreDBContext>(options => options.UseMySql(Configuration["Data:MyCat:ConnectionString"]));
             return new AutofacServiceProvider(AutofacExt.InitAutofac(services, Assembly.GetExecutingAssembly()));
@@ -143,7 +147,6 @@ namespace dotNET.Web.Host
             var jobOptions = new BackgroundJobServerOptions
             {
                 Queues = new[] { "" }//队列名称，只能为小写
-
             };
 
             app.UseHangfireServer(jobOptions);
@@ -152,7 +155,6 @@ namespace dotNET.Web.Host
 
             // ExceptionlessClient.Default.Configuration.ServerUrl = Configuration.GetSection("Exceptionless:ServerUrl").Value;
             app.UseExceptionless();
-
         }
     }
 }

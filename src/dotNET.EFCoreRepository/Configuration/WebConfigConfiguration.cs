@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace dotNET.EntityFrameworkCore
 {
-
     public class WebConfigConfiguration : EntityMappingConfiguration<WebConfig>
     {
         public override void Map(EntityTypeBuilder<WebConfig> b)
@@ -13,5 +12,4 @@ namespace dotNET.EntityFrameworkCore
                 .HasKey(p => p.Id);
         }
     }
-
 }

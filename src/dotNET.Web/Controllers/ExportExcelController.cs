@@ -1,28 +1,29 @@
 ﻿#region using
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
+
+using dotNET.Application.Sys;
 using dotNET.Core;
 using dotNET.Dto;
+using dotNET.Web.Host.Framework;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.IO;
-using dotNET.Application.Sys;
-using Microsoft.Extensions.Configuration;
+using System.Linq;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
+
 namespace dotNET.Web.Host.Controllers
 {
     public class ExportExcelController : CustomController
     {
         #region ini
+
         public IUserApp UserApp { get; set; }
 
-        #endregion
-
-    
+        #endregion ini
 
         #region 用户导出
+
         [HttpPost]
         public async Task<ActionResult> ExportCommonOrder(UserOption filter)
         {
@@ -37,15 +38,12 @@ namespace dotNET.Web.Host.Controllers
             //dddd += "a|12,";
             //dddd += "b|112;";
 
-
-
             //string dddd2 = "";
             //dddd2 += "a|1,";
             //dddd2 += "b|11;";
 
             //dddd2 += "a|12,";
             //dddd2 += "b|112;";
-
 
             //List<ss> dd = new List<ss>();
             //dd.Add(new Controllers.ss() { StoreName = "辅导辅导", DepartmentName = "sdds4343", ww = dddd });
@@ -72,17 +70,20 @@ namespace dotNET.Web.Host.Controllers
             return Operation(true, Base64.StringToBase64(path));
         }
 
-        #endregion
+        #endregion 用户导出
 
         #region 加载弹窗（loader）
+
         public ActionResult SelectFile(string File)
         {
             ViewBag.File = File;
             return View();
         }
-        #endregion
+
+        #endregion 加载弹窗（loader）
 
         #region 判断文件是否存在
+
         [HttpPost]
         public ActionResult FileExists(string File)
         {
@@ -104,6 +105,7 @@ namespace dotNET.Web.Host.Controllers
                 return Json(new { Exists = false });
             }
         }
+
         /// <summary>
         ///判断文件是否在生成中
         /// </summary>
@@ -128,6 +130,7 @@ namespace dotNET.Web.Host.Controllers
             }
             return inUse;//true表示正在使用,false没有使用
         }
-        #endregion
+
+        #endregion 判断文件是否存在
     }
 }

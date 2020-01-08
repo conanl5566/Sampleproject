@@ -1,13 +1,12 @@
 ﻿/**************************************************************************
- * 作者：X   
- * 日期：2017.01.18   
+ * 作者：X
+ * 日期：2017.01.18
  * 描述：
- * 修改记录：    
+ * 修改记录：
  * ***********************************************************************/
 
 using dotNET.Dto.Enum;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dotNET.Domain.Entities.Sys
 {
@@ -28,7 +27,6 @@ namespace dotNET.Domain.Entities.Sys
         public int? SortCode { get; set; }
         public string Description { get; set; }
         public DateTime CreatorTime { get; set; }
-      
 
         /// <summary>
         /// 生成ID

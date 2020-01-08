@@ -1,5 +1,4 @@
-﻿
-namespace dotNET.Dto
+﻿namespace dotNET.Dto
 {
     /// <summary>
     /// 分页参数
@@ -22,8 +21,9 @@ namespace dotNET.Dto
         }
 
         private int limit = 10;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int Limit
         {
@@ -38,8 +38,9 @@ namespace dotNET.Dto
         }
 
         private long offset = 0;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public long Offset
         {
@@ -54,7 +55,7 @@ namespace dotNET.Dto
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int PageIndex
         {
@@ -71,9 +72,10 @@ namespace dotNET.Dto
         public long? Total { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Order { get; set; } = "asc";
+
         /// <summary>
         /// 排序字段
         /// </summary>

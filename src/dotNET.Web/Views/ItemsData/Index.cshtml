@@ -10,36 +10,33 @@
 
     ItemsDatalistmodel ItemsDatalistmodel = ViewBag.ItemsData as ItemsDatalistmodel;
 
-
     List<ItemsData> ItemsDatalist = new List<ItemsData>();
-    if (ItemsDatalistmodel != null  && ItemsDatalistmodel.ItemsDatalist!=null)
+    if (ItemsDatalistmodel != null && ItemsDatalistmodel.ItemsDatalist != null)
     {
 
         ItemsDatalist = ItemsDatalistmodel.ItemsDatalist;
     }
 
-
-
     ItemsDataOption filer = ViewBag.filter as ItemsDataOption;
-
-
 
 }
 
 @section headers{
     <environment names="Development">
-        <link href="/lib/wdtree/tree.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="/lib/wdtree/tree.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <environment names="Staging,Production">
-        <link href="/lib/wdtree/tree.min.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="/lib/wdtree/tree.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <style type="text/css">
         .fixed-table-toolbar {
-            padding:0 15px;
+            padding: 0 15px;
         }
+
         .fixed-table-body {
             border-top: solid 1px #ddd;
         }
+
         .ui-layout .west-Panel {
             background: #fff;
             /* border: 1px solid #ccc; */
@@ -50,10 +47,8 @@
             /*border: 1px solid #ccc;*/
             background: #fff;
         }
-
     </style>
 }
-
 
 <section class="content">
 
@@ -78,14 +73,11 @@
                                 <div class="form-inline">
                                     <form action="/ItemsData/index" method="get" id="searchform">
 
-                                   
                                         <input type="hidden" id="ParentId" name="ParentId" value="@filer.ParentId">
                                         <div class="form-group ">
                                             <label class="control-label  label-lg label-md">名称:</label>
                                             @Html.TextBox("Name", @filer.Name, new { placeholder = "名称", @class = "form-control input-small input-sm" })
                                         </div>
-
-
 
                                         <span class="form-group btn-group">
                                             <button class="btn btn-sm btn-info" id="btnSearch" type="submit"><i class="fa fa-search"></i> 搜索</button>
@@ -94,22 +86,18 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div style="  position: relative;
             margin-top: 10px;
             margin-bottom: 10px;
             line-height: 34px;">
                             <div id="toolbar" class="btn-group">
 
-
                                 <button id="btn_add" type="button" class="btn btn-default">
 
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
                                 </button>
-
-                            
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -119,28 +107,19 @@
                         <thead>
                             <tr class="heading">
                                 <th>Id</th>
-                              
+
                                 <th>名称</th>
                                 <th> 排序</th>
                                 <th>是否生效</th>
                                 <th>  创建时间</th>
                                 <th> 备注</th>
 
-                              
-                               
-                                
-                              
-                               
-
-
-
                                 <th style="width:120px">操作</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">
 
-
-                            @if (ItemsDatalist!=null  &&  ItemsDatalist.Count > 0)
+                            @if (ItemsDatalist != null && ItemsDatalist.Count > 0)
                             {
                                 @foreach (var s in ItemsDatalist)
                                 {
@@ -148,7 +127,7 @@
                                         <td>@s.Id</td>
                                         <td>@s.Name</td>
                                         <td>@s.SortCode</td>
-                                          <td>@(s.IsEnabled.HasValue && s.IsEnabled.Value==true?"是" : "否") </td>
+                                        <td>@(s.IsEnabled.HasValue && s.IsEnabled.Value == true ? "是" : "否") </td>
 
                                         <td>@(s.CreatorTime.HasValue ? s.CreatorTime.Value.ToString("yyyy/MM/dd HH:mm:ss") : "") </td>
 
@@ -158,9 +137,6 @@
                                         <td>
                                             <a href="javascript:void(0);" onclick="btndelete('@s.Id');" class="aDel">删除</a>
 
-                                        
-
-
                                             <a href="/ItemsData/Edit?Id=@s.Id">编辑</a>
                                         </td>
                                     </tr>
@@ -168,93 +144,68 @@
                             }
                         </tbody>
                     </table>
-
-
                 </div>
-
             </div>
         </div>
-
     </div>
 </section>
-    @section scripts{
-        <script src="~/lib/wdtree/tree.min.js"></script>
-        <script type="text/javascript">
-
-           
+@section scripts{
+    <script src="~/lib/wdtree/tree.min.js"></script>
+    <script type="text/javascript">
 
         $("#btn_add").click(function () {
             location.href = "/ItemsData/Create";
         });
-  
 
-       
-            $(function () {
-             
-                var w = $(window).width() - 30 - 200 - 8;
-                $('.west-Panel,.center-Panel').height(top.App.getIframeLayoutHeight() - 35);
+        $(function () {
 
-              
+            var w = $(window).width() - 30 - 200 - 8;
+            $('.west-Panel,.center-Panel').height(top.App.getIframeLayoutHeight() - 35);
 
+            loadTree();
+        });
 
-           
+        var loadTree = function () {
 
-            
-                loadTree();
+            var pid = $('#ParentId').val();
+            $("#itemTree").treeview({
+                url: "/ItemsData/loadtree?ParentId=" + $('#ParentId').val(),
+                onnodeclick: function (item) {
+                    $("#ParentId").val(item.id);
+                    $('#btnSearch').trigger("click");
+                }
             });
-          
-        
 
+            $("#itemTree_" + pid).addClass("bbit-tree-selected");
 
+        };
 
-            var loadTree = function () {
+        //删除
+        function btndelete(id) {
 
-                var pid = $('#ParentId').val();
-                $("#itemTree").treeview({
-                    url: "/ItemsData/loadtree?ParentId=" + $('#ParentId').val(),
-                    onnodeclick: function (item) {
-                        $("#ParentId").val(item.id);
-                        $('#btnSearch').trigger("click");
+            layer.confirm("确定删除", { title: "删除" }, function (index) {
+
+                $.ajax({
+                    url: "/ItemsData/Delete?id=" + id,
+                    type: "POST",
+                    cache: false,
+                    success: function (r) {
+                        if (r.code == 0) {
+                            location.href = location.href;
+                        }
+                        else  // 其他问题
+                        {
+                            $.MsgBox.Alert(r.msg);
+                        }
+                    },
+                    error: function () {
+
+                        $.MsgBox.Alert("操作失败", "提示");
                     }
                 });
 
-                $("#itemTree_" + pid).addClass("bbit-tree-selected");
-
-
-
-
-            };
-
-
-            //删除
-            function btndelete(id) {
-
-                layer.confirm("确定删除", { title: "删除" }, function (index) {
-
-                    $.ajax({
-                        url: "/ItemsData/Delete?id=" + id,
-                        type: "POST",
-                        cache: false,
-                        success: function (r) {
-                            if (r.code == 0) {
-                                location.href = location.href;
-                            }
-                            else  // 其他问题
-                            {
-                                $.MsgBox.Alert(r.msg);
-                            }
-                        },
-                        error: function () {
-
-                            $.MsgBox.Alert("操作失败", "提示");
-                        }
-                    });
-
-                    layer.close(index);
-                });
-            }
-
-        </script>
-    }
-
-
+                layer.close(index);
+            });
+        }
+    </script>
+}

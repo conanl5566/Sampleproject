@@ -1,8 +1,8 @@
 ﻿/**************************************************************************
- * 作者：X   
- * 日期：2017.01.19   
+ * 作者：X
+ * 日期：2017.01.19
  * 描述：随机编号
- * 修改记录：    
+ * 修改记录：
  * ***********************************************************************/
 
 using System;
@@ -15,7 +15,6 @@ namespace dotNET.Core
     /// </summary>
     public class Rnd
     {
-   
         /// <summary>
         /// 生成不重复ID
         /// </summary>
@@ -63,13 +62,13 @@ namespace dotNET.Core
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public static string CreateNo()
         {
             Random random = new Random();
-            string strRandom = random.Next(1000, 10000).ToString(); //生成编号 
+            string strRandom = random.Next(1000, 10000).ToString(); //生成编号
             string code = DateTime.Now.ToString("yyyyMMddHHmmss") + strRandom;//形如
             return code;
         }

@@ -1,13 +1,12 @@
 ﻿/**************************************************************************
- * 作者：X   
- * 日期：2017.01.18   
+ * 作者：X
+ * 日期：2017.01.18
  * 描述：
- * 修改记录：    
+ * 修改记录：
  * ***********************************************************************/
 
 using dotNET.Dto.Enum;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dotNET.Domain.Entities.Sys
 {
@@ -16,14 +15,13 @@ namespace dotNET.Domain.Entities.Sys
     /// </summary>
     public class OperateLog : Entity, IEntity
     {
-
         /// <summary>
         /// 操作者
         /// </summary>
         public virtual string Operator { get; set; }
 
         /// <summary>
-        /// 操作者id 
+        /// 操作者id
         /// </summary>
         public virtual long OperatorId { get; set; }
 
@@ -33,7 +31,7 @@ namespace dotNET.Domain.Entities.Sys
         public virtual string Tag { get; set; }
 
         /// <summary>
-        /// ip 
+        /// ip
         /// </summary>
         public virtual string IP { get; set; }
 
@@ -46,7 +44,6 @@ namespace dotNET.Domain.Entities.Sys
         /// 创建时间
         /// </summary>
         public virtual DateTime CreateTime { get; set; } = DateTime.Now;
-
 
         /// <summary>
         /// 生成ID

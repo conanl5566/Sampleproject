@@ -4,15 +4,16 @@
 
 @section headers{
     <environment names="Development">
-        <link href="/lib/wdtree/tree.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="/lib/wdtree/tree.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <environment names="Staging,Production">
-        <link href="/lib/wdtree/tree.min.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="/lib/wdtree/tree.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
     <style type="text/css">
         .fixed-table-toolbar {
-            padding:0 15px;
+            padding: 0 15px;
         }
+
         .fixed-table-body {
             border-top: solid 1px #ddd;
         }
@@ -28,7 +29,7 @@
     </div>
 
     <div class="ui-layout-center" style="width:calc(100% - 208px);float:right;">
-        <div class="center-Panel" >
+        <div class="center-Panel">
             <div class="panel-Title">功能信息</div>
 
             <div class="titlePanel">
@@ -71,17 +72,14 @@
                         </tr>
                     </thead>
                 </table>
-
             </div>
-            
         </div>
     </div>
-
 </div>
 
 @section scripts{
-<script src="~/lib/wdtree/tree.min.js"></script>
-<script type="text/javascript">
+    <script src="~/lib/wdtree/tree.min.js"></script>
+    <script type="text/javascript">
     $(function () {
         $('#btnSearch').click(function () { $('#table').bootstrapTable('refresh'); });
 
@@ -134,7 +132,7 @@
             return '<i class="fa fa-toggle-on text-aqua"></i>';
     }
 
-    //查看 
+    //查看
     var funDetail = function (id) {
         $.fn.modalOpen({
             id: "moduleDetail",
@@ -206,7 +204,5 @@
         //初始化
         $("#itemTree").treeview(item);
     };
-</script>
+    </script>
 }
-
-

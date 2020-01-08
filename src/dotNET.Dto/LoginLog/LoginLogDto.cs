@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace dotNET.Dto
 {
@@ -11,6 +8,7 @@ namespace dotNET.Dto
     public class LoginLogDto
     {
         public long Id { get; set; }
+
         /// <summary>
         /// 登录用户Id
         /// </summary>
@@ -21,8 +19,6 @@ namespace dotNET.Dto
         /// </summary>
         public string LoginType { get; set; }
 
-     
-
         /// <summary>
         /// 登录IP
         /// </summary>
@@ -32,18 +28,10 @@ namespace dotNET.Dto
         /// 登录时间
         /// </summary>
         public DateTime CreatorTime { get; set; }
-
-      
-
-
     }
-
 
     public class LoginLogDtoext : LoginLogDto
     {
         public string Loginname { get; set; }
-
-     
-
     }
-    }
+}

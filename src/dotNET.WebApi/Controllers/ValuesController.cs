@@ -17,7 +17,6 @@ namespace dotNET.HttpApi.Host.Controllers
         //////    _AreaListApp = AreaListApp;
         //////}
 
-
         /////// <summary>
         /////// 帐号注册
         /////// </summary>
@@ -49,7 +48,7 @@ namespace dotNET.HttpApi.Host.Controllers
 
         ////}
         /////// <summary>
-        /////// 检测帐号是不已存在  
+        /////// 检测帐号是不已存在
         /////// </summary>
         /////// <param name="account">(必填)帐号或手机号    Data=true 已存在,Data=false 不存在</param>
         /////// <returns>测试</returns>

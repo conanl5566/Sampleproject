@@ -1,12 +1,12 @@
+using dotNET.Application.Sys;
+using dotNET.Core;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Core;
-using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
-using Microsoft.Extensions.Configuration;
-using dotNET.Application.Sys;
 using System.Threading.Tasks;
 
 namespace dotNET.Web.Host.Framework
@@ -15,9 +15,10 @@ namespace dotNET.Web.Host.Framework
     {
         public IUserApp UserApp { get; set; }
         public IConfiguration Configuration { get; set; }
-     
+
         //分页数量
         public int DefaultPageSize = 5;
+
         /// <summary>
         /// 获取ModelState中的错误信息，以字典集合的形式返回
         /// </summary>
@@ -36,7 +37,7 @@ namespace dotNET.Web.Host.Framework
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public string GetErrorFromModelStateStr()
@@ -54,7 +55,7 @@ namespace dotNET.Web.Host.Framework
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -70,7 +71,7 @@ namespace dotNET.Web.Host.Framework
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         public IActionResult NotFind()
@@ -89,7 +90,6 @@ namespace dotNET.Web.Host.Framework
             return Json(new { GoBackUrl = GoBackUrl, IsSucceeded = IsSucceeded, Message = Message });
         }
 
-
         /// <summary>
         /// 返回 Bootstrap Table 不分页 json 数据
         /// </summary>
@@ -99,8 +99,6 @@ namespace dotNET.Web.Host.Framework
         {
             return Json(new { rows = list });
         }
-
-
 
         /// <summary>
         /// 获取当前用户
@@ -115,8 +113,8 @@ namespace dotNET.Web.Host.Framework
             }
             if (bool.Parse(Configuration.GetSection("IsIdentity").Value))
             {
-               //  var name = this.HttpContext.User.Claims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value;
-               var name = HttpContext.User.Identity.Name;// User.Claims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value;
+                //  var name = this.HttpContext.User.Claims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value;
+                var name = HttpContext.User.Identity.Name;// User.Claims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value;
                 var user = await UserApp.GetAsync(name);
                 CurrentUser = new CurrentUser
                 {
@@ -135,7 +133,6 @@ namespace dotNET.Web.Host.Framework
             return CurrentUser.FromJson(userdata);
         }
 
-
         /// <summary>
         /// 当前的url     string url = GetRedirectUrl(this.HttpContext.Request);
         /// </summary>
@@ -152,10 +149,8 @@ namespace dotNET.Web.Host.Framework
             return builder.Uri.PathAndQuery;
         }
 
-
         public string SetingBackUrl(HttpRequest request)
         {
-
             string goBackUrl = request.HttpContext.Request.Query["GoBackUrl"].ToString();
             if (string.IsNullOrWhiteSpace(goBackUrl))
             {
@@ -167,7 +162,6 @@ namespace dotNET.Web.Host.Framework
             return goBackUrl;
         }
 
-
         public ActionResult RedirectToUrl(string url, string actionName = "index")
         {
             if (!string.IsNullOrWhiteSpace(url))
@@ -175,8 +169,5 @@ namespace dotNET.Web.Host.Framework
             else
                 return RedirectToAction(actionName);
         }
-
-
-
     }
 }

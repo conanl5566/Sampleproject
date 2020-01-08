@@ -9,28 +9,13 @@
     <link rel="stylesheet" href="~/lib/wizard/wizard.css" />
     <link rel="stylesheet" href="~/lib/wdtree/tree.css" />
 
-
-
-
 }
-
-
-
-
-
 
 <form id="form1">
 
-
     @Html.HiddenFor(o => o.Id)
 
-
-
-
     @Html.HiddenFor(o => o.GoBackUrl)
-
-
-
 
     <div class="widget-body">
         <div id="wizard" class="wizard" data-target="#wizard-steps" style="border-left: none; border-top: none; border-right: none;">
@@ -39,7 +24,6 @@
                 <li data-target="#step-2"><span class="step">2</span>功能权限<span class="chevron"></span></li>
             </ul>
         </div>
-
 
         <div class="step-content" id="wizard-steps" style="border-left: none; border-bottom: none; border-right: none; height:380px">
             <div class="step-pane active" id="step-1" style="margin: 10px; margin-bottom: 0px;">
@@ -51,42 +35,24 @@
 
                             @Html.TextBoxFor(model => model.Name, new { placeholder = "请输入角色名称", @class = "form-control" })
 
-
-
-
-
                             @*<input id="Name" name="Name" type="text" class="form-control required" maxlength="50" placeholder="请输入角色名称" />*@
-
-
-
                         </td>
 
                         <td>
 
                             @Html.ValidationMessageFor(o => o.Name, null, new { @class = "help-inline" })
-
-
-
                         </td>
-
                     </tr>
                     <tr>
                         <th class="formTitle">显示顺序</th>
                         <td class="formValue">
 
                             @Html.TextBoxFor(model => model.SortCode, new { placeholder = "请输入显示顺序", @class = "form-control" })
-
-
                         </td>
                         <td>
                             @Html.ValidationMessageFor(o => o.SortCode, null, new { @class = "help-inline" })
-
-
                         </td>
-
                     </tr>
-
-
 
                     <tr>
                         <th class="formTitle" style="height: 35px;">选项</th>
@@ -99,14 +65,9 @@
                             <div class="ckbox">
                                 @Html.CheckBoxFor(model => model.AllowDelete, new { placeholder = "允许删除" })
 
-
-
-
                                 <label for="AllowDelete">允许删除</label>
                             </div>
-                    
                         </td>
-
 
                         <td></td>
                     </tr>
@@ -116,31 +77,20 @@
                         </th>
                         <td class="formValue">
 
-
                             @Html.TextAreaFor(o => o.Description, new { placeholder = "备注", @style = "height:60px;", @class = "form-control" })
-
                         </td>
 
                         <td>
 
                             @Html.ValidationMessageFor(o => o.Description, null, new { @class = "help-inline" })
-
-
-
-
-
-
                         </td>
                     </tr>
-
                 </table>
-
             </div>
             <div class="step-pane" id="step-2" style="margin: 10px; margin-bottom: 0px;">
                 <div id="permissionTree"></div>
             </div>
         </div>
-
 
         <div class="form-button col-md-12" id="wizard-actions" style=" text-align:right">
             <a id="btn_last" disabled class="btn btn-default btn-prev">上一步</a>
@@ -150,13 +100,8 @@
                 完成
             </button>
             <a href="@Model.GoBackUrl" class="btn"><i class="ace-icon fa fa-arrow-left icon-on-left bigger-110"></i>返回</a>
-
-        
-        
         </div>
-
     </div>
-
 </form>
 
 @section scripts{
@@ -165,7 +110,7 @@
     <script type="text/javascript">
         $(function () {
             initControl();
-          
+
         });
 
         function initControl() {
@@ -201,7 +146,6 @@
             var $form = $("#form1");
             var postData = $("#form1").formSerialize();
             postData["permissionIds"] = $("#permissionTree").getCheckedNodes();
-
 
             if ($form.valid()) {
 
@@ -241,6 +185,5 @@
 
             }
         });
-
     </script>
 }

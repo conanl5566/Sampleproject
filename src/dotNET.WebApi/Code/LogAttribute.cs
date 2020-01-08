@@ -19,7 +19,7 @@ namespace dotNET.HttpApi.Host.Code
         private Stopwatch Stopwatch { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="context"></param>
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -47,8 +47,9 @@ namespace dotNET.HttpApi.Host.Code
             Stopwatch = new Stopwatch();
             Stopwatch.Start();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="context"></param>
         public override void OnActionExecuted(ActionExecutedContext context)
@@ -91,8 +92,6 @@ namespace dotNET.HttpApi.Host.Code
                 $"参数：{qs}\n " +
                 $"结果：{res}\n " +
                 $"耗时：{Stopwatch.Elapsed.TotalMilliseconds} 毫秒（指控制器内对应方法执行完毕的时间）");
-
         }
     }
-
 }

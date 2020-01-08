@@ -1,20 +1,22 @@
 ﻿#region using
+
+using dotNET.Application;
+using dotNET.Application.Sys;
+using dotNET.Core;
+using dotNET.Domain.Entities.Sys;
+using dotNET.Dto;
+using dotNET.Web.Host.Framework;
+using dotNET.Web.Host.Model;
+using dotNET.Web.Host.Web.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Options;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using dotNET.Application;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
-using dotNET.Application.Sys;
-using dotNET.Dto;
-using dotNET.Web.Host.Model;
-using dotNET.Core;
-using dotNET.Domain.Entities.Sys;
-using dotNET.Web.Host.Web.Model;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Configuration;
-#endregion
+
+#endregion using
+
 namespace dotNET.Web.Host.Controllers
 {
     public class SysUserController : CustomController
@@ -23,14 +25,15 @@ namespace dotNET.Web.Host.Controllers
         public IRoleApp RoleApp { get; set; }
         public SiteConfig Config;
         public IDepartmentApp DepartmentApp { get; set; }
-        public SysUserController(IOptions<SiteConfig> option ) 
+
+        public SysUserController(IOptions<SiteConfig> option)
         {
             Config = option.Value;
             DefaultPageSize = ZConvert.StrToInt(Config.Configlist.FirstOrDefault(o => o.Key == "pagesize")?.Values);
         }
 
-
         #region Index
+
         // GET: /<controller>/
         public async Task<IActionResult> Index(UserOption filter, int? page)
         {
@@ -49,9 +52,11 @@ namespace dotNET.Web.Host.Controllers
             };
             return View(model);
         }
-        #endregion
+
+        #endregion Index
 
         #region Create
+
         public async Task<IActionResult> Create()
         {
             var model = new UserCreateModel();
@@ -75,7 +80,6 @@ namespace dotNET.Web.Host.Controllers
             return View(model);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Create(UserCreateModel model)
         {
@@ -94,16 +98,16 @@ namespace dotNET.Web.Host.Controllers
             return Json(r);
         }
 
-        #endregion
+        #endregion Create
 
         #region 删除
+
         [HttpPost]
         public async Task<IActionResult> Delete(long Id)
         {
             var r = await UserApp.DeleteAsync(Id, 0, await CurrentUser());
             return Json(r);
         }
-
 
         /// <summary>
         /// 修改用户登录状态
@@ -116,9 +120,11 @@ namespace dotNET.Web.Host.Controllers
             var r = await UserApp.Updatestatus(id, await CurrentUser());
             return Json(r);
         }
-        #endregion
+
+        #endregion 删除
 
         #region 修改
+
         public async Task<IActionResult> Edit(long id)
         {
             UserEditModel model = new UserEditModel();
@@ -166,7 +172,6 @@ namespace dotNET.Web.Host.Controllers
                     var saveUrl = IMGOperate.BaseSave(ImagePathType.员工头像, model.Avatar);
                     model.Avatar = saveUrl;
                 }
-
             }
 
             var m = await UserApp.GetAsync(model.Id);
@@ -181,11 +186,13 @@ namespace dotNET.Web.Host.Controllers
             var r = await UserApp.UpdateUserInfoAsync(m, await CurrentUser());
             return Json(r);
         }
-        #endregion
+
+        #endregion 修改
 
         #region ChangePassword
+
         [IgnoreAuthorize]
-        public async Task<IActionResult>  ChangePassword()
+        public async Task<IActionResult> ChangePassword()
         {
             var r = await CurrentUser();
             ViewBag.RealName = r.RealName;
@@ -206,7 +213,6 @@ namespace dotNET.Web.Host.Controllers
             return Json(r);
         }
 
-
         [HttpPost]
         //[IgnoreAuthorize]
         public async Task<IActionResult> ResertPassword(string id)
@@ -215,6 +221,6 @@ namespace dotNET.Web.Host.Controllers
             return Json(r);
         }
 
-        #endregion
+        #endregion ChangePassword
     }
 }

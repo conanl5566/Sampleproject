@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using dotNET.Domain.Entities.Sys;
+﻿using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
 using dotNET.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace dotNET.Application.Sys
 {
     public class ModuleButtonApp : IModuleButtonApp
     {
         #region 注入
+
         public IBaseRepository<ModuleButton> ModuleButtonRep { get; set; }
-        #endregion
+
+        #endregion 注入
 
         /// <summary>
-        /// Saas模块按钮  
+        /// Saas模块按钮
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
@@ -25,7 +27,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
@@ -33,25 +35,22 @@ namespace dotNET.Application.Sys
         {
             var predicate = PredicateBuilder.True<ModuleButton>();
 
-
             if (option != null)
             {
                 if (option.ModuleId.HasValue && option.ModuleId != 0)
                 {
                     predicate = predicate.And(o => o.ModuleId == option.ModuleId.Value);
-
                 }
                 if (option.ParentId.HasValue)
                 {
                     predicate = predicate.And(o => o.ParentId == option.ParentId.Value);
-
-
                 }
             }
             return await ModuleButtonRep.Find(predicate).ToListAsync();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -59,8 +58,9 @@ namespace dotNET.Application.Sys
         {
             return await ModuleButtonRep.FindSingleAsync(o => o.Id == id);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -75,7 +75,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="moduleButton"></param>
         /// <returns></returns>
@@ -85,10 +85,10 @@ namespace dotNET.Application.Sys
             moduleButton.CreatorTime = DateTime.Now;
             await ModuleButtonRep.AddAsync(moduleButton);
             return R.Suc();
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="moduleButton"></param>
         /// <returns></returns>
@@ -96,7 +96,6 @@ namespace dotNET.Application.Sys
         {
             await ModuleButtonRep.UpdateAsync(moduleButton);
             return R.Suc();
-
         }
     }
 }

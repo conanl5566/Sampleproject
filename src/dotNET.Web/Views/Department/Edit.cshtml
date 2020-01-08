@@ -5,13 +5,9 @@
     ViewData["title"] = "部门编辑";
 }
 
-
 @section headers{
-  
+
 }
-
-
-
 
 <form id="form1">
 
@@ -26,33 +22,16 @@
                 <td class="formValue">
 
                     @Html.DropDownListFor(model => model.ParentId, Model.pids, new { @class = "form-control" })
-
-
-
-
                 </td>
                 <td></td>
                 <th class="formTitle">名称</th>
                 <td class="formValue">
 
-
-
                     @Html.TextBoxFor(model => model.Name, new { placeholder = "请输入名称", @class = "form-control" })
-
-
-
-
-
-
-
                 </td>
                 <td>
 
                     @Html.ValidationMessageFor(o => o.Name, null, new { @class = "help-inline" })
-
-
-
-
                 </td>
             </tr>
             <tr>
@@ -60,29 +39,18 @@
                 <td class="formValue">
 
                     @Html.TextBoxFor(model => model.Code, new { placeholder = "请输入部门代码", @class = "form-control" })
-
-
-
                 </td>
                 <td>
 
                     @Html.ValidationMessageFor(o => o.Code, null, new { @class = "help-inline" })
-
-
                 </td>
                 <th class="formTitle">负责人</th>
                 <td class="formValue">
 
                     @Html.TextBoxFor(model => model.Manager, new { placeholder = "请输入负责人", @class = "form-control" })
-
-
-
                 </td>
 
                 <td></td>
-
-
-
             </tr>
 
             <tr>
@@ -90,20 +58,13 @@
                 <td class="formValue">
 
                     @Html.TextBoxFor(model => model.ContactNumber, new { placeholder = "请输入联系电话", @class = "form-control" })
-
-
-
                 </td>
                 <td></td>
                 <th class="formTitle"></th>
                 <td class="formValue"></td>
 
                 <td></td>
-
-
-
             </tr>
-
 
             <tr>
                 <th class="formTitle" valign="top" style="padding-top: 5px;">
@@ -112,20 +73,9 @@
                 <td class="formValue" colspan="3">
 
                     @Html.TextAreaFor(o => o.Remarks, new { placeholder = "备注", @style = "height:100px;", @class = "form-control" })
-
-
-
-
-
-
-
                 </td>
                 <td colspan="2">
                     @Html.ValidationMessageFor(o => o.Remarks, null, new { @class = "help-inline" })
-
-
-
-
                 </td>
             </tr>
         </table>
@@ -145,16 +95,10 @@
             </div>
         </div>
     </div>
-
 </form>
 
 @section scripts{
     <script type="text/javascript">
-   
-
-  
-
-
 
           // 提交操作
           $("#btnSave").click(function (ev) {
@@ -200,10 +144,5 @@
 
                 }
           });
-
-
-
-
-
     </script>
 }

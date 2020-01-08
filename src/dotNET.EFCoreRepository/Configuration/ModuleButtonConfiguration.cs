@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace dotNET.EntityFrameworkCore
 {
- 
     public class ModuleButtonConfiguration : EntityMappingConfiguration<ModuleButton>
     {
         public override void Map(EntityTypeBuilder<ModuleButton> b)
@@ -13,5 +12,4 @@ namespace dotNET.EntityFrameworkCore
                 .HasKey(p => p.Id);
         }
     }
-
 }

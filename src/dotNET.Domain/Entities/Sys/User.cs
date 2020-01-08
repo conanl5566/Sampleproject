@@ -1,6 +1,5 @@
 ﻿using dotNET.Dto.Enum;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dotNET.Domain.Entities.Sys
 {
@@ -13,14 +12,17 @@ namespace dotNET.Domain.Entities.Sys
         /// 帐号
         /// </summary>
         public string Account { get; set; }
+
         /// <summary>
         /// 密码
         /// </summary>
         public string Password { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string UserSecretkey { get; set; }
+
         /// <summary>
         /// 名字
         /// </summary>
@@ -31,35 +33,41 @@ namespace dotNET.Domain.Entities.Sys
         /// </summary>
         public string Tel { get; set; }
 
-     
         /// <summary>
         /// 部门ID
         /// </summary>
         public long? DepartmentId { get; set; }
+
         /// <summary>
         /// 用户角色
         /// </summary>
         public long RoleId { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSys { get; set; }
+
         /// <summary>
         /// 状态 1：正常，0：禁止登录
         /// </summary>
         public int State { get; set; }
+
         /// <summary>
         /// 最后一次登录时间
         /// </summary>
         public DateTime? LastLoginTime { get; set; }
+
         /// <summary>
         /// 密码错误次数（正确一次后清0）
         /// </summary>
         public int PasswordErrorCount { get; set; } = 0;
+
         /// <summary>
         /// 头像
         /// </summary>
         public string Avatar { get; set; }
+
         /// <summary>
         /// 是否删除
         /// </summary>

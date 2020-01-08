@@ -218,11 +218,8 @@ namespace dotNET.Core.Cache
         ///// <returns></returns>
         //Task<bool> ReplaceAsync(string key, object value, TimeSpan expiresIn, bool isSliding = false, string prefix = "");
 
-
         //Task<bool> ListAddAsync(string key, string value, string prefix = "");
 
-
         //Task<bool> ListRemoveAsync(string key, string value, string prefix = "");
-
     }
 }

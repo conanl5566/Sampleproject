@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using dotNET.Domain.Entities.Sys;
+﻿using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
 using dotNET.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace dotNET.Application.Sys
 {
@@ -14,10 +14,13 @@ namespace dotNET.Application.Sys
     public class DepartmentApp : IDepartmentApp
     {
         #region 注入
+
         public IBaseRepository<Department> DepartmentRep { get; set; }
-        #endregion
+
+        #endregion 注入
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="isSaas"></param>
         /// <param name="option"></param>
@@ -116,7 +119,6 @@ namespace dotNET.Application.Sys
             await RemoveCacheAsync();
             return R.Suc();
         }
-
 
         /// <summary>
         /// 移除缓存

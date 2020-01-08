@@ -1,18 +1,19 @@
 ﻿#region using
+
 /**************************************************************************
-* 作者：X   
-* 日期：2017.01.18   
+* 作者：X
+* 日期：2017.01.18
 * 描述：后台管理用户 操作 Saas后台和代理后台
-* 修改记录：    
+* 修改记录：
 * ***********************************************************************/
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using dotNET.Core;
 using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
 
 namespace dotNET.Application.Sys
 {
@@ -21,8 +22,8 @@ namespace dotNET.Application.Sys
     /// </summary>
     public interface IUserApp : IAppService
     {
-
         #region 修改登录状态
+
         /// <summary>
         /// 修改登录状态
         /// </summary>
@@ -32,9 +33,10 @@ namespace dotNET.Application.Sys
         /// <returns></returns>
         Task<R> Updatestatus(long Id, CurrentUser curUser);
 
-        #endregion
+        #endregion 修改登录状态
 
         #region 用户退出操作
+
         /// <summary>
         /// 用户退出操作
         /// </summary>
@@ -42,7 +44,7 @@ namespace dotNET.Application.Sys
         /// <returns></returns>
         Task LogOffAsync(CurrentUser curUser);
 
-        #endregion
+        #endregion 用户退出操作
 
         /// <summary>
         /// 根据账号模糊查询获取列表
@@ -52,7 +54,7 @@ namespace dotNET.Application.Sys
         Task<List<IdAccountDto>> SelectDataAsync(string q);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="rowsPrePage"></param>
@@ -110,14 +112,14 @@ namespace dotNET.Application.Sys
         Task<R> ResetPasswordAsync(long Id, string password, long agentId, CurrentUser curUser);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
         Task<User> GetAsync(long Id);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>

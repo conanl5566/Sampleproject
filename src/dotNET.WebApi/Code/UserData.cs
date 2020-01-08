@@ -14,6 +14,7 @@ namespace dotNET.HttpApi.Host
         /// Id
         /// </summary>
         public int Id { get; set; }
+
         /// <summary>
         /// 帐号
         /// </summary>

@@ -13,7 +13,7 @@ namespace dotNET.HttpApi.Host.Code
     public class HiddenApiFilter : IDocumentFilter
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="swaggerDoc"></param>
         /// <param name="context"></param>

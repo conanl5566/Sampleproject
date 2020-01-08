@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration.Json;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace dotNET.Core
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class Zconfig
     {
         #region 读取配置信息
+
         /// <summary>
         /// 读取配置信息
         /// </summary>
@@ -31,36 +31,38 @@ namespace dotNET.Core
 
             return appconfig.Configlist.FirstOrDefault(o => o.Key == name).Values;
         }
-        #endregion
+
+        #endregion 读取配置信息
     }
 
-
     #region 读取配置相关类
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class SiteConfig
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public List<SiteConfiglist> Configlist { get; set; }
     }
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class SiteConfiglist
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Key { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string Values { get; set; }
     }
 
-
-    #endregion
+    #endregion 读取配置相关类
 }

@@ -1,17 +1,17 @@
 ﻿#region using
 
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Security.Claims;
+using dotNET.Application.Sys;
 using dotNET.Core;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using dotNET.Application.Sys;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
 
 namespace dotNET.Web.Host.Framework
 {
@@ -30,7 +30,9 @@ namespace dotNET.Web.Host.Framework
             _roleAuthorizeApp = roleAuthorizeApp;
             _UserApp = userApp;
         }
+
         #region 权限控制
+
         public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             if (context.ActionDescriptor.FilterDescriptors.Count(o => o.Filter.GetType().Name == "AllowAttribute") == 0)
@@ -85,20 +87,19 @@ namespace dotNET.Web.Host.Framework
                             else
                             {
                                 context.Result = new RedirectResult("/account/Nofind?bakurl=" + context.HttpContext.Request.Headers["Referer"].FirstOrDefault());
-
                             }
                         }
                     }
-
                 }
             }
 
             await base.OnActionExecutionAsync(context, next);
-
         }
-        #endregion
+
+        #endregion 权限控制
 
         #region 当前用户
+
         /// <summary>
         /// 当前用户
         /// </summary>
@@ -106,7 +107,6 @@ namespace dotNET.Web.Host.Framework
         /// <returns></returns>
         private async Task<CurrentUser> getAuthorization(ActionExecutingContext filterContext)
         {
-          
             if (bool.Parse(Configuration.GetSection("IsIdentity").Value))
             {
                 if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
@@ -115,7 +115,7 @@ namespace dotNET.Web.Host.Framework
                 }
                 //
                 var name = filterContext.HttpContext.User.Identity.Name;
-                    //filterContext.HttpContext.User.Claims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value;
+                //filterContext.HttpContext.User.Claims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value;
                 var user = await _UserApp.GetAsync(name);
                 var operatorMode = new CurrentUser
                 {
@@ -134,6 +134,7 @@ namespace dotNET.Web.Host.Framework
 
             return result.Succeeded ? CurrentUser.FromJson(result.Principal.Claims.FirstOrDefault(o => o.Type == ClaimTypes.UserData)?.Value) : null;
         }
-        #endregion
+
+        #endregion 当前用户
     }
 }

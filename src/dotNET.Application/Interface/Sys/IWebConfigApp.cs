@@ -1,10 +1,10 @@
 ﻿#region using
 
-using System.Threading.Tasks;
 using dotNET.Core;
 using dotNET.Dto.WebConfig;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
 
 namespace dotNET.Application.Sys
 {
@@ -20,7 +20,6 @@ namespace dotNET.Application.Sys
         /// <param name="currentUser"></param>
         /// <returns></returns>
         Task<R<long>> CreateAsync(CreateWebConfigDto entityDto, CurrentUser currentUser);
-
 
         /// <summary>
         /// 修改
@@ -48,7 +47,7 @@ namespace dotNET.Application.Sys
         Task<R<PageResult<WebConfigDto>>> GetPageAsync(WebConfigOption filter);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>

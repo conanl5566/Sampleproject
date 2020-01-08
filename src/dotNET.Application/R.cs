@@ -1,6 +1,4 @@
-﻿using dotNET.Core;
-using System;
-using dotNET.Dto.Enum;
+﻿using dotNET.Dto.Enum;
 
 namespace dotNET.Application
 {
@@ -25,9 +23,7 @@ namespace dotNET.Application
         /// 错误描述
         /// </summary>
         public string Msg { get; set; }
-
     }
-
 
     public class R<T>
     {
@@ -52,7 +48,7 @@ namespace dotNET.Application
         public string Msg { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public T Data { get; set; }
     }

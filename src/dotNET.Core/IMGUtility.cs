@@ -8,10 +8,11 @@ using System.IO;
 namespace dotNET.Core
 {
     public enum CutMode { None = 1, WH, W, H, Cut };
+
     public class IMGUtility
     {
-
         #region 根据路径 生成 缩略图
+
         /// <summary>
         /// 根据路径 生成 缩略图
         /// </summary>
@@ -39,9 +40,11 @@ namespace dotNET.Core
             {
                 case CutMode.WH:
                     break;
+
                 case CutMode.W:
                     num2 = image.Height * width / image.Width;
                     break;
+
                 case CutMode.H:
                     num = image.Width * height / image.Height;
                     break;
@@ -60,6 +63,7 @@ namespace dotNET.Core
                     x = 0;
                     y = (image.Height - num4) / 2;
                     break;
+
                 default:
                     if (image.Width > image.Height)
                         num2 = image.Height * width / image.Width;
@@ -97,12 +101,15 @@ namespace dotNET.Core
                 graphics.Dispose();
             }
         }
-        #endregion
-        #region 根据文件流 生成 缩略图 
+
+        #endregion 根据路径 生成 缩略图
+
+        #region 根据文件流 生成 缩略图
+
         /// <summary>
-        /// 根据文件流 生成 缩略图  
+        /// 根据文件流 生成 缩略图
         /// </summary>
-        /// <param name="s">文件流</param> 
+        /// <param name="s">文件流</param>
         /// <param name="p_strSave">图片保存的新路径</param>
         /// <param name="width">宽</param>
         /// <param name="height">高</param>
@@ -125,9 +132,11 @@ namespace dotNET.Core
             {
                 case CutMode.WH:
                     break;
+
                 case CutMode.W:
                     num2 = image.Height * width / image.Width;
                     break;
+
                 case CutMode.H:
                     num = image.Width * height / image.Height;
                     break;
@@ -146,6 +155,7 @@ namespace dotNET.Core
                     x = 0;
                     y = (image.Height - num4) / 2;
                     break;
+
                 default:
                     if (image.Width > image.Height)
                         num2 = image.Height * width / image.Width;
@@ -182,7 +192,9 @@ namespace dotNET.Core
                 graphics.Dispose();
             }
         }
-        #endregion
+
+        #endregion 根据文件流 生成 缩略图
+
         public static bool Crop(string p_strSource, string p_strSave, int x, int y, int w, int h, int width, int height)
         {
             FileInfo fileInfo = new FileInfo(p_strSave);
@@ -226,54 +238,50 @@ namespace dotNET.Core
         }
     }
 
-
-
     public enum ImagePathType
     {
         员工头像
-
-
-
-
-
-
     }
-    class ImagePath
+
+    internal class ImagePath
     {
         /// <summary>
         /// 类型
         /// </summary>
         public ImagePathType Type { get; set; }
+
         /// <summary>
         /// 宽
         /// </summary>
         public int Width { get; set; }
+
         /// <summary>
         /// 高
         /// </summary>
         public int Height { get; set; }
+
         /// <summary>
         /// 固定路径
         /// </summary>
         public string FixedPath { get; set; }
     }
+
     public class IMGOperate
     {
         #region 图片固定路径数据 （注：1.图片从小到大2.请和前台设置一致）
+
         /// <summary>
         /// 图片固定路径数据
         /// </summary>
         private static List<ImagePath> imagePathData = new List<ImagePath>
             {
                 new ImagePath { Type = ImagePathType.员工头像,FixedPath="\\user\\icon",Width=100,Height=100}
-
-
-
-
             };
-        #endregion
+
+        #endregion 图片固定路径数据 （注：1.图片从小到大2.请和前台设置一致）
 
         #region 根据图片类型获取固定路径
+
         /// <summary>
         /// 根据图片类型获取固定路径
         /// </summary>
@@ -283,6 +291,7 @@ namespace dotNET.Core
         {
             return imagePathData.Find(o => o.Type == type);
         }
+
         /// <summary>
         /// 根据图片类型获取固定路径
         /// </summary>
@@ -292,9 +301,11 @@ namespace dotNET.Core
         {
             return imagePathData.FindAll(o => o.Type == type);
         }
-        #endregion
+
+        #endregion 根据图片类型获取固定路径
 
         #region 存储图片 根据临时路径
+
         /// <summary>
         /// 存储图片 根据临时路径
         /// </summary>
@@ -307,7 +318,6 @@ namespace dotNET.Core
         /// <returns></returns>
         public static string BaseSave(ImagePathType type, string tempUrl)
         {
-
             //判断是不是临时图片
             if (string.IsNullOrWhiteSpace(tempUrl))
                 return "";
@@ -316,14 +326,9 @@ namespace dotNET.Core
             var webRoot = Path.Combine(contentRoot, "wwwroot");
             FileInfo file = new FileInfo(tempUrl);
 
-
             //  var parsedContentDisposition = ContentDispositionHeaderValue.Parse(tempUrl);
             var originalName = file.Name.Replace("\"", "");
             //  var ext = Path.GetExtension(Path.Combine(webRoot, originalName));
-
-
-
-
 
             // 获取 固定路径
             string fixedPath = GetPathByType(type).FixedPath;
@@ -346,10 +351,6 @@ namespace dotNET.Core
                     //高
                     int height = int.Parse(wh[1]);
 
-
-
-
-
                     var fileName = Path.Combine("upload" + fixedPath, Guid.NewGuid().ToString() + "_" + width + "_" + height + ext);
 
                     savePathData += "\\" + fileName + ";";
@@ -365,9 +366,11 @@ namespace dotNET.Core
             }
             return savePathData;
         }
-        #endregion
+
+        #endregion 存储图片 根据临时路径
 
         #region 存储图片 根据文件流
+
         /// <summary>
         /// 存储图片 根据文件流
         /// </summary>
@@ -412,9 +415,11 @@ namespace dotNET.Core
             }
             return savePathData;
         }
-        #endregion
+
+        #endregion 存储图片 根据文件流
 
         #region 根据真实路径 存储缩略图片
+
         ///// <summary>
         ///// 根据真实路径  存储缩略图片///////////////////////未写完
         ///// </summary>
@@ -431,13 +436,10 @@ namespace dotNET.Core
             {
                 var realPath = urlArray[i].Replace(domainName + "/", mapPath);
                 var savePath = realPath.Replace(".jpg", "_thum.jpg");
-
             }
             return "";
         }
-        #endregion
+
+        #endregion 根据真实路径 存储缩略图片
     }
-
-
-
 }

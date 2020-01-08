@@ -1,15 +1,17 @@
 ﻿#region using
+
+using dotNET.Application.Sys;
+using dotNET.Core;
+using dotNET.Dto;
+using dotNET.Web.Host.Framework;
+using dotNET.Web.Host.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
-using dotNET.Application.Sys;
-using dotNET.Dto;
-using dotNET.Web.Host.Model;
-using dotNET.Core;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
-#endregion
+
+#endregion using
+
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 namespace dotNET.Web.Host.Areas.operateLog.Controllers
 {
@@ -17,17 +19,20 @@ namespace dotNET.Web.Host.Areas.operateLog.Controllers
     public class HomeController : CustomController
     {
         #region ini
+
         public IOperateLogApp OperateLogApp { get; set; }
         public SiteConfig Config;
-        public HomeController(IOptions<SiteConfig> option )
+
+        public HomeController(IOptions<SiteConfig> option)
         {
             Config = option.Value;
             DefaultPageSize = ZConvert.StrToInt(Config.Configlist.FirstOrDefault(o => o.Key == "pagesize")?.Values);
         }
 
-        #endregion
+        #endregion ini
 
         #region Index
+
         // GET: /<controller>/
         public async Task<IActionResult> Index(OperateLogOption filter, int? page)
         {
@@ -46,6 +51,7 @@ namespace dotNET.Web.Host.Areas.operateLog.Controllers
             };
             return View(model);
         }
-        #endregion
+
+        #endregion Index
     }
 }

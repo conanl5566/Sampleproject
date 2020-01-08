@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using System.IO;
+﻿using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace dotNET.Web.Host.Framework
 {
-  /// <summary>
-  /// 页面的执行时间
-  /// </summary>
+    /// <summary>
+    /// 页面的执行时间
+    /// </summary>
     public class ExecuteTimeMiddleware
     {
         private readonly RequestDelegate _next;

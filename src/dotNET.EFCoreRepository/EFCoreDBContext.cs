@@ -9,6 +9,7 @@ namespace dotNET.EntityFrameworkCore
             : base(options)
         {
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var loggerFactory = new LoggerFactory();
@@ -16,12 +17,11 @@ namespace dotNET.EntityFrameworkCore
             optionsBuilder.UseLoggerFactory(loggerFactory);
             base.OnConfiguring(optionsBuilder);
         }
-     
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.AddEntityConfigurationsFromAssembly(GetType().Assembly);
         }
-
     }
 }

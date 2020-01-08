@@ -1,16 +1,16 @@
 ﻿/**************************************************************************
- * 作者：X   
- * 日期：2017.01.19   
+ * 作者：X
+ * 日期：2017.01.19
  * 描述：Entity
- * 修改记录：    
+ * 修改记录：
  * ***********************************************************************/
 
-using System;
+using dotNET.Core;
+using dotNET.Dto.Enum;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
-using dotNET.Dto.Enum;
-using dotNET.Core;
 
 namespace dotNET.Domain
 {
@@ -27,7 +27,7 @@ namespace dotNET.Domain
         public virtual long Id { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="datacenterId"></param>
         /// <returns></returns>
@@ -47,7 +47,7 @@ namespace dotNET.Domain
             return _idWorker.NextId();
         }
 
-        long GetWorkerId()
+        private long GetWorkerId()
         {
             var config = new ConfigurationBuilder().Add(new JsonConfigurationSource { Path = "appsettings.json", ReloadOnChange = true }).Build();
             long workerId = config.GetValue<long>("Data:WorkerId");

@@ -1,26 +1,28 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using dotNET.Domain.Entities.Sys;
+﻿using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace dotNET.Application.Sys
 {
     public interface IItemsDataApp : IAppService
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         Task<R> DeleteAsync(long key);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
         Task<ItemsData> GetAsync(long key);
+
         /// <summary>
-        /// 部门列表  
+        /// 部门列表
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
@@ -33,14 +35,14 @@ namespace dotNET.Application.Sys
         Task<List<ItemsData>> GetItemsDataListAsync();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
         Task<R> CreateAsync(ItemsData moduleEntity);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>

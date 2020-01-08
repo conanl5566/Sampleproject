@@ -1,25 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using dotNET.Core.Cache;
+﻿using dotNET.Core.Cache;
 using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
 using dotNET.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace dotNET.Application.Sys
 {
     public class RoleAuthorizeApp : IRoleAuthorizeApp
     {
         #region 注入
+
         public IBaseRepository<RoleAuthorize> RoleAuthorizeRep { get; set; }
         public IModuleApp ModuleApp { get; set; }
         public IModuleButtonApp ModuleButtonApp { get; set; }
         public ICacheService Cache { get; set; }
-        #endregion
+
+        #endregion 注入
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
@@ -28,19 +31,19 @@ namespace dotNET.Application.Sys
             await RoleAuthorizeRep.AddAsync(entity);
             return R.Suc();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="entitys"></param>
         /// <returns></returns>
         public async Task CreateAsync(List<RoleAuthorize> entitys)
         {
-
             await RoleAuthorizeRep.BatchAddAsync(entitys.ToArray());
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
@@ -48,8 +51,9 @@ namespace dotNET.Application.Sys
         {
             await RoleAuthorizeRep.DeleteAsync(o => o.Id == Id);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="Ids"></param>
         /// <returns></returns>
@@ -58,8 +62,9 @@ namespace dotNET.Application.Sys
             if (Ids.Count() > 0)
                 await RoleAuthorizeRep.DeleteAsync(o => Ids.Contains(o.Id));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="ObjectId"></param>
         /// <param name="ObjectType"></param>
@@ -77,7 +82,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="roleId"></param>
         /// <param name="curUser"></param>
@@ -117,7 +122,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="roleId"></param>
         /// <param name="curUser"></param>
@@ -157,7 +162,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="roleId"></param>
         /// <param name="action"></param>

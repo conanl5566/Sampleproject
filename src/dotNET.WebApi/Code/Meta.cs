@@ -55,7 +55,7 @@
 //        }
 //    }
 //    /// <summary>
-//    /// 
+//    ///
 //    /// </summary>
 //    public class R<T>
 //    {
@@ -70,7 +70,7 @@
 //        public T Data { get; set; }
 
 //        /// <summary>
-//        /// 
+//        ///
 //        /// </summary>
 //        /// <param name="msg"></param>
 //        /// <param name="data"></param>
@@ -80,7 +80,7 @@
 //            return new R<T> { Meta = Meta.Suc(msg), Data = data };
 //        }
 //        /// <summary>
-//        /// 
+//        ///
 //        /// </summary>
 //        /// <param name="msg"></param>
 //        /// <returns></returns>
@@ -89,7 +89,7 @@
 //            return new R<T> { Meta = Meta.Suc(msg) };
 //        }
 //        /// <summary>
-//        /// 
+//        ///
 //        /// </summary>
 //        /// <param name="data"></param>
 //        /// <returns></returns>
@@ -98,7 +98,7 @@
 //            return new R<T> { Meta = Meta.Suc("操作成功"), Data = data };
 //        }
 //        /// <summary>
-//        /// 
+//        ///
 //        /// </summary>
 //        /// <returns></returns>
 //        public static R<T> Suc()

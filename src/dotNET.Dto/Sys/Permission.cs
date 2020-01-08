@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace dotNET.Dto
+﻿namespace dotNET.Dto
 {
     /// <summary>
     /// 菜单列表
@@ -17,6 +14,7 @@ namespace dotNET.Dto
             url = "#";
             icon = string.Empty;
         }
+
         public string icon { get; set; }
         public string key { get; set; }
         public bool model { get; set; }

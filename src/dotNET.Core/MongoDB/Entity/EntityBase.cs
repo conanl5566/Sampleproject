@@ -1,9 +1,10 @@
-﻿using System;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
+using System;
+
 namespace dotNET.Core
 {
     /// <summary>
-    /// MongoDB 基础类 
+    /// MongoDB 基础类
     /// </summary>
     //   [BsonIgnoreExtraElements(Inherited = true)]
     [Serializable]

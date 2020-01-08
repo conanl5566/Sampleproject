@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace dotNET.Dto
+﻿namespace dotNET.Dto
 {
     public class UserOption//: Option
     {
@@ -18,7 +13,7 @@ namespace dotNET.Dto
         public string RealName { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public long? AgentId { get; set; }
     }

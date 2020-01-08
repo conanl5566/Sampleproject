@@ -1,14 +1,14 @@
 ﻿#region using
 
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using dotNET.Domain.Entities.Sys;
 using dotNET.EntityFrameworkCore;
 using Hangfire;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
+
 namespace dotNET.Application.Sys
 {
     /// <summary>
@@ -16,12 +16,12 @@ namespace dotNET.Application.Sys
     /// </summary>
     public class AreaListApp : AppService, IAreaListApp
     {
-
         //public IBaseRepository<AreaList> _areaListBaseRepository { get; set; }
         //public IDepartmentApp _departmentApp { get; set; }
 
         public IBaseRepository<AreaList> AreaListBaseRepository;
         public IDepartmentApp DepartmentApp;
+
         public AreaListApp(IBaseRepository<AreaList> areaListBaseRepository, IDepartmentApp departmentApp)
         {
             AreaListBaseRepository = areaListBaseRepository;
@@ -53,18 +53,21 @@ namespace dotNET.Application.Sys
             await DepartmentApp.GetDepartmentListAsync();
         }
 
-        #region 地区菜单  
+        #region 地区菜单
+
         /// <summary>
-        /// 省  市 
+        /// 省  市
         /// </summary>
         /// <returns></returns>
         public async Task<List<AreaList>> GetMenuListAsync()
         {
             return await AreaListBaseRepository.Find(o => o.AreaType != 3).ToListAsync();
         }
-        #endregion
+
+        #endregion 地区菜单
 
         #region 列表
+
         /// <summary>
         /// 子地区
         /// </summary>
@@ -73,11 +76,11 @@ namespace dotNET.Application.Sys
 
         public async Task<List<AreaList>> GetListAsync(long parentId)
         {
-          
             var predicate = PredicateBuilder.True<AreaList>();
             predicate = predicate.And(o => o.ParentID == parentId);
             return await AreaListBaseRepository.Find(predicate).ToListAsync();
         }
-        #endregion
+
+        #endregion 列表
     }
 }

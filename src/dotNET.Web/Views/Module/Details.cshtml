@@ -82,23 +82,24 @@
                 </td>
             </tr>
             <tr>
-            
+
                 <th class="formTitle">创建时间</th>
                 <td class="formValue">
                     <input id="CreatorTime" name="CreatorTime" type="text" class="form-control" />
-                </td><th class="formTitle"></th>
-<td class="formValue"></td>
+                </td>
+                <th class="formTitle"></th>
+                <td class="formValue"></td>
             </tr>
             @*<tr>
-                <th class="formTitle">修改人员</th>
-                <td class="formValue">
-                    <input id="LastModifyUserId" name="LastModifyUserId" type="text" class="form-control" />
-                </td>
-                <th class="formTitle">修改时间</th>
-                <td class="formValue">
-                    <input id="LastModifyTime" name="LastModifyTime" type="text" class="form-control" />
-                </td>
-            </tr>*@
+                    <th class="formTitle">修改人员</th>
+                    <td class="formValue">
+                        <input id="LastModifyUserId" name="LastModifyUserId" type="text" class="form-control" />
+                    </td>
+                    <th class="formTitle">修改时间</th>
+                    <td class="formValue">
+                        <input id="LastModifyTime" name="LastModifyTime" type="text" class="form-control" />
+                    </td>
+                </tr>*@
         </table>
     </div>
 </form>
@@ -115,7 +116,6 @@
             $("#form1").formSerialize(@Html.Raw(ViewData["Model"]));
             $("#form1").find('.form-control,select,input').prop('disabled', 'true');
 
-          
         }
     </script>
 }

@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace dotNET.EntityFrameworkCore
 {
- 
     public class ItemsDataConfiguration : EntityMappingConfiguration<ItemsData>
     {
         public override void Map(EntityTypeBuilder<ItemsData> b)
@@ -13,5 +12,4 @@ namespace dotNET.EntityFrameworkCore
                 .HasKey(p => p.Id);
         }
     }
-
 }

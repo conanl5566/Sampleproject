@@ -1,6 +1,6 @@
-﻿@{ 
+﻿@{
     Layout = null;
- }
+}
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -17,11 +17,10 @@
         <link href="~/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
-        <link rel="stylesheet" href="~/mgr/adminlte/dist/css/AdminLTE.css"  asp-append-version="true"/>
+        <link rel="stylesheet" href="~/mgr/adminlte/dist/css/AdminLTE.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/lib/bootstrap-table/dist/bootstrap-table.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/mgr/css/common.min.css" asp-append-version="true" />
         <link href="~/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
-
     </environment>
     <environment names="Staging,Production">
         <link href="~/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
@@ -33,27 +32,25 @@
         <link rel="stylesheet" href="~/lib/bootstrap-table/dist/bootstrap-table.min.css" />
         <link rel="stylesheet" href="~/mgr/css/common.min.css" asp-append-version="true" />
         <link href="~/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
-
     </environment>
     <!--全局通用框架样式 end-->
-    @RenderSection("headers",false)
+    @RenderSection("headers", false)
     <!--
     http://issues.wenzhixin.net.cn/bootstrap-table/index.html
     -->
- 
 </head>
 <body>
     @*<section class="content-header">
-        <h1>
-            @ViewData["title"]
-            <small>@ViewData["title_small"]</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">jqgrid</li>
-        </ol>
-    </section>
+            <h1>
+                @ViewData["title"]
+                <small>@ViewData["title_small"]</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#">Tables</a></li>
+                <li class="active">jqgrid</li>
+            </ol>
+        </section>
     *@
 
     @RenderBody()
@@ -71,7 +68,6 @@
         <script src="~/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
         <script src="~/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"
@@ -85,7 +81,7 @@
         </script>
         <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js"></script>
         <script src="~/lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
-    
+
         <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
         <script src="~/mgr/js/app.min.js" asp-append-version="true"></script>
         <script src="~/lib/select2/dist/js/select2.full.min.js"></script>
@@ -93,12 +89,9 @@
         <script src="~/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
         <script src="~/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
-
-
     </environment>
- 
 
-    @RenderSection("scripts",false)
+    @RenderSection("scripts", false)
     <script src="~/mgr/js/authorize.js"></script>
 </body>
 </html>

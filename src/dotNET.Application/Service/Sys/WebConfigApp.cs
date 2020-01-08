@@ -1,24 +1,26 @@
 ﻿#region using
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using dotNET.Core;
 using dotNET.Domain.Entities.Sys;
 using dotNET.Dto.WebConfig;
 using dotNET.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-#endregion
+#endregion using
 
 namespace dotNET.Application.Sys
 {
     public class WebConfigApp : IWebConfigApp
     {
         #region 注入
+
         public IBaseRepository<WebConfig> WebConfigAppRep { get; set; }
-        #endregion
+
+        #endregion 注入
 
         /// <summary>
         /// 添加
@@ -40,7 +42,6 @@ namespace dotNET.Application.Sys
             await WebConfigAppRep.AddAsync(dto);
             return R<long>.Suc(dto.Id);
         }
-
 
         /// <summary>
         /// 修改
@@ -83,7 +84,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
@@ -106,7 +107,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -115,6 +116,5 @@ namespace dotNET.Application.Sys
             var entity = await WebConfigAppRep.FindSingleAsync(o => o.Id == id);
             return entity == null ? R<WebConfigDto>.Err(msg: "数据不存在") : R<WebConfigDto>.Suc(entity.MapTo<WebConfigDto>());
         }
-
     }
 }

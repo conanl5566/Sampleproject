@@ -15,7 +15,7 @@
                 </td>
                 <th class="formTitle">名称</th>
                 <td class="formValue">
-                    <input id="FullName" name="FullName" type="text" class="form-control required"  maxlength="50" placeholder="请输入名称"  />
+                    <input id="FullName" name="FullName" type="text" class="form-control required" maxlength="50" placeholder="请输入名称" />
                 </td>
             </tr>
             <tr>
@@ -25,7 +25,7 @@
                 </td>
                 <th class="formTitle">目标</th>
                 <td class="formValue">
-                    <select id="Target" name="Target" class="form-control required" >
+                    <select id="Target" name="Target" class="form-control required">
                         <option value="">==请选择==</option>
                         <option value="expand" title="expand">无页面</option>
                         <option value="iframe" title="iframe">框架页</option>
@@ -86,7 +86,7 @@
 </form>
 
 @section scripts{
-<script type="text/javascript">
+    <script type="text/javascript">
     $(function () {
         $("#form1").formValid()
         initControl();
@@ -103,7 +103,7 @@
         //    $('#Target').val("")
         //    $("#Target").select2();
         //});
-        $("#Target").on("select2:select", function () { 
+        $("#Target").on("select2:select", function () {
             $("#form1").valid("#Target");
         })
     }
@@ -129,5 +129,5 @@
             }
         });
     };
-</script>
+    </script>
 }

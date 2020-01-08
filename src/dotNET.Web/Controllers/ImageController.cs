@@ -1,13 +1,14 @@
 ﻿#region using
-using System;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
+
 using dotNET.Core;
-using System.IO;
-using Microsoft.Net.Http.Headers;
+using dotNET.Web.Host.Framework;
 using dotNET.Web.Host.Web.Model;
-using Microsoft.Extensions.Configuration;
-#endregion
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
+using System;
+using System.IO;
+
+#endregion using
 
 /// <summary>
 /// 文件上传
@@ -16,9 +17,6 @@ namespace dotNET.Web.Host.Controllers
 {
     public class ImageController : CustomController
     {
-
-     
-
         /// <summary>
         /// 图片上传
         /// </summary>
@@ -76,7 +74,6 @@ namespace dotNET.Web.Host.Controllers
                             fullname = Path.Combine(webRoot, fn_thum);
                             thumbnail = "\\" + fn_thum;
                         }
-
                     }
                 }
                 ////生成缩略图
@@ -93,7 +90,7 @@ namespace dotNET.Web.Host.Controllers
         }
 
         /// <summary>
-        /// 富文本框  上传图片  
+        /// 富文本框  上传图片
         /// </summary>
         /// <returns></returns>
         [HttpPost]

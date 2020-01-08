@@ -1,44 +1,50 @@
 ﻿#region using
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using dotNET.Web.Host.Web.Model;
-using dotNET.Web.Host.Framework;
-using dotNET.Core;
-using System.Collections.Generic;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using System.Linq;
-using dotNET.Application.Sys;
-using dotNET.Domain.Entities.Sys;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Configuration;
 
-#endregion
+using dotNET.Application.Sys;
+using dotNET.Core;
+using dotNET.Domain.Entities.Sys;
+using dotNET.Web.Host.Framework;
+using dotNET.Web.Host.Web.Model;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+
+#endregion using
+
 namespace dotNET.Web.Host.Controllers
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [IgnoreAuthorize]
     public class AccountController : Controller
     {
         #region ini
+
         public IConfiguration Configuration { get; }
         public IUserApp UserApp { get; set; }
         public ILogger Logger;
+
         public AccountController(ILoggerFactory loggerFactory, IConfiguration configuration)
         {
             Configuration = configuration;
             Logger = loggerFactory.CreateLogger<AccountController>();
         }
-        #endregion
+
+        #endregion ini
 
         #region Login
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
@@ -52,7 +58,7 @@ namespace dotNET.Web.Host.Controllers
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="model"></param>
         /// <param name="returnUrl"></param>
@@ -89,7 +95,7 @@ namespace dotNET.Web.Host.Controllers
             return Json(new { state = "success", message = "登录成功。", returnUrl = RedirectToLocal(returnUrl) });
         }
 
-        #endregion
+        #endregion Login
 
         /// <summary>
         /// oauth认证跳转页面
@@ -104,8 +110,9 @@ namespace dotNET.Web.Host.Controllers
         }
 
         #region LogOff
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -127,13 +134,14 @@ namespace dotNET.Web.Host.Controllers
                  CookieAuthenticationDefaults.AuthenticationScheme);
                 return RedirectToAction(actionName: nameof(Login), controllerName: "Account");
             }
-
         }
-        #endregion
+
+        #endregion LogOff
 
         #region Nofind
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="bakurl"></param>
         /// <returns></returns>
@@ -142,16 +150,18 @@ namespace dotNET.Web.Host.Controllers
             ViewBag.bakurl = bakurl;
             return View();
         }
-        #endregion
+
+        #endregion Nofind
 
         #region Helpers
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="user"></param>
         /// <param name="ip"></param>
         /// <returns></returns>
-        CurrentUser getCurrentUser(User user, string ip)
+        private CurrentUser getCurrentUser(User user, string ip)
         {
             var operatorMode = new CurrentUser
             {
@@ -166,8 +176,9 @@ namespace dotNET.Web.Host.Controllers
             };
             return operatorMode;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <returns></returns>
         private string GetRemoteIpAddress()
@@ -179,8 +190,9 @@ namespace dotNET.Web.Host.Controllers
                 return "127.0.0.1";
             return result;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
@@ -195,6 +207,7 @@ namespace dotNET.Web.Host.Controllers
                 return "/Home/Index";
             }
         }
-        #endregion
+
+        #endregion Helpers
     }
 }

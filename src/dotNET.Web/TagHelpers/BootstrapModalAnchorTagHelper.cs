@@ -3,8 +3,7 @@
 // Author:					Joe Audette
 // Created:					2015-07-02
 // Last Modified:			2016-05-16
-// 
-
+//
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;
@@ -12,7 +11,7 @@ using System;
 namespace dotNET.Web.Host.TagHelpers
 {
     //https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNet.Mvc.TagHelpers/AnchorTagHelper.cs
-  //  https://github.com/joeaudette/cloudscribe.Web.Pagination
+    //  https://github.com/joeaudette/cloudscribe.Web.Pagination
     /// <summary>
     /// this taghelper detects the bs-modal-link attribute and if found (value doesn't matter)
     /// it decorates the link with the data-ajax- attributes needed to wire up the bootstrap modal
@@ -25,9 +24,7 @@ namespace dotNET.Web.Host.TagHelpers
 
         public BootstrapModalAnchorTagHelper() : base()
         {
-
         }
-
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
@@ -44,7 +41,6 @@ namespace dotNET.Web.Host.TagHelpers
             output.Attributes.Add("data-ajax-mode", "replace");
             output.Attributes.Add("data-ajax-success", "openModalDialog('" + dialogDivId + "')");
             output.Attributes.Add("data-ajax-update", "#" + dialogDivId);
-
         }
     }
 }

@@ -1,31 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace dotNET.Dto
+﻿namespace dotNET.Dto
 {
     public class DepartmentOption : Option
     {
         public long? ParentId { get; set; } = 0;
 
         public string Name { get; set; }
-
-     
     }
 
-
-  
-    
-
-
-
-        public class ItemsDataOption : Option
+    public class ItemsDataOption : Option
     {
         public long? ParentId { get; set; } = 0;
 
         public string Name { get; set; }
-
-
     }
 
     public class areaOption : Option
@@ -33,11 +19,5 @@ namespace dotNET.Dto
         public long? ParentId { get; set; } = 0;
 
         public string Name { get; set; }
-
-
     }
-
-
-
-
 }

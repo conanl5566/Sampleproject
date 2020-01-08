@@ -2,7 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace dotNET.Application
 {
@@ -76,8 +75,7 @@ namespace dotNET.Application
 
             var config = new MapperConfiguration(cfg => cfg.CreateMap(typeof(TSource), typeof(TDestination)));
             var mapper = config.CreateMapper();
-            return mapper.Map<TSource,TDestination>(source, destination);
+            return mapper.Map<TSource, TDestination>(source, destination);
         }
-
     }
 }

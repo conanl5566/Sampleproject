@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace dotNET.Dto
+﻿namespace dotNET.Dto
 {
     /// <summary>
     /// 修改用户信息
     /// </summary>
     public class UserInfoDto
     {
-
-     
-
         public long Id { get; set; }
+
         /// <summary>
         /// 部门ID
         /// </summary>
         public long? DepartmentId { get; set; }
+
         /// <summary>
         /// 用户角色
         /// </summary>
@@ -25,10 +20,12 @@ namespace dotNET.Dto
         public string Tel { get; set; }
 
         public string RealName { get; set; }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool IsSys { get; set; }
+
         /// <summary>
         /// 状态 1：正常，2：禁止登录
         /// </summary>

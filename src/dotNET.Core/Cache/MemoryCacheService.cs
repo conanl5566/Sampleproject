@@ -7,8 +7,8 @@ namespace dotNET.Core.Cache
 {
     public class MemoryCacheService
     {
-        static readonly MemoryCache _cache = new MemoryCache(new MemoryCacheOptions());
-        
+        private static readonly MemoryCache _cache = new MemoryCache(new MemoryCacheOptions());
+
         /// <summary>
         /// 验证缓存项是否存在
         /// </summary>
@@ -30,7 +30,6 @@ namespace dotNET.Core.Cache
                 NLogger.Error("验证缓存项是否存在:" + ex.ToString());
                 return false;
             }
-
         }
 
         /// <summary>
@@ -43,7 +42,6 @@ namespace dotNET.Core.Cache
         {
             try
             {
-
                 if (key == null)
                 {
                     throw new ArgumentNullException(nameof(key));
@@ -61,6 +59,7 @@ namespace dotNET.Core.Cache
                 return false;
             }
         }
+
         /// <summary>
         /// 添加缓存
         /// </summary>
@@ -95,6 +94,7 @@ namespace dotNET.Core.Cache
                 return false;
             }
         }
+
         /// <summary>
         /// 添加缓存
         /// </summary>
@@ -135,8 +135,6 @@ namespace dotNET.Core.Cache
             }
         }
 
-
-
         /// <summary>
         /// 删除缓存
         /// </summary>
@@ -146,7 +144,6 @@ namespace dotNET.Core.Cache
         {
             try
             {
-
                 if (key == null)
                 {
                     throw new ArgumentNullException(nameof(key));
@@ -161,6 +158,7 @@ namespace dotNET.Core.Cache
                 return false;
             }
         }
+
         /// <summary>
         /// 批量删除缓存
         /// </summary>
@@ -180,12 +178,8 @@ namespace dotNET.Core.Cache
             catch (Exception ex)
             {
                 NLogger.Error("批量删除缓存:" + ex.ToString());
-
             }
         }
-
-
-
 
         /// <summary>
         /// 获取缓存
@@ -208,6 +202,7 @@ namespace dotNET.Core.Cache
                 return null;
             }
         }
+
         /// <summary>
         /// 获取缓存
         /// </summary>
@@ -229,6 +224,7 @@ namespace dotNET.Core.Cache
                 return null;
             }
         }
+
         /// <summary>
         /// 获取缓存集合
         /// </summary>
@@ -238,8 +234,6 @@ namespace dotNET.Core.Cache
         {
             try
             {
-
-
                 if (keys == null)
                 {
                     throw new ArgumentNullException(nameof(keys));
@@ -257,8 +251,6 @@ namespace dotNET.Core.Cache
                 return null;
             }
         }
-
-
 
         /// <summary>
         /// 修改缓存
@@ -288,8 +280,8 @@ namespace dotNET.Core.Cache
                 NLogger.Error("修改缓存:" + ex.ToString());
                 return false;
             }
-
         }
+
         /// <summary>
         /// 修改缓存
         /// </summary>
@@ -321,6 +313,7 @@ namespace dotNET.Core.Cache
                 return false;
             }
         }
+
         /// <summary>
         /// 修改缓存
         /// </summary>
@@ -353,14 +346,11 @@ namespace dotNET.Core.Cache
             }
         }
 
-
-
         public void Dispose()
         {
             if (_cache != null)
                 _cache.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
 }

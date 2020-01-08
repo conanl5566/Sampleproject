@@ -8,13 +8,13 @@ using System.Linq;
 namespace dotNET.HttpApi.Host.Code
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true)]
     public class ModelValidationAttribute : ActionFilterAttribute
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="context"></param>
         public override void OnActionExecuting(ActionExecutingContext context)

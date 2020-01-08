@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
+using System.Collections.Generic;
+
 namespace dotNET.Core
 {
-
     /// <summary>
     /// MongoDB 操作帮助类
     /// </summary>
@@ -15,6 +14,7 @@ namespace dotNET.Core
             var client = new MongoClient(Zconfig.Getconfig("MongoDB"));
             return client.GetDatabase(Zconfig.Getconfig("MongoDB_DBNAME"));
         }
+
         /// <summary>
         /// 获取连接对象
         /// </summary>
@@ -73,12 +73,10 @@ namespace dotNET.Core
         /// <param name="update"></param>
         public int Update<T>(FilterDefinition<T> filter, UpdateDefinition<T> update)
         {
-
             var collect = GetCollection<T>();
             var result = collect.UpdateMany(filter, update);
             return (int)result.ModifiedCount;
         }
-
 
         /// <summary>
         /// 根据条件 删除
@@ -90,11 +88,9 @@ namespace dotNET.Core
         /// <param name="filter"></param>
         public int Delete<T>(FilterDefinition<T> filter)
         {
-
             var collect = GetCollection<T>();
             var result = collect.DeleteMany(filter);
             return (int)result.DeletedCount;
-
         }
 
         /// <summary>
@@ -107,8 +103,6 @@ namespace dotNET.Core
             var filter = new BsonDocument();
             return Delete<T>(filter);
         }
-
-
 
         /// <summary>
         /// 根据条件  查询数据   调用例子       var filter = Builders<demoMongoDB>.Filter.Eq("Title", "456");
@@ -124,7 +118,6 @@ namespace dotNET.Core
             return result;
         }
 
-
         /// <summary>
         /// 查询全部数据  调用例子   Response.Write(MongoDBHelper.QueryAll<demoMongoDB>().FirstOrDefault().Title);
         /// </summary>
@@ -138,9 +131,8 @@ namespace dotNET.Core
         }
 
         /// <summary>
-        /// 根据条件 查询数据+排序 
+        /// 根据条件 查询数据+排序
         ///   //var filter = Builders<testTitle>.Filter.Eq("Title", "456");
-
 
         ///var sort = Builders<testTitle>.Sort.Descending("Title");
 
@@ -156,7 +148,6 @@ namespace dotNET.Core
             var result = collect.Find(filter).Sort(sort).ToList();
             return result;
         }
-
 
         /// <summary>
         /// 根据查询条件获取多条数据（分页）

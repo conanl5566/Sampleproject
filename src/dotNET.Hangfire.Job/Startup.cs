@@ -1,7 +1,4 @@
-﻿using System;
-using System.Reflection;
-using System.Text;
-using Autofac.Extensions.DependencyInjection;
+﻿using Autofac.Extensions.DependencyInjection;
 using dotNET.Application;
 using dotNET.Core;
 using dotNET.EntityFrameworkCore;
@@ -20,6 +17,10 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using System;
+using System.Reflection;
+using System.Text;
+
 namespace dotNET.Hangfire.Job
 {
     public class Startup
@@ -46,7 +47,7 @@ namespace dotNET.Hangfire.Job
                 var connectionString = Configuration["Data:Redis:ConnectionString"];
                 x.UseRedisStorage(connectionString, new RedisStorageOptions()
                 {
-                    //活动服务器超时时间 
+                    //活动服务器超时时间
                     InvisibilityTimeout = TimeSpan.FromMinutes(60),
                     Db = int.Parse(Configuration["Data:Redis:Db"])
                 });

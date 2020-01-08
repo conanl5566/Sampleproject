@@ -12,7 +12,7 @@ namespace dotNET.HttpApi.Host
     public class BasicAuth : ActionFilterAttribute
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="context"></param>
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -22,7 +22,7 @@ namespace dotNET.HttpApi.Host
                 var token = context.HttpContext.Request.Headers["Authorization"];
                 if (string.IsNullOrWhiteSpace(token))
                 {
-                    R meta =  R.Err("Unauthorized") ;
+                    R meta = R.Err("Unauthorized");
                     JsonResult json = new JsonResult(new
                     {
                         Meta = meta
@@ -49,7 +49,7 @@ namespace dotNET.HttpApi.Host
             }
             else
             {
-                R meta =  R.Err("Unauthorized");
+                R meta = R.Err("Unauthorized");
                 JsonResult json = new JsonResult(new
                 {
                     Meta = meta

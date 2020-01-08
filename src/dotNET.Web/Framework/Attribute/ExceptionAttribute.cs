@@ -1,10 +1,11 @@
 ﻿#region using
+
+using dotNET.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
-using dotNET.Core;
-#endregion
+
+#endregion using
 
 namespace dotNET.Web.Host.Framework
 {

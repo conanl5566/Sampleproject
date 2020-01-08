@@ -1,20 +1,21 @@
 ﻿using Autofac;
-using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
 using Autofac.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Http;
-using dotNET.Core.Cache;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.EntityFrameworkCore;
 using dotNET.Core;
-using System.Reflection;
+using dotNET.Core.Cache;
+using dotNET.EntityFrameworkCore;
 using dotNET.EntityFrameworkCore.Infrastructure;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
+using System.Reflection;
 
 namespace dotNET.Application
 {
     public static class AutofacExt
     {
         private static IContainer _container;
+
         public static IContainer InitAutofac(IServiceCollection services, Assembly executingAssembly)
         {
             var builder = new ContainerBuilder();
@@ -38,8 +39,9 @@ namespace dotNET.Application
             _container = builder.Build();
             return _container;
         }
+
         /////// <summary>
-        /////// 从容器中获取对象  AutofacExt.GetFromFac<IBaseRepository<AreaList>>() 
+        /////// 从容器中获取对象  AutofacExt.GetFromFac<IBaseRepository<AreaList>>()
         /////// hangfire   无法使用属性注入  只能使用构造函数 或者该方法
         /////// </summary>
         /////// <typeparam name="T"></typeparam>
@@ -48,5 +50,4 @@ namespace dotNET.Application
         ////    return _container.Resolve<T>();
         ////}
     }
-
 }

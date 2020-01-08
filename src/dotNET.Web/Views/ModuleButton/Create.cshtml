@@ -32,7 +32,7 @@
                 <th class="formTitle">图标</th>
                 <td class="formValue">
                     <div class="input-group">
-                        <input id="Icon" name="Icon" type="text" class="form-control"  maxlength="20" />
+                        <input id="Icon" name="Icon" type="text" class="form-control" maxlength="20" />
                         <span class="input-group-btn">
                             <a class="btn  btn-primary"><i class="fa fa-ellipsis-h"></i></a>
                         </span>
@@ -40,7 +40,7 @@
                 </td>
                 <th class="formTitle">排序</th>
                 <td class="formValue">
-                    <input id="SortCode" name="SortCode" type="text" value="1" class="form-control required number" max="9999"  placeholder="请输入排序" />
+                    <input id="SortCode" name="SortCode" type="text" value="1" class="form-control required number" max="9999" placeholder="请输入排序" />
                 </td>
             </tr>
             <tr>
@@ -77,7 +77,7 @@
 </form>
 
 @section scripts{
-<script type="text/javascript">
+    <script type="text/javascript">
     $(function () {
         initControl();
     });
@@ -97,7 +97,7 @@
         var mp = top.$('#ModuleButtonCreate').parent();
         if (mp != undefined)
             target = "#" + mp.attr("id");
- 
+
         $.fn.submitForm({
             //loading参数 start
             target: target,
@@ -111,5 +111,5 @@
             }
         });
     };
-</script>
+    </script>
 }

@@ -1,11 +1,9 @@
 ﻿/**************************************************************************
- * 作者：X   
- * 日期：2017.01.18   
+ * 作者：X
+ * 日期：2017.01.18
  * 描述：
- * 修改记录：    
+ * 修改记录：
  * ***********************************************************************/
-
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dotNET.Domain.Entities.Sys
 {
@@ -24,11 +22,11 @@ namespace dotNET.Domain.Entities.Sys
         /// </summary>
         public string Postcode { get; set; }
 
-       /// <summary>
-       /// 上一级id
-       /// </summary>
+        /// <summary>
+        /// 上一级id
+        /// </summary>
 
-        public long  ParentID { get; set; }
+        public long ParentID { get; set; }
 
         /// <summary>
         /// 等级？
@@ -45,17 +43,14 @@ namespace dotNET.Domain.Entities.Sys
         /// </summary>
         public string AreaCode { get; set; }
 
-
-        /// <summary> 
+        /// <summary>
         /// 区域类型    1  省  2  市  3  区
         /// </summary>
         public int AreaType { get; set; }
-
 
         /// <summary>
         /// 关键字
         /// </summary>
         public string AreaKeys { get; set; }
-
     }
 }

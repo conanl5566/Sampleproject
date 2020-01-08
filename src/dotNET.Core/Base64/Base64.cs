@@ -6,7 +6,7 @@ using System.Text;
 namespace dotNET.Core
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class Base64
     {
@@ -63,15 +63,15 @@ namespace dotNET.Core
                 stream.Write(bytes, 0, bytes.Length);
                 Bitmap img = new Bitmap(stream);
                 img.Save(path);
-
             }
             catch
             {
                 throw;
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="base64"></param>
         /// <returns></returns>
@@ -90,8 +90,9 @@ namespace dotNET.Core
                 throw new Exception("Base64解码错误");
             }
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
@@ -114,6 +115,5 @@ namespace dotNET.Core
                 stream.Close();
             }
         }
-
     }
 }

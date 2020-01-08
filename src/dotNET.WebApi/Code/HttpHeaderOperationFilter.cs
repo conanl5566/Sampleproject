@@ -13,13 +13,14 @@ namespace dotNET.HttpApi.Host.Code
     public class HttpHeaderOperationFilter : IOperationFilter
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="operation"></param>
         /// <param name="context"></param>
         public void Apply(Operation operation, OperationFilterContext context)
         {
             #region 新方法
+
             if (operation.Parameters == null)
             {
                 operation.Parameters = new List<IParameter>();
@@ -40,7 +41,8 @@ namespace dotNET.HttpApi.Host.Code
                     });
                 }
             }
-            #endregion
+
+            #endregion 新方法
         }
     }
 }

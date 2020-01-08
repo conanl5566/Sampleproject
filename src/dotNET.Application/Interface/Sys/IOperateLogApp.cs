@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
-using dotNET.Core;
+﻿using dotNET.Core;
 using dotNET.Dto;
+using System.Threading.Tasks;
 
 namespace dotNET.Application.Sys
 {
@@ -48,6 +48,7 @@ namespace dotNET.Application.Sys
         /// <param name="before"></param>
         /// <param name="after"></param>
         Task EditLogAsync<T>(CurrentUser curUser, string tag, T before, T after) where T : class, new();
+
         /// <summary>
         /// 对象复制
         /// </summary>
@@ -57,13 +58,14 @@ namespace dotNET.Application.Sys
         T Clone<T>(T realObject) where T : class, new();
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="option"></param>
         /// <returns></returns>
         Task<Page<OperateLogDto>> PagerAsync(OperateLogOption option);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="pageNumber"></param>
         /// <param name="rowsPrePage"></param>

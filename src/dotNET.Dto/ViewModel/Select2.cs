@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace dotNET.Dto.ViewModel
+﻿namespace dotNET.Dto.ViewModel
 {
     public class Select2
     {

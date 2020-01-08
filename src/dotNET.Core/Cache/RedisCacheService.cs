@@ -1,23 +1,23 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
+using Newtonsoft.Json;
+using StackExchange.Redis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Text;
-using StackExchange.Redis;
-using Newtonsoft.Json;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
-using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace dotNET.Core.Cache
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class RedisCacheService : ICacheService
     {
         protected IDatabase Cache;
         private readonly ConnectionMultiplexer _connection;
+
         public RedisCacheService()
         {
             try
@@ -30,10 +30,8 @@ namespace dotNET.Core.Cache
             catch (Exception ex)
             {
                 NLogger.Error("RedisCacheService:" + ex.ToString());
-
             }
         }
-
 
         /// <summary>
         /// 合并key
@@ -41,7 +39,7 @@ namespace dotNET.Core.Cache
         /// <param name="key"></param>
         /// <param name="prefix">前缀</param>
         /// <returns></returns>
-        string MergeKey(string key, string prefix = "")
+        private string MergeKey(string key, string prefix = "")
         {
             if (!string.IsNullOrWhiteSpace(prefix))
                 return $"{prefix}:{key}";
@@ -69,7 +67,6 @@ namespace dotNET.Core.Cache
                 NLogger.Error("验证缓存项是否存在:" + ex.ToString());
                 return false;
             }
-
         }
 
         /// <summary>
@@ -86,15 +83,14 @@ namespace dotNET.Core.Cache
                     throw new ArgumentNullException(nameof(key));
                 }
                 return await Cache.KeyExistsAsync(MergeKey(key, prefix));
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("验证缓存项是否存在:" + ex.ToString());
                 return false;
             }
-
         }
+
         /// <summary>
         /// 添加缓存
         /// </summary>
@@ -116,7 +112,6 @@ namespace dotNET.Core.Cache
                 NLogger.Error("添加缓存:" + ex.ToString());
                 return false;
             }
-
         }
 
         /// <summary>
@@ -134,7 +129,6 @@ namespace dotNET.Core.Cache
                     throw new ArgumentNullException(nameof(key));
                 }
                 return await Cache.StringSetAsync(MergeKey(key, prefix), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)));
-
             }
             catch (Exception ex)
             {
@@ -165,7 +159,6 @@ namespace dotNET.Core.Cache
                 NLogger.Error("添加缓存:" + ex.ToString());
                 return false;
             }
-
         }
 
         /// <summary>
@@ -177,7 +170,6 @@ namespace dotNET.Core.Cache
         /// <returns></returns>
         public async Task<bool> AddAsync(string key, object value, TimeSpan expiressAbsoulte, string prefix = "")
         {
-
             try
             {
                 if (key == null)
@@ -185,17 +177,13 @@ namespace dotNET.Core.Cache
                     throw new ArgumentNullException(nameof(key));
                 }
                 return await Cache.StringSetAsync(MergeKey(key, prefix), Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value)), expiressAbsoulte);
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("添加缓存:" + ex.ToString());
                 return false;
             }
-
         }
-
-
 
         /// <summary>
         /// 删除缓存
@@ -211,14 +199,12 @@ namespace dotNET.Core.Cache
                     throw new ArgumentNullException(nameof(key));
                 }
                 return Cache.KeyDelete(MergeKey(key, prefix));
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("删除缓存:" + ex.ToString());
                 return false;
             }
-
         }
 
         /// <summary>
@@ -228,7 +214,6 @@ namespace dotNET.Core.Cache
         /// <returns></returns>
         public async Task<bool> RemoveAsync(string key, string prefix = "")
         {
-
             try
             {
                 if (key == null)
@@ -236,16 +221,13 @@ namespace dotNET.Core.Cache
                     throw new ArgumentNullException(nameof(key));
                 }
                 return await Cache.KeyDeleteAsync(MergeKey(key, prefix));
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("删除缓存:" + ex.ToString());
                 return false;
             }
-
         }
-
 
         /// <summary>
         /// 批量删除缓存
@@ -262,14 +244,11 @@ namespace dotNET.Core.Cache
                 }
 
                 keys.ToList().ForEach(item => Remove(item, prefix));
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("批量删除缓存:" + ex.ToString());
-
             }
-
         }
 
         /// <summary>
@@ -290,15 +269,11 @@ namespace dotNET.Core.Cache
                 {
                     await RemoveAsync(key, prefix);
                 }
-
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("批量删除缓存:" + ex.ToString());
-
             }
-
         }
 
         /// <summary>
@@ -322,16 +297,12 @@ namespace dotNET.Core.Cache
                 }
 
                 return JsonConvert.DeserializeObject<T>(value);
-
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("获取缓存:" + ex.ToString());
                 return null;
-
             }
-
         }
 
         /// <summary>
@@ -355,13 +326,11 @@ namespace dotNET.Core.Cache
                 }
 
                 return JsonConvert.DeserializeObject<T>(value);
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("获取缓存:" + ex.ToString());
                 return null;
-
             }
         }
 
@@ -372,11 +341,8 @@ namespace dotNET.Core.Cache
         /// <returns></returns>
         public object Get(string key, string prefix = "")
         {
-
             try
             {
-
-
                 if (key == null)
                 {
                     throw new ArgumentNullException(nameof(key));
@@ -389,13 +355,11 @@ namespace dotNET.Core.Cache
                     return null;
                 }
                 return JsonConvert.DeserializeObject(value);
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("获取缓存:" + ex.ToString());
                 return null;
-
             }
         }
 
@@ -420,13 +384,11 @@ namespace dotNET.Core.Cache
                     return null;
                 }
                 return JsonConvert.DeserializeObject(value);
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("获取缓存:" + ex.ToString());
                 return null;
-
             }
         }
 
@@ -447,15 +409,12 @@ namespace dotNET.Core.Cache
                 keys.ToList().ForEach(item => dict.Add(item, Get(MergeKey(item, prefix))));
 
                 return dict;
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("获取缓存集合:" + ex.ToString());
                 return null;
-
             }
-
         }
 
         /// <summary>
@@ -478,15 +437,12 @@ namespace dotNET.Core.Cache
                     dict.Add(key, await GetAsync(MergeKey(key, prefix)));
                 }
                 return dict;
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("获取缓存集合:" + ex.ToString());
                 return null;
-
             }
-
         }
 
         /// <summary>
@@ -497,7 +453,6 @@ namespace dotNET.Core.Cache
         /// <returns></returns>
         public bool Replace(string key, object value, string prefix = "")
         {
-
             try
             {
                 if (key == null)
@@ -512,16 +467,13 @@ namespace dotNET.Core.Cache
                 }
 
                 return Add(key, value, prefix);
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("修改缓存:" + ex.ToString());
                 return false;
-
             }
         }
-
 
         /// <summary>
         /// 修改缓存
@@ -545,17 +497,13 @@ namespace dotNET.Core.Cache
                 }
 
                 return await AddAsync(key, value, prefix);
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("修改缓存:" + ex.ToString());
                 return false;
-
             }
-
         }
-
 
         /// <summary>
         /// 修改缓存
@@ -568,7 +516,6 @@ namespace dotNET.Core.Cache
         {
             try
             {
-
                 if (key == null)
                 {
                     throw new ArgumentNullException(nameof(key));
@@ -581,17 +528,12 @@ namespace dotNET.Core.Cache
                 }
 
                 return Add(key, value, expiressAbsoulte, prefix);
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("修改缓存:" + ex.ToString());
                 return false;
-
             }
-
-
-
         }
 
         /// <summary>
@@ -617,18 +559,13 @@ namespace dotNET.Core.Cache
                 }
 
                 return await AddAsync(key, value, expiressAbsoulte, prefix);
-
             }
             catch (Exception ex)
             {
                 NLogger.Error("修改缓存:" + ex.ToString());
                 return false;
-
             }
-
         }
-
-
 
         //public async Task<bool> ListAddAsync(string key, string value, bool isSliding = false, string prefix = "")
         //{
@@ -638,10 +575,6 @@ namespace dotNET.Core.Cache
         //    }
         //    return await _cache.SetAddAsync(MergeKey(key, prefix), value);
         //}
-
-
-
-
 
         public void Dispose()
         {

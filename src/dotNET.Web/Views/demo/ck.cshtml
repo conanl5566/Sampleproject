@@ -5,25 +5,25 @@
     Layout = "_SimpleTable";
 }
 @section headers{
-@*<style>
-    .nav.nav-tabs.padding-18 {
-        padding-left: 18px;
-    }
-    .nav-tabs {
-        border-color: #c5d0dc;
-        margin-bottom: 0 !important;
-        margin-left: 0;
-        position: relative;
-        top: 1px;
-    }
-</style>*@
+    @*<style>
+            .nav.nav-tabs.padding-18 {
+                padding-left: 18px;
+            }
+            .nav-tabs {
+                border-color: #c5d0dc;
+                margin-bottom: 0 !important;
+                margin-left: 0;
+                position: relative;
+                top: 1px;
+            }
+        </style>*@
 }
 
 <section class="content">
     <div class="box box-primary">
         <div class="box-header with-border">
             <ul class="nav nav-tabs padding-18">
-                <li >
+                <li>
 
                     <a href="/demo/sendmail">
                         <i class="orange ace-icon fa fa-cog bigger-120"></i>
@@ -34,17 +34,11 @@
                 <li class="active">
                     <a href="javascript:void(0);">
 
-
                         <i class="green ace-icon fa fa-home bigger-120"></i>
 
-
-
-                       富文本编辑框
+                        富文本编辑框
                     </a>
                 </li>
-
-
-
             </ul>
         </div>
         <!-- /.box-header -->
@@ -55,8 +49,8 @@
                     <h4>富文本编辑器</h4>
                     <p></p>
                 </div>
-                <table class="form" >
-              
+                <table class="form">
+
                     <tr>
                         <th class="formTitle">内容</th>
                         <td class="formValue">
@@ -64,11 +58,9 @@
                             @Html.EditorFor(model => model.rules)
 
                             @*<textarea class="form-control" name="Text" id="Text" style="height: 70px;" placeholder=""></textarea>*@
-
                         </td>
                     </tr>
                 </table>
-
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
@@ -78,16 +70,13 @@
     </div>
 
     <!-- /.tab-content -->
-
-
-
 </section>
 
 @section scripts{
 
-<script src="~/ckeditor/ckeditor.js"></script>
-<script src="~/js/jquery.base64.js"></script>
-<script type="text/javascript">
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/js/jquery.base64.js"></script>
+    <script type="text/javascript">
     //editor.document.getBody().getText(); //取得纯文本
     //editor.document.getBody().getHtml(); //取得html文本
     //var editor = CKEDITOR.replace('Text',
@@ -111,9 +100,7 @@
     });
     $("#btnSave").click(function (ev) {
 
-
         var a = editor2.document.getBody().getHtml();
-
 
         $("#rules").val( $.base64.btoa(a) );
         var $form = $("#form1");
@@ -147,7 +134,6 @@
             }
         });
 
-
      //   alert(editor2.document.getBody().getHtml());
         // return;
         //$.post("/demo/ck/",
@@ -158,11 +144,8 @@
         //    function (data, status) {
         //          alert("Data: " + data + "\nStatus: " + status);
 
-
         //    });
     });
-
-</script>
-
+    </script>
 
 }

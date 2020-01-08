@@ -12,6 +12,7 @@ namespace dotNET.Core
         private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         #region "等级1-Debug"
+
         /// <summary>
         /// 记录调试信息
         /// </summary>
@@ -29,10 +30,9 @@ namespace dotNET.Core
             Logger.Debug(info);
         }
 
-        #endregion
+        #endregion "等级1-Debug"
 
         #region "等级2-Info"
-
 
         /// <summary>
         /// 记录信息
@@ -48,14 +48,11 @@ namespace dotNET.Core
             }
             info = info + "\r\n" + msg;
             Logger.Info(info);
-
         }
 
-        #endregion
+        #endregion "等级2-Info"
 
         #region "等级3-Warn"
-
-
 
         /// <summary>
         /// 记录警告信息
@@ -71,13 +68,11 @@ namespace dotNET.Core
             }
             info = info + "\r\n" + msg;
             Logger.Warn(info);
-
         }
 
-        #endregion
+        #endregion "等级3-Warn"
 
         #region "等级4-Error"
-
 
         /// <summary>
         /// 记录错误信息
@@ -93,10 +88,7 @@ namespace dotNET.Core
             }
             info = info + "\r\n" + msg;
             Logger.Error(info);
-
         }
-
-
 
         /// <summary>
         /// 记录异常信息
@@ -112,7 +104,6 @@ namespace dotNET.Core
             }
             info = info + "\r\n" + ErrorDetails(ex);
             Logger.Error(info);
-
         }
 
         /// <summary>
@@ -150,11 +141,9 @@ namespace dotNET.Core
             return sb.ToString().Replace("位置:", "<br>位置");
         }
 
-        #endregion
+        #endregion "等级4-Error"
 
         #region "等级5-Fatal "
-
-
 
         /// <summary>
         /// 记录致命错误
@@ -170,9 +159,8 @@ namespace dotNET.Core
             }
             info = info + "\r\n" + msg;
             Logger.Fatal(info);
-
         }
 
-        #endregion
+        #endregion "等级5-Fatal "
     }
 }

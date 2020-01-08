@@ -1,31 +1,34 @@
 ﻿#region using
+
+using dotNET.Application;
+using dotNET.Application.Sys;
+using dotNET.Core;
+using dotNET.Domain.Entities.Sys;
+using dotNET.Dto;
+using dotNET.Web.Host.Framework;
+using dotNET.Web.Host.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using dotNET.Application;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
-using dotNET.Application.Sys;
-using dotNET.Web.Host.Model;
-using dotNET.Core;
-using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Configuration;
-#endregion
+
+#endregion using
+
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 namespace dotNET.Web.Host.Controllers
 {
     public class DepartmentController : CustomController
     {
         #region ini
-        public IDepartmentApp DepartmentApp { get; set; }
-        #endregion
 
-   
+        public IDepartmentApp DepartmentApp { get; set; }
+
+        #endregion ini
 
         #region tree
+
         [IgnoreAuthorize]
         public async Task<IActionResult> Loadtree(long parentId)
         {
@@ -52,11 +55,12 @@ namespace dotNET.Web.Host.Controllers
             return Content(treedata);
         }
 
-        #endregion
+        #endregion tree
 
         #region 内部方法
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="data"></param>
         /// <param name="parentnodes"></param>
@@ -91,11 +95,13 @@ namespace dotNET.Web.Host.Controllers
             }
             return treeList;
         }
-        #endregion
+
+        #endregion 内部方法
 
         #region 列表
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
@@ -109,9 +115,10 @@ namespace dotNET.Web.Host.Controllers
             return View();
         }
 
-        #endregion
+        #endregion 列表
 
         #region 添加
+
         /// <summary>
         /// 添加
         /// </summary>
@@ -150,25 +157,29 @@ namespace dotNET.Web.Host.Controllers
             {
                 return Operation(false, "数据验证失败;" + GetErrorFromModelStateStr(), model.GoBackUrl);
             }
-            Department module =model.MapTo< Department>();
+            Department module = model.MapTo<Department>();
             module.Id = module.CreateId();
             module.CreatorTime = DateTime.Now;
             module.CreatorUserId = CurrentUser().Id;
             var r = await DepartmentApp.CreateAsync(module);
             return Json(r);
         }
-        #endregion
+
+        #endregion 添加
 
         #region 删除
+
         [HttpPost]
         public async Task<IActionResult> Delete(long Id)
         {
             var r = await DepartmentApp.DeleteAsync(Id);
             return Json(r);
         }
-        #endregion
+
+        #endregion 删除
 
         #region 修改
+
         public async Task<IActionResult> Edit(long Id)
         {
             DepartmentModel model;
@@ -202,8 +213,9 @@ namespace dotNET.Web.Host.Controllers
             ViewBag.GoBackUrl = SetingBackUrl(this.HttpContext.Request);
             return View(model);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -223,6 +235,7 @@ namespace dotNET.Web.Host.Controllers
             var r = await DepartmentApp.UpdateAsync(m);
             return Json(r);
         }
-        #endregion
+
+        #endregion 修改
     }
 }

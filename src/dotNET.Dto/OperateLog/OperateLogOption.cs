@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace dotNET.Dto
 {
@@ -22,33 +20,31 @@ namespace dotNET.Dto
         public string Tag { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DateTime? StartDateTime { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DateTime? EndDateTime { get; set; }
     }
 
-
-
-
-    public class OperateLogDto 
+    public class OperateLogDto
     {
-
         public long Id { get; set; }
+
         /// <summary>
         /// 所属代理
         /// </summary>
         public long AgentId { get; set; }
+
         /// <summary>
         /// 操作者Id
         /// </summary>
         public long OperatorId { get; set; }
 
-        public string OperatorName{ get; set; }
+        public string OperatorName { get; set; }
 
         /// <summary>
         /// 操作都类型  会员，代理商，Saas后台
@@ -81,13 +77,8 @@ namespace dotNET.Dto
         public string Content { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public DateTime CreateTime { get; set; }
-
-
-    
     }
-
-
 }

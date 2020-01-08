@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 
 namespace dotNET.Core
 {
@@ -12,7 +8,6 @@ namespace dotNET.Core
     /// </summary>
     public class FileHelper
     {
-
         //public readonly IHostingEnvironment _Env;
 
         //public FileHelper(IHostingEnvironment Env)
@@ -20,15 +15,14 @@ namespace dotNET.Core
         //    _Env = Env;
         //}
 
-     //   private  string _ContentRootPath = _Env.ContentRootPath;
-
+        //   private  string _ContentRootPath = _Env.ContentRootPath;
 
         /// <summary>
         /// 创建目录或文件
         /// </summary>
         /// <param name="path">路径</param>
         /// <param name="isDirectory">是否是目录</param>
-        public  void CreateFiles(string path, bool isDirectory)
+        public void CreateFiles(string path, bool isDirectory)
         {
             try
             {
@@ -55,7 +49,7 @@ namespace dotNET.Core
         /// </summary>
         /// <param name="path">路径</param>
         /// <returns></returns>
-        public  bool IsEmptyDirectory(string path)
+        public bool IsEmptyDirectory(string path)
         {
             return Directory.GetFiles(IsAbsolute(path) ? path : MapPath(path)).Length <= 0 && Directory.GetDirectories(IsAbsolute(path) ? path : MapPath(path)).Length <= 0;
         }
@@ -66,7 +60,7 @@ namespace dotNET.Core
         /// <param name="path">路径</param>
         /// <param name="isDirectory">是否是目录</param>
         /// <returns></returns>
-        public  bool IsExist(string path, bool isDirectory)
+        public bool IsExist(string path, bool isDirectory)
         {
             return isDirectory ? Directory.Exists(IsAbsolute(path) ? path : MapPath(path)) : File.Exists(IsAbsolute(path) ? path : MapPath(path));
         }
@@ -78,7 +72,7 @@ namespace dotNET.Core
         /// </summary>
         /// <param name="path">路径</param>
         /// <returns></returns>
-        public  bool IsAbsolute(string path)
+        public bool IsAbsolute(string path)
         {
             return Path.VolumeSeparatorChar == ':' ? path.IndexOf(Path.VolumeSeparatorChar) > 0 : path.IndexOf('\\') > 0;
         }
@@ -88,12 +82,10 @@ namespace dotNET.Core
         　　/// </summary>
         　　/// <param name="path">文件路径</param>
         　　/// <returns></returns>
-        public  string MapPath(string path)
+        public string MapPath(string path)
         {
             var contentRoot = Directory.GetCurrentDirectory();
             return IsAbsolute(path) ? path : Path.Combine(contentRoot, path.TrimStart('~', '/').Replace("/", Path.DirectorySeparatorChar.ToString()));
         }
-
-
     }
 }

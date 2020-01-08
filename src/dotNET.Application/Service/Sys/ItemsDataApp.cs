@@ -1,20 +1,23 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using dotNET.Domain.Entities.Sys;
+﻿using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
 using dotNET.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace dotNET.Application.Sys
 {
     public class ItemsDataApp : AppService, IItemsDataApp
     {
         #region 注入
+
         public IBaseRepository<ItemsData> ItemsDataRep { get; set; }
-        #endregion
+
+        #endregion 注入
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="isSaas"></param>
         /// <param name="option"></param>
@@ -29,13 +32,9 @@ namespace dotNET.Application.Sys
             }
             predicate = predicate.And(o => o.ParentId == option.ParentId);
 
-
             if (!string.IsNullOrEmpty(option.Name))
             {
-
                 predicate = predicate.And(o => o.Name.Contains(option.Name));
-
-
             }
             var t = await ItemsDataRep.Find(predicate).ToListAsync();
             return t;
@@ -53,7 +52,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -70,7 +69,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
@@ -81,7 +80,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
@@ -101,7 +100,7 @@ namespace dotNET.Application.Sys
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
@@ -119,7 +118,6 @@ namespace dotNET.Application.Sys
             await RemoveCacheAsync();
             return R.Suc();
         }
-
 
         /// <summary>
         /// 移除缓存

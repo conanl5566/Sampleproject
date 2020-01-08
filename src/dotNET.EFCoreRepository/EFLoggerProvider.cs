@@ -10,11 +10,14 @@ namespace dotNET.EntityFrameworkCore
     public class EFLoggerProvider : ILoggerProvider
     {
         public ILogger CreateLogger(string categoryName) => new EFLogger(categoryName);
-        public void Dispose() { }
+
+        public void Dispose()
+        {
+        }
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class EFLogger : ILogger
     {
@@ -42,8 +45,5 @@ namespace dotNET.EntityFrameworkCore
         }
 
         public IDisposable BeginScope<TState>(TState state) => null;
-
-
-
     }
 }

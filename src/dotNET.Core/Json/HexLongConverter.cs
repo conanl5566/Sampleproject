@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.Globalization;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace dotNET.Core
 {
@@ -16,6 +12,7 @@ namespace dotNET.Core
             long v = value is ulong ? (long)(ulong)value : (long)value;
             writer.WriteValue(v.ToString());//("X16"));
         }
+
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             // 取得读到的十六进制字符串
@@ -27,6 +24,7 @@ namespace dotNET.Core
             // 将v转换成实际需要的类型 ulong 或 long(不转换)
             return typeof(ulong) == objectType ? (object)(ulong)v : v;
         }
+
         public override bool CanConvert(Type objectType)
         {
             // 只处理long和ulong两种类型的数据
@@ -35,11 +33,13 @@ namespace dotNET.Core
                 case "System.Int64":
                 case "System.UInt64":
                     return true;
+
                 default:
                     return false;
             }
         }
     }
+
     //public static class StringExtention
     //{
     //    public static int ToInt32(this string me, NumberStyles style,

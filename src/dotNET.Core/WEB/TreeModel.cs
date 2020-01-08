@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace dotNET.Core
 {
@@ -18,7 +16,6 @@ namespace dotNET.Core
         public int Checkstate;
         public bool HasChildren { get; set; }
         public List<TreeModel> ChildNodes { get; set; }
-
 
         public static string ToJson(List<TreeModel> data)
         {

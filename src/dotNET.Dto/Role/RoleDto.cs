@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-
-namespace dotNET.Dto.Role
+﻿namespace dotNET.Dto.Role
 {
     public class RoleDto
     {

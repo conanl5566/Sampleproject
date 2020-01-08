@@ -4,7 +4,7 @@
 }
 
 <form id="form1">
-  
+
     <div style="margin-top: 10px; margin-left: 10px; margin-right: 20px;">
         <table class="form">
             <tr>
@@ -15,7 +15,6 @@
                 </td>
             </tr>
 
-
             <tr>
 
                 <th class="formTitle">新密码</th>
@@ -24,59 +23,46 @@
                 </td>
             </tr>
 
-
-
-
             <tr>
 
                 <th class="formTitle">确认密码</th>
                 <td class="formValue">
-                    <input id="cnewpwd" name="cnewpwd" type="password"  class="form-control required" equalTo="#newpwd"   placeholder="请再次输入新密码" />
+                    <input id="cnewpwd" name="cnewpwd" type="password" class="form-control required" equalTo="#newpwd" placeholder="请再次输入新密码" />
                 </td>
             </tr>
-
-
-
-         
         </table>
     </div>
 </form>
 
 @section scripts{
 
-
-<script src="~/lib/jquery-md5/jquery.md5.min.js"></script>
+    <script src="~/lib/jquery-md5/jquery.md5.min.js"></script>
 
     <script type="text/javascript">
         $(function () {
 
+            $("#form1").formValid();
 
-        $("#form1").formValid();
-
-
-    });
-
-      
-
-    function submitForm() {
-        if (!$("#form1").valid()) {
-            return false;
-        }
-
-        var oldpwd = $("#oldpwd");
-        var newpwd = $("#newpwd");
-        var cnewpwd = $("#cnewpwd");
-
-
-        $.fn.submitForm({
-        
-            url: "/sysuser/updatepwd?oldpwd=" + $.trim(oldpwd.val()) + "&newpwd=" + $.trim(newpwd.val()),
-
-            loading: "正在保存数据...",
-            success: function () {
-         
-            }
         });
-    };
+
+        function submitForm() {
+            if (!$("#form1").valid()) {
+                return false;
+            }
+
+            var oldpwd = $("#oldpwd");
+            var newpwd = $("#newpwd");
+            var cnewpwd = $("#cnewpwd");
+
+            $.fn.submitForm({
+
+                url: "/sysuser/updatepwd?oldpwd=" + $.trim(oldpwd.val()) + "&newpwd=" + $.trim(newpwd.val()),
+
+                loading: "正在保存数据...",
+                success: function () {
+
+                }
+            });
+        };
     </script>
 }

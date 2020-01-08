@@ -1,13 +1,13 @@
-﻿using System.Threading.Tasks;
-using dotNET.Application;
-using Microsoft.AspNetCore.Mvc;
-using dotNET.Web.Host.Framework;
+﻿using dotNET.Application;
 using dotNET.Application.Sys;
-using dotNET.Web.Host.Model;
 using dotNET.Core;
 using dotNET.Domain.Entities.Sys;
 using dotNET.Dto;
-using Microsoft.Extensions.Configuration;
+using dotNET.Web.Host.Framework;
+using dotNET.Web.Host.Model;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 namespace dotNET.Web.Host.Controllers
 {
@@ -15,8 +15,6 @@ namespace dotNET.Web.Host.Controllers
     public class ModuleButtonController : CustomController
     {
         public IModuleButtonApp ModuleButtonApp { get; set; }
-
-  
 
         // 列表
         // GET: /<controller>/
@@ -34,6 +32,7 @@ namespace dotNET.Web.Host.Controllers
         }
 
         #region 添加
+
         /// <summary>
         /// 添加
         /// </summary>
@@ -50,9 +49,9 @@ namespace dotNET.Web.Host.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Json(R.Err("数据验证失败")) ;
+                return Json(R.Err("数据验证失败"));
             }
-            var module =model.MapTo< ModuleButton>();
+            var module = model.MapTo<ModuleButton>();
 
             module.ParentId = parentId;
             module.ModuleId = moduleId;
@@ -60,18 +59,22 @@ namespace dotNET.Web.Host.Controllers
 
             return Json(r);
         }
-        #endregion
+
+        #endregion 添加
 
         #region 删除
+
         [HttpPost]
         public async Task<IActionResult> Delete(long Id)
         {
             var r = await ModuleButtonApp.DeleteAsync(Id);
             return Json(r);
         }
-        #endregion
+
+        #endregion 删除
 
         #region 修改
+
         public async Task<IActionResult> Edit(long Id)
         {
             ModuleButton module = await ModuleButtonApp.GetAsync(Id);
@@ -89,21 +92,20 @@ namespace dotNET.Web.Host.Controllers
             if (!ModelState.IsValid)
             {
                 return Json(R.Err(GetErrorFromModelStateStr()));
-               
             }
 
             var m = await ModuleButtonApp.GetAsync(model.Id);
             if (m == null)
             {
                 return Json(R.Err("数据不存在或已被删除"));
-             
             }
 
-            m =model.MapToMeg<ModuleButtonModel, ModuleButton>(m);
+            m = model.MapToMeg<ModuleButtonModel, ModuleButton>(m);
             var r = await ModuleButtonApp.UpdateAsync(m);
 
             return Json(r);
         }
-        #endregion
+
+        #endregion 修改
     }
 }

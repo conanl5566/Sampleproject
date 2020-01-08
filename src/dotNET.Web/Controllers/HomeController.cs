@@ -1,42 +1,44 @@
 ﻿#region using
-using dotNET.Web.Host.Framework;
+
+using dotNET.Application.Sys;
 using dotNET.Core;
+using dotNET.Domain.Entities.Sys;
+using dotNET.Web.Host.Framework;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using dotNET.Application.Sys;
-using dotNET.Domain.Entities.Sys;
-using Microsoft.Extensions.Configuration;
-using System;
 
-#endregion
+#endregion using
+
 namespace dotNET.Web.Host.Controllers
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public class HomeController : CustomController
     {
         #region ini
+
         public IRoleAuthorizeApp RoleAuthorizeApp { get; set; }
-        #endregion
 
-  
-
+        #endregion ini
 
         #region Index
+
         [IgnoreAuthorize]
-        public async Task<IActionResult>  Index()
+        public async Task<IActionResult> Index()
         {
             var r = await CurrentUser();
             ViewBag.RealName = r.RealName;
             ViewBag.Avatar = r.Avatar;
             return View();
         }
-        #endregion
+
+        #endregion Index
 
         #region Menu
+
         [IgnoreAuthorize]
         public async Task<IActionResult> Menu()
         {
@@ -45,31 +47,38 @@ namespace dotNET.Web.Host.Controllers
             return Json(ToMenu(modules, 0));
         }
 
-        #endregion
+        #endregion Menu
 
         #region Dashboard
+
         [IgnoreAuthorize]
         public IActionResult Dashboard()
         {
             return View();
         }
-        #endregion
+
+        #endregion Dashboard
 
         #region VisitModule
+
         public IActionResult VisitModule()
         {
             return Content("");
         }
-        #endregion
+
+        #endregion VisitModule
 
         #region Error
+
         public IActionResult Error()
         {
             return View();
         }
-        #endregion
+
+        #endregion Error
 
         #region 转成菜单
+
         /// <summary>
         /// 转成菜单
         /// </summary>
@@ -109,6 +118,6 @@ namespace dotNET.Web.Host.Controllers
             return list;
         }
 
-        #endregion
+        #endregion 转成菜单
     }
 }

@@ -45,7 +45,6 @@
     </style>
 }
 
-
 <section class="content">
 
     <div class="ui-layout ui-layout-container">
@@ -69,14 +68,11 @@
                                 <div class="form-inline">
                                     <form action="/Department/index" method="get" id="searchform">
 
-
                                         <input type="hidden" id="ParentId" name="ParentId" value="@filer.ParentId">
                                         <div class="form-group ">
                                             <label class="control-label  label-lg label-md">名称:</label>
                                             @Html.TextBox("Name", @filer.Name, new { placeholder = "名称", @class = "form-control input-small input-sm" })
                                         </div>
-
-
 
                                         <span class="form-group btn-group">
                                             <button class="btn btn-sm btn-info" id="btnSearch" type="submit"><i class="fa fa-search"></i> 搜索</button>
@@ -92,15 +88,11 @@
             line-height: 34px;">
                             <div id="toolbar" class="btn-group">
 
-
                                 <button id="btn_add" type="button" class="btn btn-default">
 
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
                                 </button>
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -118,12 +110,10 @@
                                 <th>  创建时间</th>
                                 <th> 备注</th>
 
-
                                 <th style="width:120px">操作</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">
-
 
                             @if (itemsDatalist != null && itemsDatalist.Count > 0)
                             {
@@ -137,18 +127,12 @@
                                         <td>@s.Manager</td>
                                         <td>@s.ContactNumber</td>
 
-
-
-
-                                        <td>@(s.CreatorTime.ToString("yyyy/MM/dd HH:mm:ss") ) </td>
+                                        <td>@(s.CreatorTime.ToString("yyyy/MM/dd HH:mm:ss")) </td>
 
                                         <td>@(s.Remarks)</td>
 
                                         <td>
                                             <a href="javascript:void(0);" onclick="btndelete('@s.Id');" class="aDel">删除</a>
-
-
-
 
                                             <a href="/Department/Edit?Id=@s.Id">编辑</a>
                                         </td>
@@ -157,35 +141,26 @@
                             }
                         </tbody>
                     </table>
-
-
                 </div>
-
             </div>
         </div>
-
     </div>
 </section>
 @section scripts{
     <script src="~/lib/wdtree/tree.min.js"></script>
     <script type="text/javascript">
 
-
         $("#btn_add").click(function () {
             location.href = "/Department/Create";
         });
-
 
         $(function () {
 
             var w = $(window).width() - 30 - 200 - 8;
             $('.west-Panel,.center-Panel').height(top.App.getIframeLayoutHeight() - 35);
 
-
             loadTree();
         });
-
-
 
         var loadTree = function () {
 
@@ -200,11 +175,7 @@
 
             $("#itemTree_" + pid).addClass("bbit-tree-selected");
 
-
-
-
         };
-
 
         //删除
         function btndelete(id) {
@@ -233,8 +204,5 @@
                 layer.close(index);
             });
         }
-
     </script>
 }
-
-

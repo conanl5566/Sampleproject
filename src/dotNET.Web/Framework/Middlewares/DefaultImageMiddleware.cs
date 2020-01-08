@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace dotNET.Web.Host.Framework.Middlewares
@@ -41,7 +39,7 @@ namespace dotNET.Web.Host.Framework.Middlewares
                 FileStream fs = File.OpenRead(path);
                 byte[] bytes = new byte[fs.Length];
                 await fs.ReadAsync(bytes, 0, bytes.Length);
-                //this header is use for browser cache, format like: "Mon, 15 May 2017 07:03:37 GMT". 
+                //this header is use for browser cache, format like: "Mon, 15 May 2017 07:03:37 GMT".
                 //context.Response.Headers.Append("Last-Modified", $"{File.GetLastWriteTimeUtc(path).ToString("ddd, dd MMM yyyy HH:mm:ss")} GMT");
 
                 await context.Response.Body.WriteAsync(bytes, 0, bytes.Length);

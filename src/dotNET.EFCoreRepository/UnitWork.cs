@@ -1,11 +1,11 @@
 ﻿using dotNET.Domain;
+using dotNET.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using Z.EntityFramework.Plus;
-using System.Linq.Dynamic.Core;
-using dotNET.EntityFrameworkCore.Infrastructure;
 
 namespace dotNET.EntityFrameworkCore
 {
@@ -17,6 +17,7 @@ namespace dotNET.EntityFrameworkCore
         {
             _context = context;
         }
+
         public EFCoreDBContext GetDbContext()
         {
             return _context;
@@ -30,8 +31,9 @@ namespace dotNET.EntityFrameworkCore
         {
             return Filter(exp);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="exp"></param>
@@ -71,8 +73,9 @@ namespace dotNET.EntityFrameworkCore
         {
             return Filter(exp).Count();
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
@@ -89,8 +92,9 @@ namespace dotNET.EntityFrameworkCore
         {
             _context.Set<T>().AddRange(entities);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
@@ -104,10 +108,10 @@ namespace dotNET.EntityFrameworkCore
             {
                 entry.State = EntityState.Unchanged;
             }
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="entity"></param>
@@ -126,8 +130,9 @@ namespace dotNET.EntityFrameworkCore
         {
             _context.Set<T>().Where(where).Update(entity);
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="exp"></param>
@@ -135,8 +140,9 @@ namespace dotNET.EntityFrameworkCore
         {
             _context.Set<T>().RemoveRange(Filter(exp));
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Save()
         {
@@ -148,10 +154,10 @@ namespace dotNET.EntityFrameworkCore
             //{
             //    throw new Exception(e.EntityValidationErrors.First().ValidationErrors.First().ErrorMessage);
             //}
-
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="exp"></param>
@@ -163,8 +169,9 @@ namespace dotNET.EntityFrameworkCore
                 dbSet = dbSet.Where(exp);
             return dbSet;
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sql"></param>
         public void ExecuteSql(string sql)
