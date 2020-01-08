@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\dotNET.Core\dotNET.Core.csproj" />
-    <ProjectReference Include="..\dotNET.Domain\dotNET.Domain.csproj" />
     <ProjectReference Include="..\dotNET.Dto\dotNET.Dto.csproj" />
     <ProjectReference Include="..\dotNET.EFCoreRepository\dotNET.EntityFrameworkCore.csproj" />
   </ItemGroup>

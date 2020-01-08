@@ -1,4 +1,5 @@
 ﻿using dotNET.Domain;
+using dotNET.Dto;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Diagnostics;

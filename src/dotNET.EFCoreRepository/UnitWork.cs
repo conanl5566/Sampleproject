@@ -1,4 +1,5 @@
 ﻿using dotNET.Domain;
+using dotNET.Dto;
 using dotNET.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System;
