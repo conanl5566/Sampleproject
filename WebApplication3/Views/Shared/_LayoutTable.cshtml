@@ -1,0 +1,104 @@
+﻿@{ 
+    Layout = null;
+ }
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["title"]</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <environment names="Development">
+        <link href="~/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/mgr/adminlte/dist/css/AdminLTE.css"  asp-append-version="true"/>
+        <link rel="stylesheet" href="~/lib/bootstrap-table/dist/bootstrap-table.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/mgr/css/common.min.css" asp-append-version="true" />
+        <link href="~/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/lib/select2/dist/css/select2.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/mgr/adminlte/dist/css/AdminLTE.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/bootstrap-table/dist/bootstrap-table.min.css" />
+        <link rel="stylesheet" href="~/mgr/css/common.min.css" asp-append-version="true" />
+        <link href="~/lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+
+    </environment>
+    <!--全局通用框架样式 end-->
+    @RenderSection("headers",false)
+    <!--
+    http://issues.wenzhixin.net.cn/bootstrap-table/index.html
+    -->
+ 
+</head>
+<body>
+    @*<section class="content-header">
+        <h1>
+            @ViewData["title"]
+            <small>@ViewData["title_small"]</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Tables</a></li>
+            <li class="active">jqgrid</li>
+        </ol>
+    </section>
+    *@
+
+    @RenderBody()
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/layer/build/layer.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/bootstrap-table/dist/bootstrap-table.js"></script>
+        <script src="~/lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/mgr/js/app.js" asp-append-version="true"></script>
+        <script src="~/lib/select2/dist/js/select2.full.min.js"></script>
+        <script src="~/lib/select2/dist/js/i18n/zh-CN.js"></script>
+        <script src="~/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script src="~/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="~/lib/layer/build/layer.js"></script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/lib/bootstrap-table/dist/bootstrap-table.min.js"></script>
+        <script src="~/lib/bootstrap-table/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+    
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/mgr/js/app.min.js" asp-append-version="true"></script>
+        <script src="~/lib/select2/dist/js/select2.full.min.js"></script>
+        <script src="~/lib/select2/dist/js/i18n/zh-CN.js"></script>
+        <script src="~/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+        <script src="~/lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+
+    </environment>
+ 
+
+    @RenderSection("scripts",false)
+    <script src="~/mgr/js/authorize.js"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/lib/select2/dist/css/select2.css" />
+        <link rel="stylesheet" href="~/mgr/css/common.min.css" asp-append-version="true" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/lib/select2/dist/css/select2.min.css" />
+        <link rel="stylesheet" href="~/mgr/css/common.min.css" asp-append-version="true" />
+    </environment>
+
+    <link href="~/js/xyj.webuploader.css" rel="stylesheet" />
+
+    <style>
+        .content-header {
+            position: relative;
+            padding: 15px 15px 0 15px;
+        }
+    </style>
+
+    <style>
+
+        span.field-validation-error {
+            color: orangered !important;
+            padding-left: 5px;
+            padding-top: 7px;
+        }
+
+       .help-inline {
+            font-size: 13px !important;
+        }
+
+        span.field-item-required, span.required {
+            color: red !important;
+        }
+    </style>
+    @RenderSection("headers",false)
+</head>
+<body>
+    <mini-profiler />
+    <section class="content-header">
+        <h1></h1>
+        <ol class="breadcrumb">
+
+            <li class="active">@ViewData["title"] </li>
+        </ol>
+    </section>
+
+    @*<div class="container body-content" style="background:#ff0000;" >*@
+    @RenderBody()
+    @*</div>*@
+    @*<script src="~/jquery/jquery-1.11.1.min.js"></script>*@
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/select2/dist/js/select2.js"></script>
+        <script src="~/mgr/js/validatorext.js" asp-append-version="true"></script>
+        <script src="~/mgr/js/app.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/select2/dist/js/select2.min.js"></script>
+        <script src="~/mgr/js/validatorext.min.js" asp-append-version="true"></script>
+
+        <script src="~/mgr/js/app.min.js" asp-append-version="true"></script>
+    </environment>
+    <script src="~/js/jquery.unobtrusive-ajax.js"></script>
+
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script src="~/js/plupload-2.1.2/js/plupload.full.min.js"></script>
+
+    @*<script src="~/js/js/plupload.full.min.js"></script>
+
+        <script src="~/js/js/i18n/zh_CN.js"></script>*@
+    <script src="~/js/plupload-2.1.2/js/i18n/zh_CN.js"></script>
+
+
+
+    <script src="~/js/hscp.imageupload.expand.js"></script>
+    <script src="~/lib/layer/build/layer.js"></script>
+    <script src="~/js/placeholder.js"></script>
+    <script type="text/javascript">
+        (function () {
+            $.MsgBox = {
+                Alert: function (msg, title) {
+                    if (title == null) {
+                        title = "提示";
+                    }
+                    layer.alert(msg, { title: title });
+                },
+                Confirm: function (msg, callback, title) {
+                    if (title == null) {
+                        title = "提示";
+                    }
+                    layer.confirm(msg, { title: title }, function (index) {
+                        callback();
+                        layer.close(index);
+                    });
+                }
+            }
+        })();
+    </script>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

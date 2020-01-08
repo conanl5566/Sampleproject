@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["title"] = "二维码";
+    Layout = "_SimpleTable";
+}
+
+<!-- Main content -->
+<section class="content">
+    @*<div class="box box-primary">*@
+     
+        <!-- /.box-header -->
+        <!-- form start -->
+        <form role="form">
+            <div class="box-body">
+              
+                <table class="form">
+
+                    <tr>
+                        <th class="formTitle">二维码</th>
+                        <td class="formValue input-group">
+                           <img src="/demo/getqrcode" />
+
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="formTitle">二维码(icon)</th>
+                        <td class="formValue input-group">
+                            <img src="@ViewBag.iconcode" />
+
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <th class="formTitle">图形验证码</th>
+                        <td class="formValue input-group">
+                            <img id="imgVerify" src="/demo/ValidateCode" alt="看不清？点击更换" onclick="this.src = this.src + '?'" style="vertical-align:middle;" />
+
+                        </td>
+                    </tr>
+
+
+                   
+                    
+
+                </table>
+            </div>
+            <!-- /.box-body -->
+            @*<div class="box-footer">
+                <button type="submit" class="btn btn-success">保存</button>
+            </div>*@
+        </form>
+    @*</div>*@
+
+    <!-- /.tab-content -->
+
+
+
+</section>
+@section scripts{
+
+}

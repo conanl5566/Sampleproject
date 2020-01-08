@@ -1,0 +1,149 @@
+﻿@using cloudscribe.Web.Pagination
+@using dotNET.Web.Host
+@using dotNET.Web.Host.Controllers
+@using dotNET.Domain.Entities
+@using  dotNET.Dto
+@using dotNET.Web.Host.Model
+@model List<ErrorLogDto>
+@{
+    Layout = "_Layoutlist";
+    ErrorLogOption filer = ViewBag.filter as ErrorLogOption;
+
+}
+
+@section headers{
+
+}
+
+<!-- Main content -->
+<section class="content">
+
+    <div class="row">
+        <!-- BEGIN SAMPLE TABLE PORTLET-->
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="box-body" style="padding-bottom:0px;">
+                <!--<div class="panel panel-default">-->
+
+                <div class="search row">
+                    <div class="col-sm-12 form-group">
+                        <div class="form-inline">
+                            <form action="/Error/index" method="get" id="searchform">
+
+                                 <div class="form-group ">
+
+                                    <label class="control-label label-lg label-md">日期:</label>
+
+
+
+                                    <input name="kCreatorTime" value="@(filer.kCreatorTime.HasValue?filer.kCreatorTime.Value.ToString("yyyy-MM-dd"):"")" id="kCreatorTime" class="form-control input-small input-sm" type="text" placeholder="起始日期" />
+                                    -  <input name="eCreatorTime" value="@(filer.eCreatorTime.HasValue?filer.eCreatorTime.Value.ToString("yyyy-MM-dd"):"")" id="eCreatorTime" class="form-control input-small input-sm" type="text" placeholder="结束日期" />
+
+                                </div>
+
+
+                                    <span class="form-group btn-group">
+                                        <button class="btn btn-sm btn-info" type="submit"><i class="fa fa-search"></i> 搜索</button>
+                                    </span>
+</form>
+                        </div>
+                    </div>
+                </div>
+             
+            
+
+
+                <div class="table-scrollable">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr class="heading">
+                                <th>Id</th>
+                                <th>文件名</th>
+                                <th>日期</th>
+                             
+
+                                <th style="width:120px">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+
+                            @if (Model.Count > 0)
+                            {
+                                @foreach (var s in Model)
+                                {
+                                    <tr>
+                                        <td>@s.Id</td>
+                                        <td>@s.filename</td>
+                                        <td>@s.CreatorTime</td>
+                                    
+                                        <td>
+                                            
+
+
+                                            <a href="/Error/Details?Id=@s.filename">查看</a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+              
+            </div>
+            <!-- END SAMPLE TABLE PORTLET-->
+
+          </div>
+
+
+    </div>
+
+</section>
+
+
+
+@section scripts{
+
+
+
+
+
+  
+
+
+    <script>
+
+     
+
+
+
+
+
+       
+
+    </script>
+
+<script>
+          $(function () {
+              if (!jQuery().datetimepicker) {
+                  return;
+              }
+              $("#kCreatorTime").datetimepicker({
+                  language: 'zh-CN',
+                  autoclose: true,
+                  minView: "month", //选择日期后，不会再跳转去选择时分秒
+                  format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式
+                  pickerPosition: ("bottom-left")
+              });
+
+              $("#eCreatorTime").datetimepicker({
+                  language: 'zh-CN',
+                  autoclose: true,
+                  minView: "month", //选择日期后，不会再跳转去选择时分秒
+                  format: "yyyy-mm-dd", //选择日期后，文本框显示的日期格式
+                  pickerPosition: ("bottom-left")
+              });
+          });
+</script>
+
+}
+

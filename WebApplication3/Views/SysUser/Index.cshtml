@@ -1,0 +1,321 @@
+﻿@using cloudscribe.Web.Pagination
+@using dotNET.Web.Host
+@using dotNET.Web.Host.Controllers
+@using dotNET.Domain.Entities
+@using  dotNET.Dto
+@using dotNET.Web.Host.Model
+@model BaseListViewModel<UserSunpleDto>
+@{
+    Layout = "_Layoutlist";
+    UserOption filer = ViewBag.filter as UserOption;
+
+}
+
+@section headers{
+
+    }
+
+  
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="row">
+            <!-- BEGIN SAMPLE TABLE PORTLET-->
+            <div class="col-md-12">
+                <!-- BEGIN SAMPLE TABLE PORTLET-->
+                <div class="box-body" style="padding-bottom:0px;">
+                    <!--<div class="panel panel-default">-->
+
+                    <div class="search row">
+                        <div class="col-sm-12 form-group">
+                            <div class="form-inline">
+                                <form action="/SysUser/index" method="get" id="searchform">
+
+                                 
+                                        <div class="form-group ">
+                                            <label class="control-label  label-lg label-md">帐号:</label>
+                                            @Html.TextBox("Account", @filer.Account, new { placeholder = "帐号", @class = "form-control input-small input-sm" })
+                                        </div>
+    
+                                    <div class="form-group ">
+                                        <label class="control-label  label-lg label-md">名称:</label>
+                                        @Html.TextBox("RealName", @filer.RealName, new { placeholder = "名称", @class = "form-control input-small input-sm" })
+                                    </div>
+                                        <span class="form-group btn-group">
+                                            <button class="btn btn-sm btn-info" type="submit"><i class="fa fa-search"></i> 搜索</button>
+                                        </span>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--</div>-->
+                    <div style="  position: relative;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            line-height: 34px;">
+                        <div id="toolbar" class="btn-group">
+                          
+
+                                <button id="btn_add" type="button" class="btn btn-default">
+                                  
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                                    </button>
+                         
+                           <button id="btn_download" type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-download" aria-hidden="true"></span>导出excel
+                            </button>
+                      
+                        </div>
+
+                    </div>
+                  
+
+                    <div class="table-scrollable">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr class="heading">
+                                    <th>Id</th>
+                                    <th>帐号</th>
+                                    <th>名称</th>
+                                    <th>联系电话</th>
+                                    <th>角色</th>
+                                    <th>部门</th>
+                                    <th>上次登录时间</th>
+                                    <th>状态</th>
+                                  
+                                    <th style="width:240px">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+
+@if (Model.list.Count > 0)
+{
+    @foreach (var s in Model.list)
+    {
+                                <tr>
+                                    <td>@s.Id</td>
+                                    <td>@s.Account</td>
+                                    <td>@s.RealName</td>
+                                    <td>@s.Tel</td>
+                                    <td>@s.RoleName</td>
+                                    <td>@s.deptname</td>
+                                    <td>@(s.LastLoginTime.HasValue ? s.LastLoginTime.Value.ToString("yyyy/MM/dd HH:mm:ss") : "") </td>
+                                    <td>@(s.State==1?"正常":"禁止登录")</td>
+
+                                    <td>
+                                        <a href="javascript:void(0);" onclick="btndelete('@s.Id');" class="aDel">删除</a>
+                                        
+                                        <a href="javascript:void(0);" onclick="btnChangePassword('@s.Id');" class="aDel">重置密码</a>
+
+                                        <a href="javascript:void(0);" onclick="funupdatestatus('@s.Id','@s.State');" class="aDel">修改登录状态</a>
+
+
+
+                                        <a href="/sysuser/Edit?Id=@s.Id" >编辑</a>
+                                    </td>
+                                </tr>
+    }
+}
+                            </tbody>
+                        </table>
+                      </div>
+@if (Model.list.Count > 0)
+{
+                    <div class="fixed-table-pagination" style="display: block;">
+                
+                        <div class="col-sm-4 hidden-xs" style="padding-top:4px;">
+
+                            <span class="pagination-info"> 显示 第 @( (Model.Paging.ItemsPerPage * (Model.Paging.CurrentPage - 1)) + 1) 到 @( (Model.Paging.ItemsPerPage * Model.Paging.CurrentPage) > Model.Paging.TotalItems ? Model.Paging.TotalItems : (Model.Paging.ItemsPerPage * Model.Paging.CurrentPage) ) 条， 共 @Model.Paging.TotalItems 条</span>
+                        </div>
+                            <div class="col-sm-8 dataTables_paginate;" style="  padding-right:15px; margin-right:0px;">
+
+                             
+                                <cs-pager cs-paging-pagesize="@Model.Paging.ItemsPerPage"
+                                          cs-paging-pagenumber="@Model.Paging.CurrentPage"
+                                          cs-paging-totalitems="@Model.Paging.TotalItems"
+                                          cs-pagenumber-param="page"
+                                          asp-controller="SysUser"
+                                          asp-action="index"
+                                          asp-route-Account="@filer.Account"
+                                            asp-route-RealName="@filer.RealName"
+                                          @*asp-route-categoryname="@filer.categoryName"
+                                          asp-route-pp="@filer.pp" *@
+                                          asp-route-pagesize="@Model.Paging.ItemsPerPage"></cs-pager>
+                            </div>
+                     
+                    </div>
+}
+                </div>
+                <!-- END SAMPLE TABLE PORTLET-->
+
+    
+            </div>
+
+
+        </div>
+
+    </section>
+
+    
+    
+@section scripts{
+
+    <script>
+
+        $("#btn_add").click(function () {
+            location.href = "/sysuser/Create";
+        });
+
+        $("#btn_download").click(function () {
+            var $form = $("#searchform");
+            
+            $.ajax({
+                url: '/ExportExcel/ExportCommonOrder',
+                type: 'post',
+                data: $form.serialize(),
+                cache: false,
+                async: false,
+                success: function (r) {
+
+                    var file = r.message;
+                    if (r.isSucceeded == true) {
+                        top.layer.open({
+                            type: 2,
+                            title: '导出Excel',
+                            shade: 0.8,
+                            area: ['400px', '200px'],
+                            content: '/ExportExcel/SelectFile?File=' + r.message, //iframe的url
+                            success: function (layero, index) {
+                            },
+                            end: function () {
+                                $.ajax({
+                                    url: '/ExportExcel/FileExists',
+                                    type: 'post',
+                                    data: { File: file },
+                                    cache: false,
+                                    async: false,
+                                    success: function (r) {
+                                        if (r.exists == true)  //成功
+                                        {
+                                            location.href = r.file;
+                                        }
+                                        else {
+                                            top.layer.alert('导出失败', { title: "提示" });
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        top.layer.alert(r.message, { title: "提示" });
+                    }
+                },
+                error: function () {
+                    top.layer.alert('导出失败', { title: "提示" });
+                }
+            });
+        });
+        
+    </script>
+
+
+    <script>
+      
+        //删除
+        function btndelete(id) {
+          
+            layer.confirm("确定删除", { title: "删除" }, function (index) {
+
+                $.ajax({
+                    url: "/SysUser/Delete?id=" + id,
+                    type: "POST",
+                    cache: false,
+                    success: function (r) {
+                        if (r.code == 0) {
+                            location.href = location.href;
+                        }
+                        else  // 其他问题
+                        {
+                            $.MsgBox.Alert(r.msg);
+                        }
+                    },
+                    error: function () {
+
+                        $.MsgBox.Alert("操作失败", "提示");
+                    }
+                });
+
+                layer.close(index);
+            });
+        }
+
+
+        function btnChangePassword(id) {
+          
+            layer.confirm("注：您确定要重置密码吗？", { title: "重置密码" }, function (index) {
+
+                $.ajax({
+                    url: "/SysUser/resertPassword?Id=" + id,
+                  
+                    type: "POST",
+                    cache: false,
+                    success: function (r) {
+                        if (r.code == 0) {
+                            location.href = location.href;
+                        }
+                        else  // 其他问题
+                        {
+                            $.MsgBox.Alert(r.msg);
+                        }
+                    },
+                    error: function () {
+
+                        $.MsgBox.Alert("操作失败", "提示");
+                    }
+                });
+
+                layer.close(index);
+            });
+        }
+
+        
+
+        //删除
+        function funupdatestatus(id, state) {
+
+            var alertmsg = "注：您确定要限制该用户登录吗？";
+            if (state == "0") {
+                alertmsg = "注：您确定要解除该用户的登录限制吗？";
+
+            }
+
+            layer.confirm(alertmsg, { title: "修改登录状态"  }, function (index) {
+
+                $.ajax({
+                    url: "/SysUser/updatestatus?id=" + id,
+                    type: "POST",
+                    cache: false,
+                    success: function (r) {
+                        if (r.code == 0) {
+                            location.href = location.href;
+                        }
+                        else  // 其他问题
+                        {
+                            $.MsgBox.Alert(r.msg);
+                        }
+                    },
+                    error: function () {
+
+                        $.MsgBox.Alert("操作失败", "提示");
+                    }
+                });
+
+                layer.close(index);
+            });
+        }
+
+
+    </script>
+    }
+
