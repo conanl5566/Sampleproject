@@ -25,20 +25,13 @@ namespace dotNET.EntityFrameworkCore
             _dbSet = _context.Set<T>();
         }
 
-        public string GetCodeLineAndFileName()
-        {
-            StackTrace insStackTrace = new StackTrace(true);
-            StackFrame insStackFrame = insStackTrace.GetFrame(3);
-            return $"File: {insStackFrame.GetFileName()}, Line: {insStackFrame.GetFileLineNumber()}";
-        }
-
         /// <summary>
         /// 根据过滤条件，获取记录
         /// </summary>
         /// <param name="exp">The exp.</param>
         public IQueryable<T> Find(Expression<Func<T, bool>> exp = null)
         {
-            return Filter(exp).TagWith(GetCodeLineAndFileName());
+            return Filter(exp);
         }
 
         /// <summary>
@@ -48,7 +41,7 @@ namespace dotNET.EntityFrameworkCore
         /// <returns></returns>
         public async Task<bool> IsExistAsync(Expression<Func<T, bool>> exp)
         {
-            return await _dbSet.TagWith(GetCodeLineAndFileName()).AnyAsync(exp);
+            return await _dbSet.AnyAsync(exp);
         }
 
         /// <summary>
@@ -56,7 +49,7 @@ namespace dotNET.EntityFrameworkCore
         /// </summary>
         public async Task<T> FindSingleAsync(Expression<Func<T, bool>> exp)
         {
-            return await _dbSet.AsNoTracking().TagWith(GetCodeLineAndFileName()).FirstOrDefaultAsync(exp);
+            return await _dbSet.AsNoTracking().FirstOrDefaultAsync(exp);
         }
 
         /// <summary>
@@ -71,7 +64,7 @@ namespace dotNET.EntityFrameworkCore
             if (string.IsNullOrEmpty(orderby))
                 orderby = "Id descending";
 
-            return Filter(exp).OrderBy(orderby).Skip(pagesize * (pageindex - 1)).Take(pagesize).TagWith(GetCodeLineAndFileName());
+            return Filter(exp).OrderBy(orderby).Skip(pagesize * (pageindex - 1)).Take(pagesize);
         }
 
         /// <summary>
@@ -79,7 +72,7 @@ namespace dotNET.EntityFrameworkCore
         /// </summary>
         public async Task<int> GetCountAsync(Expression<Func<T, bool>> exp = null)
         {
-            return await Filter(exp).TagWith(GetCodeLineAndFileName()).CountAsync();
+            return await Filter(exp).CountAsync();
         }
 
         /// <summary>
@@ -142,7 +135,7 @@ namespace dotNET.EntityFrameworkCore
         /// <param name="entity">The entity.</param>
         public async Task UpdateAsync(Expression<Func<T, bool>> where, Expression<Func<T, T>> entity)
         {
-            await _dbSet.TagWith(GetCodeLineAndFileName()).Where(where).UpdateAsync(entity);
+            await _dbSet.Where(where).UpdateAsync(entity);
         }
 
         /// <summary>
@@ -152,7 +145,7 @@ namespace dotNET.EntityFrameworkCore
         /// <returns></returns>
         public virtual async Task DeleteAsync(Expression<Func<T, bool>> exp)
         {
-            await _dbSet.TagWith(GetCodeLineAndFileName()).Where(exp).DeleteAsync();
+            await _dbSet.Where(exp).DeleteAsync();
         }
 
         /// <summary>
@@ -178,7 +171,7 @@ namespace dotNET.EntityFrameworkCore
         /// <returns></returns>
         private IQueryable<T> Filter(Expression<Func<T, bool>> exp)
         {
-            var dbSet = _dbSet.AsNoTracking().AsQueryable().TagWith(GetCodeLineAndFileName());
+            var dbSet = _dbSet.AsNoTracking().AsQueryable();
             if (exp != null)
                 dbSet = dbSet.Where(exp);
             return dbSet;

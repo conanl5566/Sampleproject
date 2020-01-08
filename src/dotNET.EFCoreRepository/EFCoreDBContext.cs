@@ -12,9 +12,6 @@ namespace dotNET.EntityFrameworkCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var loggerFactory = new LoggerFactory();
-            loggerFactory.AddProvider(new EFLoggerProvider());
-            optionsBuilder.UseLoggerFactory(loggerFactory);
             base.OnConfiguring(optionsBuilder);
         }
 
