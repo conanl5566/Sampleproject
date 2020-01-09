@@ -1,5 +1,4 @@
-﻿using CompanyName.ProjectName.CommonServer;
-using CompanyName.ProjectName.Core;
+﻿using CompanyName.ProjectName.Core;
 using CompanyName.ProjectName.Enum;
 using System;
 using System.ComponentModel.DataAnnotations;

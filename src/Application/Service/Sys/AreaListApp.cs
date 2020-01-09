@@ -1,16 +1,12 @@
 ﻿#region using
 
-using CompanyName.ProjectName.ICommonServer;
-using CompanyName.ProjectName.ICommonServer.Sys;
+using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
-
-using CompanyName.ProjectName.ICommonServer;
-
+using CompanyName.ProjectName.ICommonServer.Sys;
 using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CompanyName.ProjectName.CommonServer;
 
 #endregion using
 

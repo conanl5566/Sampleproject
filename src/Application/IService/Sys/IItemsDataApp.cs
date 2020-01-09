@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using CompanyName.ProjectName.ICommonServer;
+﻿using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
-using CompanyName.ProjectName.CommonServer;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CompanyName.ProjectName.ICommonServer.Sys
 {

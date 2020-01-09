@@ -5,10 +5,6 @@
  * 修改记录：
  * ***********************************************************************/
 
-using CompanyName.ProjectName.CommonServer;
-
-using CompanyName.ProjectName.CommonServer;
-
 using CompanyName.ProjectName.Core;
 
 namespace CompanyName.ProjectName.CommonServer

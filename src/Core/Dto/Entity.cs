@@ -5,7 +5,6 @@
  * 修改记录：
  * ***********************************************************************/
 
-using CompanyName.ProjectName.Core;
 using CompanyName.ProjectName.Enum;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
