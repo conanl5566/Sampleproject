@@ -1,10 +1,10 @@
-﻿using dotNET.ICommonServer;
-using dotNET.CommonServer;
+﻿using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.CommonServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace dotNET.Web.Host.Model
+namespace CompanyName.ProjectName.Web.Host.Model
 {
     /// <summary>
     /// 扩展方法

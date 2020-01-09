@@ -1,12 +1,12 @@
 ﻿#region using
 
-using dotNET.ICommonServer;
-using dotNET.ICommonServer.Sys;
-using dotNET.Core;
-using dotNET.CommonServer;
-using dotNET.Web.Host.Framework;
-using dotNET.Web.Host.Model;
-using dotNET.Web.Host.Web.Model;
+using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.ICommonServer.Sys;
+using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.CommonServer;
+using CompanyName.ProjectName.Web.Host.Framework;
+using CompanyName.ProjectName.Web.Host.Model;
+using CompanyName.ProjectName.Web.Host.Web.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Options;
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 #endregion using
 
-namespace dotNET.Web.Host.Controllers
+namespace CompanyName.ProjectName.Web.Host.Controllers
 {
     public class SysUserController : CustomController
     {
@@ -87,7 +87,7 @@ namespace dotNET.Web.Host.Controllers
                 return Json(ResultDto.Err("数据验证失败;" + GetErrorFromModelStateStr()));
             }
             var user = model.MapTo<User>();
-            user.Password = dotNET.Core.Security.MD5Encrypt.MD5(user.Password);
+            user.Password = CompanyName.ProjectName.Core.Security.MD5Encrypt.MD5(user.Password);
             if (!string.IsNullOrWhiteSpace(user.Avatar))
             {
                 var saveUrl = IMGOperate.BaseSave(ImagePathType.员工头像, user.Avatar);

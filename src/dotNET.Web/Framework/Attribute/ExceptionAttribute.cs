@@ -1,13 +1,13 @@
 ﻿#region using
 
-using dotNET.Core;
+using CompanyName.ProjectName.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Threading.Tasks;
 
 #endregion using
 
-namespace dotNET.Web.Host.Framework
+namespace CompanyName.ProjectName.Web.Host.Framework
 {
     /// <summary>
     /// 统一错误处理

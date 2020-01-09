@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 
 //11
 //2222
-namespace dotNET.Web.Host
+namespace CompanyName.ProjectName.Web.Host
 {
     public class Program
     {

@@ -1,9 +1,9 @@
 ﻿#region using
 
-using dotNET.ICommonServer.Sys;
-using dotNET.Core;
-using dotNET.Web.Host.Framework;
-using dotNET.Web.Host.Web.Model;
+using CompanyName.ProjectName.ICommonServer.Sys;
+using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.Web.Host.Framework;
+using CompanyName.ProjectName.Web.Host.Web.Model;
 using Hangfire;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 #endregion using
 
-namespace dotNET.Web.Host.Controllers
+namespace CompanyName.ProjectName.Web.Host.Controllers
 {
     public class demoController : CustomController
     {

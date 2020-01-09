@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using Microsoft.AspNetCore.Routing;
 
-namespace dotNET.Web.Host.Framework
+namespace CompanyName.ProjectName.Web.Host.Framework
 {
     public class AjaxOnlyAttribute : ActionMethodSelectorAttribute
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace dotNET.Web.Host.Model
+namespace CompanyName.ProjectName.Web.Host.Model
 {
     public class BaseListViewModel<T>
     {

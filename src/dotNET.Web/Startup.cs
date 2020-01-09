@@ -3,11 +3,11 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
-using dotNET.ICommonServer;
-using dotNET.Core;
-using dotNET.CommonServer;
-using dotNET.Web.Host.Framework;
-using dotNET.Web.Host.Framework.Middlewares;
+using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.CommonServer;
+using CompanyName.ProjectName.Web.Host.Framework;
+using CompanyName.ProjectName.Web.Host.Framework.Middlewares;
 using Exceptionless;
 using Hangfire;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -29,7 +29,7 @@ using System.Text;
 
 #endregion using
 
-namespace dotNET.Web.Host
+namespace CompanyName.ProjectName.Web.Host
 {
     public class Startup
     {
@@ -58,7 +58,7 @@ namespace dotNET.Web.Host
                         options.Authority = Configuration["IdentityUrl"];
                         options.RequireHttpsMetadata = false;
 
-                        options.ClientId = "dotNET.Mvc";
+                        options.ClientId = "CompanyName.ProjectName.Mvc";
                         options.SaveTokens = true;
                         options.TokenValidationParameters = new TokenValidationParameters
                         {

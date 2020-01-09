@@ -1,5 +1,5 @@
-using dotNET.ICommonServer.Sys;
-using dotNET.Core;
+using CompanyName.ProjectName.ICommonServer.Sys;
+using CompanyName.ProjectName.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace dotNET.Web.Host.Framework
+namespace CompanyName.ProjectName.Web.Host.Framework
 {
     public class CustomController : Controller
     {

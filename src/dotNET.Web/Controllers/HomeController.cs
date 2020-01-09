@@ -1,10 +1,10 @@
 ﻿#region using
 
-using dotNET.ICommonServer;
-using dotNET.ICommonServer.Sys;
-using dotNET.Core;
-using dotNET.CommonServer;
-using dotNET.Web.Host.Framework;
+using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.ICommonServer.Sys;
+using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.CommonServer;
+using CompanyName.ProjectName.Web.Host.Framework;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 #endregion using
 
-namespace dotNET.Web.Host.Controllers
+namespace CompanyName.ProjectName.Web.Host.Controllers
 {
     /// <summary>
     ///

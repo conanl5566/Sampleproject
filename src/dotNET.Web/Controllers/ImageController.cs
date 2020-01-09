@@ -1,8 +1,8 @@
 ﻿#region using
 
-using dotNET.Core;
-using dotNET.Web.Host.Framework;
-using dotNET.Web.Host.Web.Model;
+using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.Web.Host.Framework;
+using CompanyName.ProjectName.Web.Host.Web.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 using System;
@@ -13,7 +13,7 @@ using System.IO;
 /// <summary>
 /// 文件上传
 /// </summary>
-namespace dotNET.Web.Host.Controllers
+namespace CompanyName.ProjectName.Web.Host.Controllers
 {
     public class ImageController : CustomController
     {

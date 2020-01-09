@@ -1,10 +1,10 @@
-﻿using dotNET.ICommonServer;
-using dotNET.CommonServer;
+﻿using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.CommonServer;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace dotNET.Web.Host.Model
+namespace CompanyName.ProjectName.Web.Host.Model
 {
     public class DepartmentModel : GoBackUrlModel
     {

@@ -1,11 +1,11 @@
 ﻿#region using
 
-using dotNET.ICommonServer;
-using dotNET.ICommonServer.Sys;
-using dotNET.Core;
-using dotNET.CommonServer;
-using dotNET.Web.Host.Framework;
-using dotNET.Web.Host.Web.Model;
+using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.ICommonServer.Sys;
+using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.CommonServer;
+using CompanyName.ProjectName.Web.Host.Framework;
+using CompanyName.ProjectName.Web.Host.Web.Model;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 
 #endregion using
 
-namespace dotNET.Web.Host.Controllers
+namespace CompanyName.ProjectName.Web.Host.Controllers
 {
     /// <summary>
     ///

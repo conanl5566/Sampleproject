@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 
-namespace dotNET.Web.Host
+namespace CompanyName.ProjectName.Web.Host
 {
     /// <summary>
     /// 获取当前上下文  中间件

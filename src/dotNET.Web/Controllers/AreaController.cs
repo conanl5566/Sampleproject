@@ -1,11 +1,11 @@
 ﻿#region using
 
-using dotNET.ICommonServer;
-using dotNET.ICommonServer.Sys;
-using dotNET.Core;
-using dotNET.CommonServer;
-using dotNET.Web.Host.Framework;
-using dotNET.Web.Host.Model;
+using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.ICommonServer.Sys;
+using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.CommonServer;
+using CompanyName.ProjectName.Web.Host.Framework;
+using CompanyName.ProjectName.Web.Host.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 #endregion using
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-namespace dotNET.Web.Host.Controllers
+namespace CompanyName.ProjectName.Web.Host.Controllers
 {
     public class AreaController : CustomController
     {

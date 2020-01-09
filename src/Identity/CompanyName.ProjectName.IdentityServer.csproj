@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="2.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\CompanyName.ProjectName.ICommonServer.csproj" />
+    <ProjectReference Include="..\Core\CompanyName.ProjectName.Core.csproj" />
+    <ProjectReference Include="..\EFCoreRepository\CompanyName.ProjectName.CommonServer.csproj" />
+    <ProjectReference Include="..\Enum\CompanyName.ProjectName.Enum.csproj" />
+  </ItemGroup>
+</Project>

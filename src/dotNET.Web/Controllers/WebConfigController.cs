@@ -1,11 +1,11 @@
 ﻿#region using
 
-using dotNET.ICommonServer;
-using dotNET.ICommonServer.Sys;
-using dotNET.Core;
-using dotNET.Enum;
-using dotNET.Web.Host.Framework;
-using dotNET.Web.Host.Model;
+using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.ICommonServer.Sys;
+using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.Enum;
+using CompanyName.ProjectName.Web.Host.Framework;
+using CompanyName.ProjectName.Web.Host.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Linq;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 #endregion using
 
-namespace dotNET.Web.Host.Controllers
+namespace CompanyName.ProjectName.Web.Host.Controllers
 {
     public class WebConfigController : CustomController
     {

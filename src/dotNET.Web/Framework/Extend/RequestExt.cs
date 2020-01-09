@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace dotNET.Web.Host.Framework
+namespace CompanyName.ProjectName.Web.Host.Framework
 {
     public static class RequestExt
     {

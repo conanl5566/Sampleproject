@@ -8,7 +8,7 @@
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System;
 
-namespace dotNET.Web.Host.TagHelpers
+namespace CompanyName.ProjectName.Web.Host.TagHelpers
 {
     //https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNet.Mvc.TagHelpers/AnchorTagHelper.cs
     //  https://github.com/joeaudette/cloudscribe.Web.Pagination

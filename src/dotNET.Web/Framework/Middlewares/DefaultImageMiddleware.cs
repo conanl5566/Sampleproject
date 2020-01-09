@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace dotNET.Web.Host.Framework.Middlewares
+namespace CompanyName.ProjectName.Web.Host.Framework.Middlewares
 {
     public class DefaultImageMiddleware
     {

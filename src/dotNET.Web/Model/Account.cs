@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace dotNET.Web.Host.Web.Model
+namespace CompanyName.ProjectName.Web.Host.Web.Model
 {
     public class demock
     {

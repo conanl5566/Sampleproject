@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace dotNET.Web.Host.Web.Model
+namespace CompanyName.ProjectName.Web.Host.Web.Model
 {
     /// <summary>
     /// 上传图片

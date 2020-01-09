@@ -1,4 +1,4 @@
-﻿namespace dotNET.Web.Host.Model
+﻿namespace CompanyName.ProjectName.Web.Host.Model
 {
     /// <summary>
     /// 返回地址

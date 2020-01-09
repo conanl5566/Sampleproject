@@ -1,8 +1,8 @@
 ﻿#region using
 
-using dotNET.ICommonServer;
-using dotNET.Core;
-using dotNET.Web.Host.Framework;
+using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.Web.Host.Framework;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace dotNET.Web.Host.Controllers
+namespace CompanyName.ProjectName.Web.Host.Controllers
 {
     public class ErrorController : CustomController
     {

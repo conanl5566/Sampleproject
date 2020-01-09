@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
-namespace dotNET.Web.Host.Framework
+namespace CompanyName.ProjectName.Web.Host.Framework
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
     public class IgnoreAuthorizeAttribute : ActionFilterAttribute
