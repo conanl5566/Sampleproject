@@ -1,5 +1,4 @@
-﻿using CompanyName.ProjectName.CommonServer;
-using CompanyName.ProjectName.Core;
+﻿using CompanyName.ProjectName.Core;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;

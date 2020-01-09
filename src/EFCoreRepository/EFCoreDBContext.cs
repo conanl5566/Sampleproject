@@ -1,6 +1,4 @@
-﻿using CompanyName.ProjectName.CommonServer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CompanyName.ProjectName.CommonServer
 {

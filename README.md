@@ -1,1 +1,1 @@
-.Net Core快速应用开发框架
+.Net Core+EntityFrameworkCore+mysql 样版项目

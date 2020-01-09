@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp2.0\dotNET.HttpApi.Host.xml</DocumentationFile>
-    <OutputPath>bin\Debug\netcoreapp2.0\</OutputPath>
+    <DocumentationFile>bin\Debug\netcoreapp2.2\CompanyName.ProjectName.HttpApi.Host.xml</DocumentationFile>
+    <OutputPath>bin\Debug\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

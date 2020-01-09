@@ -1,18 +1,14 @@
 ﻿#region using
 
+using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
 using CompanyName.ProjectName.Core.Security;
-using CompanyName.ProjectName.ICommonServer;
+using CompanyName.ProjectName.ICommonServer.Sys;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-using CompanyName.ProjectName.ICommonServer;
-
-using CompanyName.ProjectName.ICommonServer.Sys;
-using CompanyName.ProjectName.CommonServer;
 
 #endregion using
 
