@@ -2,20 +2,23 @@
 
 using dotNET.Core;
 using dotNET.Core.Security;
-using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
-using dotNET.EntityFrameworkCore;
+using dotNET.ICommonServer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using dotNET.ICommonServer;
+
+using dotNET.ICommonServer.Sys;
+using dotNET.CommonServer;
+
 #endregion using
 
-namespace dotNET.Application.Sys
+namespace dotNET.ICommonServer
 {
-    public class UserApp : IUserApp
+    public class UserApp : AppService, IUserApp
     {
         #region 注入
 

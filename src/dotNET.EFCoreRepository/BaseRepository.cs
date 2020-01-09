@@ -1,15 +1,14 @@
-﻿using dotNET.Domain;
-using dotNET.Dto;
+﻿using dotNET.CommonServer;
+using dotNET.Core;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Z.EntityFramework.Plus;
 
-namespace dotNET.EntityFrameworkCore
+namespace dotNET.CommonServer
 {
     /// <summary>
     ///

@@ -2,26 +2,30 @@
 using System.ComponentModel;
 using System.Reflection;
 using Autofac.Extensions.DependencyInjection;
-using dotNET.Application;
-using dotNET.EntityFrameworkCore;
+using dotNET.Core;
+using dotNET.CommonServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 namespace dotNET.IdentityServer
 {
     public class Startup
     {
         public IHostingEnvironment Environment { get; }
+
         public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
             Configuration = configuration;
             Environment = environment;
         }
+
         public IConfiguration Configuration { get; }
         public IContainer ApplicationContainer { get; private set; }
+
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -52,7 +56,6 @@ namespace dotNET.IdentityServer
             services.AddCors();
             services.AddDbContext<EFCoreDBContext>(options => options.UseMySql(Configuration["Data:MyCat:ConnectionString"]));
             return new AutofacServiceProvider(AutofacExt.InitAutofac(services, Assembly.GetExecutingAssembly()));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

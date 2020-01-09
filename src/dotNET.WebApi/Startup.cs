@@ -1,6 +1,6 @@
 ﻿using Autofac.Extensions.DependencyInjection;
-using dotNET.Application;
-using dotNET.EntityFrameworkCore;
+using dotNET.Core;
+using dotNET.CommonServer;
 using dotNET.HttpApi.Host.Code;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

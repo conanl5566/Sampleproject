@@ -26,8 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\dotNET.Application\dotNET.Application.csproj" />
+    <ProjectReference Include="..\dotNET.Application\dotNET.ICommonServer.csproj" />
     <ProjectReference Include="..\dotNET.Core\dotNET.Core.csproj" />
-    <ProjectReference Include="..\dotNET.Dto\dotNET.Dto.csproj" />
+    <ProjectReference Include="..\dotNET.EFCoreRepository\dotNET.CommonServer.csproj" />
+    <ProjectReference Include="..\dotNET.Enum\dotNET.Enum.csproj" />
   </ItemGroup>
 </Project>

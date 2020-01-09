@@ -1,6 +1,6 @@
 ﻿#region using
 
-using dotNET.Application.Sys;
+using dotNET.ICommonServer.Sys;
 using dotNET.Core;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;

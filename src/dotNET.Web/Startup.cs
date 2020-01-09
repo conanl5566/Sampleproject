@@ -3,9 +3,9 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
-using dotNET.Application;
+using dotNET.ICommonServer;
 using dotNET.Core;
-using dotNET.EntityFrameworkCore;
+using dotNET.CommonServer;
 using dotNET.Web.Host.Framework;
 using dotNET.Web.Host.Framework.Middlewares;
 using Exceptionless;

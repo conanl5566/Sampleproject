@@ -1,11 +1,10 @@
 ﻿@using cloudscribe.Web.Pagination
 @using dotNET.Web.Host
 @using dotNET.Web.Host.Controllers
-@using dotNET.Domain.Entities
-@using dotNET.Domain.Entities.Sys
-@using  dotNET.Dto
+@using dotNET.CommonServer
+@using dotNET.ICommonServer
 @using dotNET.Web.Host.Model
-@model BaseListViewModel<dotNET.Domain.Entities.Sys.Role>
+@model BaseListViewModel<Role>
 @{
     Layout = "_Layoutlist";
     RoleOption filer = ViewBag.filter as RoleOption;
@@ -110,8 +109,6 @@
                                       asp-controller="role"
                                       asp-action="index"
                                       asp-route-Name="@filer.Name"
-                                      @*asp-route-categoryname="@filer.categoryName"
-                                      asp-route-pp="@filer.pp" *@
                                       asp-route-pagesize="@Model.Paging.ItemsPerPage"></cs-pager>
                         </div>
                     </div>

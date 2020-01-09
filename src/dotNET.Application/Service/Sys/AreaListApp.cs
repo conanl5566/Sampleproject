@@ -1,15 +1,20 @@
 ﻿#region using
 
-using dotNET.Domain.Entities.Sys;
-using dotNET.EntityFrameworkCore;
+using dotNET.ICommonServer;
+using dotNET.ICommonServer.Sys;
+using dotNET.Core;
+
+using dotNET.ICommonServer;
+
 using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using dotNET.CommonServer;
 
 #endregion using
 
-namespace dotNET.Application.Sys
+namespace dotNET.ICommonServer
 {
     /// <summary>
     /// 地区

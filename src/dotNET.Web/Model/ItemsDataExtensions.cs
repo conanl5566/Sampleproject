@@ -1,4 +1,5 @@
-﻿using dotNET.Domain.Entities.Sys;
+﻿using dotNET.ICommonServer;
+using dotNET.CommonServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;

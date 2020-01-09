@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="App\**" />
+    <Compile Remove="IApp\**" />
+    <EmbeddedResource Remove="App\**" />
+    <EmbeddedResource Remove="IApp\**" />
+    <None Remove="App\**" />
+    <None Remove="IApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="Hangfire" Version="1.7.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\dotNET.Core\dotNET.Core.csproj" />
+    <ProjectReference Include="..\dotNET.EFCoreRepository\dotNET.CommonServer.csproj" />
+    <ProjectReference Include="..\dotNET.Enum\dotNET.Enum.csproj" />
+  </ItemGroup>
+</Project>

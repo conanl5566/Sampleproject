@@ -1,9 +1,9 @@
 ﻿#region using
 
-using dotNET.Application.Sys;
+using dotNET.ICommonServer;
+using dotNET.ICommonServer.Sys;
 using dotNET.Core;
-using dotNET.Dto.Enum;
-using dotNET.Dto.WebConfig;
+using dotNET.Enum;
 using dotNET.Web.Host.Framework;
 using dotNET.Web.Host.Model;
 using Microsoft.AspNetCore.Mvc;

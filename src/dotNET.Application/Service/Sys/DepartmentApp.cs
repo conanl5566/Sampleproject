@@ -1,17 +1,21 @@
-﻿using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
-using dotNET.EntityFrameworkCore;
+﻿using dotNET.ICommonServer;
+using dotNET.ICommonServer.Sys;
+using dotNET.Core;
+
+using dotNET.ICommonServer;
+
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dotNET.CommonServer;
 
-namespace dotNET.Application.Sys
+namespace dotNET.ICommonServer
 {
     /// <summary>
     /// 部门
     /// </summary>
-    public class DepartmentApp : IDepartmentApp
+    public class DepartmentApp : AppService, IDepartmentApp
     {
         #region 注入
 

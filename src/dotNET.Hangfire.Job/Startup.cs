@@ -1,7 +1,6 @@
 ﻿using Autofac.Extensions.DependencyInjection;
-using dotNET.Application;
 using dotNET.Core;
-using dotNET.EntityFrameworkCore;
+using dotNET.CommonServer;
 using dotNET.Hangfire.Job.Code;
 using Hangfire;
 using Hangfire.Dashboard;

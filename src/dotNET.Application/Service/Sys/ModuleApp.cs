@@ -1,16 +1,16 @@
-﻿using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
-using dotNET.EntityFrameworkCore;
-using dotNET.EntityFrameworkCore.Infrastructure;
+﻿using dotNET.Core;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dotNET.ICommonServer.Sys;
+using dotNET.ICommonServer;
+using dotNET.CommonServer;
 
-namespace dotNET.Application.Sys
+namespace dotNET.ICommonServer
 {
-    public class ModuleApp : IModuleApp
+    public class ModuleApp : AppService, IModuleApp
     {
         #region 注入
 

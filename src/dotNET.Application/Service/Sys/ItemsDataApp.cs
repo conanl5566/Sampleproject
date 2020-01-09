@@ -1,12 +1,16 @@
-﻿using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
-using dotNET.EntityFrameworkCore;
+﻿using dotNET.Core;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using dotNET.ICommonServer;
 
-namespace dotNET.Application.Sys
+using dotNET.ICommonServer;
+
+using dotNET.ICommonServer.Sys;
+using dotNET.CommonServer;
+
+namespace dotNET.ICommonServer
 {
     public class ItemsDataApp : AppService, IItemsDataApp
     {

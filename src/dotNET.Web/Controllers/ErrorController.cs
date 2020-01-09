@@ -1,7 +1,7 @@
 ﻿#region using
 
+using dotNET.ICommonServer;
 using dotNET.Core;
-using dotNET.Dto;
 using dotNET.Web.Host.Framework;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;

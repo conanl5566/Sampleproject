@@ -1,6 +1,4 @@
-﻿using dotNET.Domain;
-using dotNET.Dto;
-using dotNET.EntityFrameworkCore.Infrastructure;
+﻿using dotNET.Core;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -8,7 +6,7 @@ using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using Z.EntityFramework.Plus;
 
-namespace dotNET.EntityFrameworkCore
+namespace dotNET.CommonServer
 {
     public class UnitWork : IUnitWork
     {

@@ -1,11 +1,9 @@
 ﻿@using cloudscribe.Web.Pagination
 @using dotNET.Web.Host
 @using dotNET.Web.Host.Controllers
-@using dotNET.Domain.Entities
-@using  dotNET.Dto
-@using dotNET.Dto.WebConfig
+@using  dotNET.ICommonServer
 @using dotNET.Web.Host.Model
-@model BaseListViewModel<dotNET.Dto.WebConfig.WebConfigDto>
+@model BaseListViewModel<dotNET.ICommonServer.WebConfigDto>
 @{
     Layout = "_Layoutlist";
     WebConfigOption filer = ViewBag.filter as WebConfigOption;

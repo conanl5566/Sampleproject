@@ -1,8 +1,9 @@
 ﻿#region using
 
-using dotNET.Application.Sys;
+using dotNET.ICommonServer;
+using dotNET.ICommonServer.Sys;
 using dotNET.Core;
-using dotNET.Domain.Entities.Sys;
+using dotNET.CommonServer;
 using dotNET.Web.Host.Framework;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

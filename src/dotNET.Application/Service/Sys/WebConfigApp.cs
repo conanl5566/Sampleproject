@@ -1,21 +1,23 @@
 ﻿#region using
 
 using dotNET.Core;
-using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
-using dotNET.Dto.WebConfig;
-using dotNET.EntityFrameworkCore;
+using dotNET.ICommonServer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using dotNET.ICommonServer;
+
+using dotNET.ICommonServer.Sys;
+using dotNET.CommonServer;
+
 #endregion using
 
-namespace dotNET.Application.Sys
+namespace dotNET.ICommonServer
 {
-    public class WebConfigApp : IWebConfigApp
+    public class WebConfigApp : AppService, IWebConfigApp
     {
         #region 注入
 

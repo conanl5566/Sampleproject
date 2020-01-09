@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using dotNET.CommonServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace dotNET.EntityFrameworkCore
+namespace dotNET.CommonServer
 {
     public partial class EFCoreDBContext : DbContext
     {

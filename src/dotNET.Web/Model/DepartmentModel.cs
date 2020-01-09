@@ -1,4 +1,5 @@
-﻿using dotNET.Domain.Entities.Sys;
+﻿using dotNET.ICommonServer;
+using dotNET.CommonServer;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

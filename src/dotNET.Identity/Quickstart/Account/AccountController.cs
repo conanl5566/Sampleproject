@@ -1,9 +1,9 @@
 // Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
-
-using dotNET.Application.Sys;
-using dotNET.Domain.Entities.Sys;
+using dotNET.CommonServer;
+using dotNET.ICommonServer;
+using dotNET.ICommonServer.Sys;
 using IdentityModel;
 using IdentityServer4.Events;
 using IdentityServer4.Extensions;
@@ -82,7 +82,7 @@ namespace IdentityServer
             {
                 if (context != null)
                 {
-                    // if the user cancels, send a result back into IdentityServer as if they 
+                    // if the user cancels, send a result back into IdentityServer as if they
                     // denied the consent (even if this client does not require consent).
                     // this will send back an access denied OIDC error response to the client.
                     await _interaction.GrantConsentAsync(context, ConsentResponse.Denied);
@@ -118,13 +118,13 @@ namespace IdentityServer
                 ////}
                 ////else
                 ////{
-                user =await  _userApp.GetAsync(model.Username);// _userManager.GetByAccount(model.Username);
-                ////}
+                user = await _userApp.GetAsync(model.Username);// _userManager.GetByAccount(model.Username);
+                                                               ////}
 
-              //  if (user != null &&(user.Password ==model.Password))
-                    if (user != null )
-                    {
-                    if (user.State!= 1)   //ÅÐ¶ÏÓÃ»§×´Ì¬
+                //  if (user != null &&(user.Password ==model.Password))
+                if (user != null)
+                {
+                    if (user.State != 1)   //ÅÐ¶ÏÓÃ»§×´Ì¬
                     {
                         await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid user status"));
                         ModelState.AddModelError(string.Empty, "user.status must be 0");
@@ -134,7 +134,7 @@ namespace IdentityServer
 
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.Account, user.Id.ToString(), user.Account));
 
-                    // only set explicit expiration here if user chooses "remember me". 
+                    // only set explicit expiration here if user chooses "remember me".
                     // otherwise we rely upon expiration configured in cookie middleware.
                     AuthenticationProperties props = null;
                     if (AccountOptions.AllowRememberLogin && model.RememberLogin)
@@ -187,7 +187,6 @@ namespace IdentityServer
             return View(vm);
         }
 
-        
         /// <summary>
         /// Show logout page
         /// </summary>
@@ -241,11 +240,10 @@ namespace IdentityServer
             return View("LoggedOut", vm);
         }
 
-
-
         /*****************************************/
         /* helper APIs for the AccountController */
         /*****************************************/
+
         private async Task<LoginViewModel> BuildLoginViewModelAsync(string returnUrl)
         {
             var context = await _interaction.GetAuthorizationContextAsync(returnUrl);

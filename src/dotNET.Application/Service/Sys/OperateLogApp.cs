@@ -1,7 +1,5 @@
 ﻿using dotNET.Core;
-using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
-using dotNET.EntityFrameworkCore;
+using dotNET.ICommonServer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,9 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dotNET.Application.Sys
+using dotNET.ICommonServer;
+
+using dotNET.ICommonServer.Sys;
+using dotNET.CommonServer;
+
+namespace dotNET.ICommonServer
 {
-    public class OperateLogApp : IAppService, IOperateLogApp
+    public class OperateLogApp : AppService, IOperateLogApp
     {
         #region 注入
 

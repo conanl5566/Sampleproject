@@ -5,6 +5,6 @@
         /// <summary>
         /// 受权 Authentication 名称
         /// </summary>
-        public static string AuthenticationScheme = "dotNET.ApplicationCookie";
+        public static string AuthenticationScheme = "dotNET.ICommonServerCookie";
     }
 }

@@ -1,8 +1,12 @@
-﻿using dotNET.Domain.Entities.Sys;
+﻿using dotNET.CommonServer;
+
+using dotNET.CommonServer;
+using dotNET.CommonServer;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace dotNET.EntityFrameworkCore
+namespace dotNET.CommonServer
 {
     public class AreaListConfiguration : EntityMappingConfiguration<AreaList>
     {

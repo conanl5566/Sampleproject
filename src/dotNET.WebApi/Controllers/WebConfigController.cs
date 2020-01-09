@@ -1,8 +1,6 @@
-﻿using dotNET.Application;
-using dotNET.Application.Sys;
+﻿using dotNET.ICommonServer;
+using dotNET.ICommonServer.Sys;
 using dotNET.Core;
-using dotNET.Dto;
-using dotNET.Dto.WebConfig;
 using dotNET.HttpApi.Host.Code;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

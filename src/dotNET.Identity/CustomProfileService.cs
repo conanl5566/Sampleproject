@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using dotNET.Application.Sys;
-using dotNET.Domain.Entities.Sys;
+using dotNET.CommonServer;
+using dotNET.ICommonServer;
+using dotNET.ICommonServer.Sys;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
@@ -56,7 +57,7 @@ namespace dotNET.IdentityServer
                         new Claim(ClaimTypes.Name, user.Account),  //请求用户的账号，这个可以保证User.Identity.Name有值
                         new Claim(JwtClaimTypes.Name, user.Account),  //请求用户的姓名
                     };
-                    //返回apiresource中定义的claims   
+                    //返回apiresource中定义的claims
                     context.AddRequestedClaims(claims);
                 }
             }
@@ -76,8 +77,8 @@ namespace dotNET.IdentityServer
             Logger.LogDebug("IsActive called from: {caller}", context.Caller);
 
             var user = await GetUser(context.Subject.Identity.Name);
-            context.IsActive =  user?.State == 1;
-                                    //  return Task.CompletedTask;
+            context.IsActive = user?.State == 1;
+            //  return Task.CompletedTask;
         }
 
         private async Task<User> GetUser(string identityName)

@@ -1,8 +1,7 @@
-﻿using dotNET.Application;
-using dotNET.Application.Sys;
+﻿using dotNET.ICommonServer;
+using dotNET.ICommonServer.Sys;
 using dotNET.Core;
-using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
+using dotNET.CommonServer;
 using dotNET.Web.Host.Framework;
 using dotNET.Web.Host.Model;
 using Microsoft.AspNetCore.Mvc;

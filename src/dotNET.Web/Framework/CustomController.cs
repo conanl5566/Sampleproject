@@ -1,4 +1,4 @@
-using dotNET.Application.Sys;
+using dotNET.ICommonServer.Sys;
 using dotNET.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

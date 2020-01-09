@@ -1,16 +1,20 @@
-﻿using dotNET.Core.Cache;
-using dotNET.Domain.Entities.Sys;
-using dotNET.Dto;
-using dotNET.EntityFrameworkCore;
+﻿using dotNET.Core;
+using dotNET.Core.Cache;
+using dotNET.ICommonServer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace dotNET.Application.Sys
+using dotNET.ICommonServer;
+
+using dotNET.ICommonServer.Sys;
+using dotNET.CommonServer;
+
+namespace dotNET.ICommonServer
 {
-    public class RoleAuthorizeApp : IRoleAuthorizeApp
+    public class RoleAuthorizeApp : AppService, IRoleAuthorizeApp
     {
         #region 注入
 

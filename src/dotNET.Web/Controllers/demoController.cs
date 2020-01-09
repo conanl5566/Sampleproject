@@ -1,6 +1,6 @@
 ﻿#region using
 
-using dotNET.Application.Sys;
+using dotNET.ICommonServer.Sys;
 using dotNET.Core;
 using dotNET.Web.Host.Framework;
 using dotNET.Web.Host.Web.Model;
