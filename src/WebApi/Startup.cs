@@ -123,7 +123,7 @@ namespace CompanyName.ProjectName.HttpApi.Host
               var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
               var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
               c.IncludeXmlComments(xmlPath);
-              c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"CompanyName.ProjectName.Dto.xml"));
+              c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"CompanyName.ProjectName.ICommonServer.xml"));
           });
 
             #endregion Swagger
