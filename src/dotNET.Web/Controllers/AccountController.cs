@@ -26,7 +26,7 @@ namespace CompanyName.ProjectName.Web.Host.Controllers
     ///
     /// </summary>
     [IgnoreAuthorize]
-    public class AccountController : Controller
+    public class AccountController : Controller11
     {
         #region ini
 
