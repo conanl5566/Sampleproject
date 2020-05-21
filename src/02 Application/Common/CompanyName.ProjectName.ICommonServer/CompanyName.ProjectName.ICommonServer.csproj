@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>E:\github\base\src\WebApi\bin\Debug\netcoreapp2.2\CompanyName.ProjectName.ICommonServer.xml</DocumentationFile>
+    <DocumentationFile>E:\github\base\src\03 Host\CompanyName.ProjectName.HttpApi.Host\bin\Debug\netcoreapp2.2\CompanyName.ProjectName.ICommonServer.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,8 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\CompanyName.ProjectName.Core.csproj" />
-    <ProjectReference Include="..\EFCoreRepository\CompanyName.ProjectName.CommonServer.csproj" />
-    <ProjectReference Include="..\Enum\CompanyName.ProjectName.Enum.csproj" />
+    <ProjectReference Include="..\..\..\01 Core\Core\CompanyName.ProjectName.Core.csproj" />
+    <ProjectReference Include="..\..\..\01 Core\Enum\CompanyName.ProjectName.Enum.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.CommonServer\CompanyName.ProjectName.CommonServer.csproj" />
   </ItemGroup>
 </Project>

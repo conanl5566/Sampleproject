@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\CompanyName.ProjectName.Core.csproj" />
-    <ProjectReference Include="..\Enum\CompanyName.ProjectName.Enum.csproj" />
+    <ProjectReference Include="..\..\..\01 Core\Core\CompanyName.ProjectName.Core.csproj" />
+    <ProjectReference Include="..\..\..\01 Core\Enum\CompanyName.ProjectName.Enum.csproj" />
   </ItemGroup>
 </Project>

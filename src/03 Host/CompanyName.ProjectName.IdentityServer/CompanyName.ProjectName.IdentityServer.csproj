@@ -12,9 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\CompanyName.ProjectName.ICommonServer.csproj" />
-    <ProjectReference Include="..\Core\CompanyName.ProjectName.Core.csproj" />
-    <ProjectReference Include="..\EFCoreRepository\CompanyName.ProjectName.CommonServer.csproj" />
-    <ProjectReference Include="..\Enum\CompanyName.ProjectName.Enum.csproj" />
+    <ProjectReference Include="..\..\02 Application\Common\CompanyName.ProjectName.CommonServer\CompanyName.ProjectName.CommonServer.csproj" />
+    <ProjectReference Include="..\..\02 Application\Common\CompanyName.ProjectName.ICommonServer\CompanyName.ProjectName.ICommonServer.csproj" />
   </ItemGroup>
 </Project>
