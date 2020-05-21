@@ -1,1 +1,1 @@
-.Net Core+EntityFrameworkCore+mysql 样版项目
+.Net Core+EntityFrameworkCore+mysql 
