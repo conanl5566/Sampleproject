@@ -1,4 +1,6 @@
-.Net Core+EntityFrameworkCore+mysql 
+基于.Net Core+EntityFrameworkCore+mysql 开发
+
+项目包含
 
 1、web后台
 
