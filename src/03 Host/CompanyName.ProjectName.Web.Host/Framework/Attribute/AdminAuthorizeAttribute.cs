@@ -43,7 +43,7 @@ namespace CompanyName.ProjectName.Web.Host.Framework
                 string area = "";
                 try
                 {
-                    area = context.RouteData.Values["area"].ToString();
+                    area = context.RouteData.Values["area"]?.ToString() ?? "";
                 }
                 catch
                 {
