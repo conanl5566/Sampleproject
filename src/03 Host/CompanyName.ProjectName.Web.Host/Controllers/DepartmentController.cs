@@ -3,7 +3,6 @@
 using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using CompanyName.ProjectName.Core;
-using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Web.Host.Framework;
 using CompanyName.ProjectName.Web.Host.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -157,7 +156,7 @@ namespace CompanyName.ProjectName.Web.Host.Controllers
                 return Operation(false, "数据验证失败;" + GetErrorFromModelStateStr(), model.GoBackUrl);
             }
             Department module = model.MapTo<Department>();
-            module.Id = module.CreateId();
+
             module.CreatorTime = DateTime.Now;
             module.CreatorUserId = CurrentUser().Id;
             var r = await DepartmentApp.CreateAsync(module);

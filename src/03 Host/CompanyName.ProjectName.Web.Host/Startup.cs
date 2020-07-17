@@ -3,9 +3,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
-using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.Core;
-using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Web.Host.Framework;
 using CompanyName.ProjectName.Web.Host.Framework.Middlewares;
 using Exceptionless;

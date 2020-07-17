@@ -2,6 +2,7 @@
 
 using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 #endregion using
 
-namespace CompanyName.ProjectName.ICommonServer
+namespace CompanyName.ProjectName.CommonServer
 {
     public class WebConfigApp : AppService, IWebConfigApp
     {
@@ -35,7 +36,7 @@ namespace CompanyName.ProjectName.ICommonServer
                 return ResultDto<long>.Err(msg: "key已存在");
             }
             var dto = entityDto.MapTo<WebConfig>();
-            dto.Id = dto.CreateId();
+
             dto.CreatorUserId = currentUser?.Id;
             dto.CreatorTime = DateTime.Now;
             await WebConfigAppRep.AddAsync(dto);

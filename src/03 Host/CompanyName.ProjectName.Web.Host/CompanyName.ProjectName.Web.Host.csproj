@@ -27,6 +27,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\02 Application\Common\CompanyName.ProjectName.CommonServer\CompanyName.ProjectName.CommonServer.csproj" />
-    <ProjectReference Include="..\..\02 Application\Common\CompanyName.ProjectName.ICommonServer\CompanyName.ProjectName.ICommonServer.csproj" />
+    <ProjectReference Include="..\..\02 Application\Common\CompanyName.ProjectName.ICommonServer\CompanyName.ProjectName.ICommonServer.csproj">
+      <Private>true</Private>
+    </ProjectReference>
   </ItemGroup>
 </Project>

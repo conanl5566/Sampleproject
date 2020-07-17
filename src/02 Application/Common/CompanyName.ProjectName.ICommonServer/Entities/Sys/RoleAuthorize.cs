@@ -9,7 +9,7 @@ using CompanyName.ProjectName.Core;
 using CompanyName.ProjectName.Enum;
 using System;
 
-namespace CompanyName.ProjectName.CommonServer
+namespace CompanyName.ProjectName.ICommonServer
 {
     public class RoleAuthorize : Entity, IEntity
     {
@@ -37,14 +37,5 @@ namespace CompanyName.ProjectName.CommonServer
         ///
         /// </summary>
         public DateTime? CreatorTime { get; set; }
-
-        /// <summary>
-        /// 生成ID
-        /// </summary>
-        /// <returns></returns>
-        public long CreateId()
-        {
-            return base.CreateId(EntityEnum.RoleAuthorize);
-        }
     }
 }

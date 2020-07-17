@@ -2,7 +2,7 @@
 using CompanyName.ProjectName.Enum;
 using System;
 
-namespace CompanyName.ProjectName.CommonServer
+namespace CompanyName.ProjectName.ICommonServer
 {
     /// <summary>
     /// 管理员
@@ -81,14 +81,5 @@ namespace CompanyName.ProjectName.CommonServer
         public DateTime? DeleteTime { get; set; }
 
         public long DeleteUserId { get; set; }
-
-        /// <summary>
-        /// 生成ID
-        /// </summary>
-        /// <returns></returns>
-        public long CreateId()
-        {
-            return base.CreateId(EntityEnum.User);
-        }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CompanyName.ProjectName.ICommonServer
+namespace CompanyName.ProjectName.CommonServer
 {
     public class ModuleButtonApp : AppService, IModuleButtonApp
     {
@@ -81,7 +82,6 @@ namespace CompanyName.ProjectName.ICommonServer
         /// <returns></returns>
         public async Task<ResultDto> CreateAsync(ModuleButton moduleButton)
         {
-            moduleButton.Id = moduleButton.CreateId();
             moduleButton.CreatorTime = DateTime.Now;
             await ModuleButtonRep.AddAsync(moduleButton);
             return ResultDto.Suc();

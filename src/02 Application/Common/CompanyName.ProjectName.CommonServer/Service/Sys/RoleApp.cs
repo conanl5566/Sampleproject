@@ -3,6 +3,7 @@
 using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
 using CompanyName.ProjectName.Core.Cache;
+using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 #endregion using
 
-namespace CompanyName.ProjectName.ICommonServer
+namespace CompanyName.ProjectName.CommonServer
 {
     public class RoleApp : AppService, IRoleApp
     {
@@ -38,7 +39,6 @@ namespace CompanyName.ProjectName.ICommonServer
         /// <returns></returns>
         public async Task<ResultDto<Role>> CreateAsync(Role entity, List<long> permissionIds, CurrentUser currentUser)
         {
-            entity.Id = entity.CreateId();
             entity.CreatorTime = DateTime.Now;
             var moduledata = await ModuleApp.GetSaasModuleListAsync();
             var buttondata = await ModuleButtonApp.GetSaasModuleListAsync();
@@ -78,7 +78,7 @@ namespace CompanyName.ProjectName.ICommonServer
                         ItemType = itemType,
                         CreatorTime = DateTime.Now
                     };
-                    ra.Id = ra.CreateId();
+
                     ras.Add(ra);
                 }
             }
@@ -144,7 +144,7 @@ namespace CompanyName.ProjectName.ICommonServer
                         ItemType = itemType,
                         CreatorTime = DateTime.Now
                     };
-                    ra.Id = ra.CreateId();
+
                     ras.Add(ra);
                 }
             }

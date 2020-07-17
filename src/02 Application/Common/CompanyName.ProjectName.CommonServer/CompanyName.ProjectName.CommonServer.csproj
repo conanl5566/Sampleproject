@@ -4,6 +4,19 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AutofacExt.cs" />
+    <Compile Remove="BaseRepository.cs" />
+    <Compile Remove="EFCoreDBContext.cs" />
+    <Compile Remove="IEntityMappingConfiguration.cs" />
+    <Compile Remove="IUnitWork.cs" />
+    <Compile Remove="UnitWork.cs" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
@@ -20,5 +33,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\01 Core\Core\CompanyName.ProjectName.Core.csproj" />
     <ProjectReference Include="..\..\..\01 Core\Enum\CompanyName.ProjectName.Enum.csproj" />
+    <ProjectReference Include="..\CompanyName.ProjectName.ICommonServer\CompanyName.ProjectName.ICommonServer.csproj" />
   </ItemGroup>
 </Project>

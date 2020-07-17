@@ -28,8 +28,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\01 Core\Core\CompanyName.ProjectName.Core.csproj" />
-    <ProjectReference Include="..\..\..\01 Core\Enum\CompanyName.ProjectName.Enum.csproj" />
-    <ProjectReference Include="..\CompanyName.ProjectName.CommonServer\CompanyName.ProjectName.CommonServer.csproj" />
+    <ProjectReference Include="..\..\..\01 Core\Core\CompanyName.ProjectName.Core.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\01 Core\Enum\CompanyName.ProjectName.Enum.csproj">
+      <Private>true</Private>
+    </ProjectReference>
   </ItemGroup>
 </Project>

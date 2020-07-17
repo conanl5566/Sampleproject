@@ -3,7 +3,6 @@
 using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using CompanyName.ProjectName.Core;
-using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Web.Host.Framework;
 using CompanyName.ProjectName.Web.Host.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -92,7 +91,7 @@ namespace CompanyName.ProjectName.Web.Host.Controllers
                 return Operation(false, "数据验证失败;" + GetErrorFromModelStateStr(), model.GoBackUrl);
             }
             ItemsData module = model.MapTo<ItemsData>();
-            module.Id = module.CreateId();
+
             module.CreatorTime = DateTime.Now;
             module.CreatorUserId = CurrentUser().Id;
 

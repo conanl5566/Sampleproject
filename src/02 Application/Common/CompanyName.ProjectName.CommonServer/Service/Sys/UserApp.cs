@@ -3,6 +3,7 @@
 using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
 using CompanyName.ProjectName.Core.Security;
+using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 #endregion using
 
-namespace CompanyName.ProjectName.ICommonServer
+namespace CompanyName.ProjectName.CommonServer
 {
     public class UserApp : AppService, IUserApp
     {
@@ -141,7 +142,6 @@ namespace CompanyName.ProjectName.ICommonServer
         /// <returns></returns>
         public async Task<ResultDto> InsertAsync(User entity, CurrentUser curUser)
         {
-            entity.Id = entity.CreateId();
             entity.UserSecretkey = "";
             entity.CreatorTime = DateTime.Now;
             entity.CreatorUserId = curUser.Id;

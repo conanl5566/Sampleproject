@@ -9,7 +9,7 @@ using CompanyName.ProjectName.Core;
 using CompanyName.ProjectName.Enum;
 using System;
 
-namespace CompanyName.ProjectName.CommonServer
+namespace CompanyName.ProjectName.ICommonServer
 {
     /// <summary>
     /// 操作日志
@@ -45,14 +45,5 @@ namespace CompanyName.ProjectName.CommonServer
         /// 创建时间
         /// </summary>
         public virtual DateTime CreateTime { get; set; } = DateTime.Now;
-
-        /// <summary>
-        /// 生成ID
-        /// </summary>
-        /// <returns></returns>
-        public long CreateId()
-        {
-            return base.CreateId(EntityEnum.OperateLog);
-        }
     }
 }

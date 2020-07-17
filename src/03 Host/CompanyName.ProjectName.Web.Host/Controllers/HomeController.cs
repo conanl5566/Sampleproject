@@ -3,7 +3,6 @@
 using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using CompanyName.ProjectName.Core;
-using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Web.Host.Framework;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

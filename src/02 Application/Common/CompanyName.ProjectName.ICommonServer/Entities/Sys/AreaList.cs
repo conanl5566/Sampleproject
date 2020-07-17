@@ -7,7 +7,7 @@
 
 using CompanyName.ProjectName.Core;
 
-namespace CompanyName.ProjectName.CommonServer
+namespace CompanyName.ProjectName.ICommonServer
 {
     /// <summary>
     /// 省市区

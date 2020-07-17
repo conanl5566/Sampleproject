@@ -1,5 +1,4 @@
 ﻿using CompanyName.ProjectName.ICommonServer;
-using CompanyName.ProjectName.CommonServer;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

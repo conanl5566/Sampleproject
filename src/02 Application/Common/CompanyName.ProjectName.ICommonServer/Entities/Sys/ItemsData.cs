@@ -9,7 +9,7 @@ using CompanyName.ProjectName.Core;
 using CompanyName.ProjectName.Enum;
 using System;
 
-namespace CompanyName.ProjectName.CommonServer
+namespace CompanyName.ProjectName.ICommonServer
 {
     /// <summary>
     /// 数据字典
@@ -44,14 +44,5 @@ namespace CompanyName.ProjectName.CommonServer
         public DateTime? CreatorTime { get; set; }
 
         public long? CreatorUserId { get; set; }
-
-        /// <summary>
-        /// 生成ID
-        /// </summary>
-        /// <returns></returns>
-        public long CreateId()
-        {
-            return base.CreateId(EntityEnum.Department);
-        }
     }
 }

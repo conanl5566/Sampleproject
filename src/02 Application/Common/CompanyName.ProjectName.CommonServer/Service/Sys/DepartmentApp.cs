@@ -1,18 +1,22 @@
 ﻿using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CompanyName.ProjectName.ICommonServer
+namespace CompanyName.ProjectName.CommonServer
 {
-    public class ItemsDataApp : AppService, IItemsDataApp
+    /// <summary>
+    /// 部门
+    /// </summary>
+    public class DepartmentApp : AppService, IDepartmentApp
     {
         #region 注入
 
-        public IBaseRepository<ItemsData> ItemsDataRep { get; set; }
+        public IBaseRepository<Department> DepartmentRep { get; set; }
 
         #endregion 注入
 
@@ -22,99 +26,97 @@ namespace CompanyName.ProjectName.ICommonServer
         /// <param name="isSaas"></param>
         /// <param name="option"></param>
         /// <returns></returns>
-        public async Task<List<ItemsData>> GetListAsync(ItemsDataOption option)
+        public async Task<List<Department>> GetListAsync(DepartmentOption option)
         {
-            var predicate = PredicateBuilder.True<ItemsData>();
-
-            if (option.ParentId == 0)
-            {
-                return new List<ItemsData>();
-            }
+            var predicate = PredicateBuilder.True<Department>();
             predicate = predicate.And(o => o.ParentId == option.ParentId);
-
-            if (!string.IsNullOrEmpty(option.Name))
+            if (option != null)
             {
-                predicate = predicate.And(o => o.Name.Contains(option.Name));
+                if (!string.IsNullOrEmpty(option.Name))
+                {
+                    predicate = predicate.And(o => o.Name.Contains(option.Name));
+                }
             }
-            var t = await ItemsDataRep.Find(predicate).ToListAsync();
+            var t = await DepartmentRep.Find(predicate).ToListAsync();
             return t;
         }
 
         /// <summary>
-        /// 菜单
+        /// 部门
         /// </summary>
         /// <param name="isSaas"></param>
         /// <returns></returns>
-        public async Task<List<ItemsData>> GetItemsDataListAsync()
+        public async Task<List<Department>> GetDepartmentListAsync()
         {
-            var r = await ItemsDataRep.Find(null).ToListAsync();
+            var r = await DepartmentRep.Find(null).ToListAsync();
             return r.ToList();
         }
 
         /// <summary>
-        ///
+        /// 删除
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<ResultDto> DeleteAsync(long id)
         {
-            if (await ItemsDataRep.GetCountAsync(o => o.ParentId == id) > 0)
+            if (await DepartmentRep.GetCountAsync(o => o.ParentId == id) > 0)
             {
-                return ResultDto.Err(msg: "含有子数据不能删除");
+                return ResultDto.Err(msg: "含有子部门不能删除");
             }
-            await ItemsDataRep.DeleteAsync(o => o.Id == id);
-
+            await DepartmentRep.DeleteAsync(o => o.Id == id);
             await RemoveCacheAsync();
             return ResultDto.Suc();
         }
 
         /// <summary>
-        ///
+        /// 单个部门
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public async Task<ItemsData> GetAsync(long key)
+        public async Task<Department> GetAsync(long key)
         {
-            ItemsData m = await ItemsDataRep.FindSingleAsync(o => o.Id == key);
+            Department m = await DepartmentRep.FindSingleAsync(o => o.Id == key);
             return m;
         }
 
         /// <summary>
-        ///
+        /// 添加部门
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        public async Task<ResultDto> CreateAsync(ItemsData moduleEntity)
+        public async Task<ResultDto> CreateAsync(Department moduleEntity)
         {
             moduleEntity.Name = moduleEntity.Name?.Trim();
+            moduleEntity.Code = moduleEntity.Code?.Trim();
+            moduleEntity.ContactNumber = moduleEntity.ContactNumber?.Trim();
             moduleEntity.Remarks = moduleEntity.Remarks?.Trim();
-            int count = await ItemsDataRep.GetCountAsync(o => o.Name == moduleEntity.Name && o.ParentId == moduleEntity.ParentId);
+            int count = await DepartmentRep.GetCountAsync(o => o.Code == moduleEntity.Code);
             if (count > 0)
             {
-                return ResultDto.Err(msg: moduleEntity.Name + " 已存在");
+                return ResultDto.Err(msg: moduleEntity.Code + " 已存在");
             }
-            await ItemsDataRep.AddAsync(moduleEntity);
-
+            await DepartmentRep.AddAsync(moduleEntity);
             await RemoveCacheAsync();
             return ResultDto.Suc();
         }
 
         /// <summary>
-        ///
+        /// 修改部门
         /// </summary>
         /// <param name="moduleEntity"></param>
         /// <returns></returns>
-        public async Task<ResultDto> UpdateAsync(ItemsData moduleEntity)
+        public async Task<ResultDto> UpdateAsync(Department moduleEntity)
         {
             moduleEntity.Name = moduleEntity.Name?.Trim();
+            moduleEntity.Code = moduleEntity.Code?.Trim();
+            moduleEntity.ContactNumber = moduleEntity.ContactNumber?.Trim();
             moduleEntity.Remarks = moduleEntity.Remarks?.Trim();
-            int count = await ItemsDataRep.GetCountAsync(o => o.Name == moduleEntity.Name && o.Id != moduleEntity.Id && o.ParentId == moduleEntity.ParentId);
+            int count = await DepartmentRep.GetCountAsync(o => o.Code == moduleEntity.Code && o.Id != moduleEntity.Id);
             if (count > 0)
             {
-                return ResultDto.Err(msg: moduleEntity.Name + " 已存在");
+                return ResultDto.Err(msg: moduleEntity.Code + " 已存在");
             }
-            await ItemsDataRep.UpdateAsync(moduleEntity);
-
+            await DepartmentRep.UpdateAsync(moduleEntity);
             await RemoveCacheAsync();
             return ResultDto.Suc();
         }
@@ -126,7 +128,7 @@ namespace CompanyName.ProjectName.ICommonServer
         private async Task RemoveCacheAsync()
         {
             //var cache = CacheFactory.Cache();
-            //await cache.RemoveAsync("agent", "ItemsData");
+            //await cache.RemoveAsync("agent", "Department");
         }
     }
 }

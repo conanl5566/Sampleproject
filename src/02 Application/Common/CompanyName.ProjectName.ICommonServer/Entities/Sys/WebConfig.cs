@@ -3,7 +3,7 @@ using CompanyName.ProjectName.Enum;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CompanyName.ProjectName.CommonServer
+namespace CompanyName.ProjectName.ICommonServer
 {
     /// <summary>
     ///
@@ -42,14 +42,5 @@ namespace CompanyName.ProjectName.CommonServer
         ///
         /// </summary>
         public long? CreatorUserId { get; set; }
-
-        /// <summary>
-        /// 生成ID
-        /// </summary>
-        /// <returns></returns>
-        public long CreateId()
-        {
-            return base.CreateId(EntityEnum.Department);
-        }
     }
 }

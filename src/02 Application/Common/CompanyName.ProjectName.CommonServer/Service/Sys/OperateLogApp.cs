@@ -1,5 +1,6 @@
 ﻿using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompanyName.ProjectName.ICommonServer
+namespace CompanyName.ProjectName.CommonServer
 {
     public class OperateLogApp : AppService, IOperateLogApp
     {
@@ -36,7 +37,7 @@ namespace CompanyName.ProjectName.ICommonServer
                 OperatorId = curUser.Id,
                 IP = curUser.LoginIPAddress
             };
-            log.Id = log.CreateId();
+
             if (!string.IsNullOrWhiteSpace(content))
                 await OperateLogRep.AddAsync(log);
         }
@@ -59,7 +60,7 @@ namespace CompanyName.ProjectName.ICommonServer
                 OperatorId = curUser.Id,
                 IP = curUser.LoginIPAddress
             };
-            log.Id = log.CreateId();
+
             await OperateLogRep.AddAsync(log);
         }
 

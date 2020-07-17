@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.ICommonServer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CompanyName.ProjectName.CommonServer

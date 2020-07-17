@@ -1,5 +1,6 @@
 ﻿using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Core;
+using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CompanyName.ProjectName.ICommonServer
+namespace CompanyName.ProjectName.CommonServer
 {
     public class ModuleApp : AppService, IModuleApp
     {

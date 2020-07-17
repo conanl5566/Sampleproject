@@ -1,7 +1,6 @@
 ﻿using CompanyName.ProjectName.ICommonServer;
 using CompanyName.ProjectName.ICommonServer.Sys;
 using CompanyName.ProjectName.Core;
-using CompanyName.ProjectName.CommonServer;
 using CompanyName.ProjectName.Web.Host.Framework;
 using CompanyName.ProjectName.Web.Host.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -76,7 +75,7 @@ namespace CompanyName.ProjectName.Web.Host.Controllers
                 return Json(ResultDto.Err("数据验证失败"));
             }
             var module = model.MapTo<Module>();
-            module.Id = module.CreateId();
+
             module.CreatorTime = DateTime.Now;
             var r = await ModuleApp.CreateAsync(module);
             return Json(r);

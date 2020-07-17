@@ -10,7 +10,7 @@ using CompanyName.ProjectName.Enum;
 using System;
 using System.ComponentModel;
 
-namespace CompanyName.ProjectName.CommonServer
+namespace CompanyName.ProjectName.ICommonServer
 {
     public class Role : Entity, IEntity
     {
@@ -49,15 +49,5 @@ namespace CompanyName.ProjectName.CommonServer
         /// </summary>
         [Description("创建时间")]
         public DateTime CreatorTime { get; set; } = DateTime.Now;
-
-        /// <summary>
-        /// 生成ID
-        /// </summary>
-        /// <returns></returns>
-
-        public long CreateId()
-        {
-            return base.CreateId(EntityEnum.Role);
-        }
     }
 }
