@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80016
 File Encoding         : 65001
 
-Date: 2019-08-16 11:09:16
+Date: 2020-07-17 14:04:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `arealist`;
 CREATE TABLE `arealist` (
-  `Id` bigint(11) NOT NULL,
+  `Id` bigint(11) NOT NULL AUTO_INCREMENT,
   `AreaName` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `Postcode` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `ParentID` bigint(11) DEFAULT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE `arealist` (
   `AreaType` int(11) DEFAULT NULL,
   `AreaKeys` varchar(200) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3611 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- ----------------------------
 -- Records of arealist
@@ -3649,7 +3649,7 @@ INSERT INTO `arealist` VALUES ('3610', '其它区', '0', '2515', '3', '1', '0', 
 -- ----------------------------
 DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
-  `Id` bigint(64) NOT NULL,
+  `Id` bigint(64) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) DEFAULT NULL,
   `Code` varchar(100) DEFAULT NULL,
   `Manager` varchar(100) DEFAULT NULL,
@@ -3659,7 +3659,7 @@ CREATE TABLE `department` (
   `CreatorTime` datetime DEFAULT NULL,
   `CreatorUserId` bigint(64) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1154321743843692545 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of department
@@ -3695,7 +3695,7 @@ CREATE TABLE `errorlog` (
 -- ----------------------------
 DROP TABLE IF EXISTS `itemsdata`;
 CREATE TABLE `itemsdata` (
-  `Id` bigint(20) NOT NULL,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) DEFAULT NULL,
   `SortCode` int(100) DEFAULT NULL,
   `Remarks` varchar(500) DEFAULT NULL,
@@ -3704,7 +3704,7 @@ CREATE TABLE `itemsdata` (
   `CreatorUserId` bigint(20) DEFAULT NULL,
   `IsEnabled` bit(1) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1154325699332411393 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of itemsdata
@@ -3721,13 +3721,13 @@ INSERT INTO `itemsdata` VALUES ('1154325699332411392', '32', '32', '23', '111111
 -- ----------------------------
 DROP TABLE IF EXISTS `loginlog`;
 CREATE TABLE `loginlog` (
-  `Id` bigint(20) NOT NULL,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `LoginId` bigint(20) NOT NULL,
   `LoginType` varchar(10) NOT NULL,
   `IP` varchar(50) DEFAULT NULL,
   `CreatorTime` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1016241503881269249 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of loginlog
@@ -4083,7 +4083,7 @@ INSERT INTO `loginlog` VALUES ('1016241503881269248', '837166336438308864', 'Saa
 -- ----------------------------
 DROP TABLE IF EXISTS `module`;
 CREATE TABLE `module` (
-  `Id` bigint(20) NOT NULL,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ParentId` bigint(20) NOT NULL,
   `EnCode` varchar(50) NOT NULL,
   `FullName` varchar(50) DEFAULT NULL,
@@ -4100,7 +4100,7 @@ CREATE TABLE `module` (
   `AllowDelete` bit(1) DEFAULT NULL,
   `CreatorTime` datetime NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1154583120365752321 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of module
@@ -4135,7 +4135,7 @@ INSERT INTO `module` VALUES ('1154583120365752320', '834955406735577088', 'm', '
 -- ----------------------------
 DROP TABLE IF EXISTS `modulebutton`;
 CREATE TABLE `modulebutton` (
-  `Id` bigint(20) NOT NULL,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ParentId` bigint(20) NOT NULL,
   `ModuleId` bigint(20) NOT NULL,
   `FullName` varchar(50) DEFAULT NULL,
@@ -4151,7 +4151,7 @@ CREATE TABLE `modulebutton` (
   `AllowDelete` bit(1) DEFAULT NULL,
   `CreatorTime` datetime NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1154396365192695809 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of modulebutton
@@ -4179,7 +4179,7 @@ INSERT INTO `modulebutton` VALUES ('1154396365192695808', '0', '8349491681739448
 -- ----------------------------
 DROP TABLE IF EXISTS `operatelog`;
 CREATE TABLE `operatelog` (
-  `Id` bigint(20) NOT NULL,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `OperatorId` bigint(20) DEFAULT NULL,
   `Operator` varchar(200) DEFAULT NULL,
   `Tag` varchar(100) DEFAULT NULL,
@@ -4187,12 +4187,12 @@ CREATE TABLE `operatelog` (
   `Content` varchar(1000) DEFAULT NULL,
   `CreateTime` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1283945582684016643 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of operatelog
 -- ----------------------------
-INSERT INTO `operatelog` VALUES ('0', '837166336438308864', 'admin', '添加角色', '10.80.25.128', '名称 值为 \"玉玉\" \r\n允许编辑 值为 \"False\" \r\n允许删除 值为 \"False\" \r\n排序 值为 \"0\" \r\n描述 值为 \"\" \r\n创建时间 值为 \"2018/7/9 16:21:29\" \r\n 值为 \"1016235882725380096\" \r\n', '2018-07-09 16:21:30');
+INSERT INTO `operatelog` VALUES ('1', '837166336438308864', 'admin', '添加角色', '10.80.25.128', '名称 值为 \"玉玉\" \r\n允许编辑 值为 \"False\" \r\n允许删除 值为 \"False\" \r\n排序 值为 \"0\" \r\n描述 值为 \"\" \r\n创建时间 值为 \"2018/7/9 16:21:29\" \r\n 值为 \"1016235882725380096\" \r\n', '2018-07-09 16:21:30');
 INSERT INTO `operatelog` VALUES ('1016240413794242560', '837166336438308864', 'admin', '添加角色', '10.80.25.128', '名称 值为 \"一天有一天\" \r\n允许编辑 值为 \"False\" \r\n允许删除 值为 \"False\" \r\n排序 值为 \"0\" \r\n描述 值为 \"\" \r\n创建时间 值为 \"2018/7/9 16:39:30\" \r\n 值为 \"1016240413710356480\" \r\n', '2018-07-09 16:39:30');
 INSERT INTO `operatelog` VALUES ('1016241566586114048', '837166336438308864', 'admin', '添加角色', '10.80.25.128', '名称 值为 \"让他突然\" \r\n允许编辑 值为 \"False\" \r\n允许删除 值为 \"False\" \r\n排序 值为 \"0\" \r\n描述 值为 \"\" \r\n创建时间 值为 \"2018/7/9 16:44:04\" \r\n主键Id 值为 \"1016241566506422272\" \r\n', '2018-07-09 16:44:05');
 INSERT INTO `operatelog` VALUES ('1016247316204490752', '837166336438308864', 'aacc', '用户登录', '10.80.25.128', 'aacc进行了登录操作', '2018-07-09 17:06:56');
@@ -4515,13 +4515,60 @@ INSERT INTO `operatelog` VALUES ('1157197880047439872', '837166336438308864', 'a
 INSERT INTO `operatelog` VALUES ('1157199352130703360', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-08-02 16:00:00');
 INSERT INTO `operatelog` VALUES ('1157199728611430400', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-08-02 16:01:30');
 INSERT INTO `operatelog` VALUES ('1157223393390497792', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-08-02 17:35:32');
+INSERT INTO `operatelog` VALUES ('1168419581800222720', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-09-02 15:05:11');
+INSERT INTO `operatelog` VALUES ('1168443907236696064', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-09-02 16:41:51');
+INSERT INTO `operatelog` VALUES ('1168449998783778816', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-09-02 17:06:03');
+INSERT INTO `operatelog` VALUES ('1168450267860963328', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-09-02 17:07:07');
+INSERT INTO `operatelog` VALUES ('1168451069694447616', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-09-02 17:10:18');
+INSERT INTO `operatelog` VALUES ('1168451328407506944', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-09-02 17:11:20');
+INSERT INTO `operatelog` VALUES ('1168458325404160000', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-09-02 17:39:08');
+INSERT INTO `operatelog` VALUES ('1168458772651184128', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-09-02 17:40:55');
+INSERT INTO `operatelog` VALUES ('1168462468134998016', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-09-02 17:55:36');
+INSERT INTO `operatelog` VALUES ('1196976662547271680', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-11-20 10:20:50');
+INSERT INTO `operatelog` VALUES ('1196993947014008832', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-11-20 11:29:31');
+INSERT INTO `operatelog` VALUES ('1196997042620076032', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-11-20 11:41:49');
+INSERT INTO `operatelog` VALUES ('1197022449008381952', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-11-20 13:22:46');
+INSERT INTO `operatelog` VALUES ('1197022799857717248', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-11-20 13:24:10');
+INSERT INTO `operatelog` VALUES ('1197023110454317056', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-11-20 13:25:24');
+INSERT INTO `operatelog` VALUES ('1197026408125173760', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-11-20 13:38:30');
+INSERT INTO `operatelog` VALUES ('1197036888990420992', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2019-11-20 14:20:09');
+INSERT INTO `operatelog` VALUES ('1214796014151536640', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 14:28:34');
+INSERT INTO `operatelog` VALUES ('1214803599743258624', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 14:58:43');
+INSERT INTO `operatelog` VALUES ('1214811627133603840', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:30:37');
+INSERT INTO `operatelog` VALUES ('1214811654082007040', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:30:43');
+INSERT INTO `operatelog` VALUES ('1214811661388484608', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:30:45');
+INSERT INTO `operatelog` VALUES ('1214811669294747648', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:30:47');
+INSERT INTO `operatelog` VALUES ('1214811674738954240', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:30:48');
+INSERT INTO `operatelog` VALUES ('1214811681340788736', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:30:50');
+INSERT INTO `operatelog` VALUES ('1214811686822744064', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:30:51');
+INSERT INTO `operatelog` VALUES ('1214811723262857216', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:31:00');
+INSERT INTO `operatelog` VALUES ('1214811732062507008', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:31:02');
+INSERT INTO `operatelog` VALUES ('1214811737863229440', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:31:03');
+INSERT INTO `operatelog` VALUES ('1214811811032862720', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:31:21');
+INSERT INTO `operatelog` VALUES ('1214811945263173632', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:31:53');
+INSERT INTO `operatelog` VALUES ('1214811992373596160', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:32:04');
+INSERT INTO `operatelog` VALUES ('1214811999612964864', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:32:05');
+INSERT INTO `operatelog` VALUES ('1214812005526933504', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:32:07');
+INSERT INTO `operatelog` VALUES ('1214814551410741248', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:42:14');
+INSERT INTO `operatelog` VALUES ('1214814882869809152', '837166336438308864', 'admin', '用户退出', '127.0.0.1', 'admin进行了退出操作', '2020-01-08 15:43:33');
+INSERT INTO `operatelog` VALUES ('1214814894118932480', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-08 15:43:36');
+INSERT INTO `operatelog` VALUES ('1215081187761983488', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-09 09:21:45');
+INSERT INTO `operatelog` VALUES ('1215141330763649024', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-09 13:20:44');
+INSERT INTO `operatelog` VALUES ('1215141348346171392', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-09 13:20:48');
+INSERT INTO `operatelog` VALUES ('1215141357812715520', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-09 13:20:51');
+INSERT INTO `operatelog` VALUES ('1215141363575689216', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-01-09 13:20:52');
+INSERT INTO `operatelog` VALUES ('1258602000045576192', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-05-08 11:37:55');
+INSERT INTO `operatelog` VALUES ('1263371767868559360', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-05-21 15:31:16');
+INSERT INTO `operatelog` VALUES ('1283945582684016640', '837166336438308864', 'admin', '用户登录', '127.0.0.1', 'aacc进行了登录操作', '2020-07-17 10:04:16');
+INSERT INTO `operatelog` VALUES ('1283945582684016641', '837166336438308864', 'admin', '添加用户', '127.0.0.1', ' 值为 \"1112222222\" \r\n 值为 \"bbb8aae57c104cda40c93843ad5e6db8\" \r\n 值为 \"\" \r\n 值为 \"\" \r\n 值为 \"\" \r\n 值为 \"908523002543083520\" \r\n 值为 \"837141298535731200\" \r\n 值为 \"False\" \r\n 值为 \"1\" \r\n 值为 \"\" \r\n 值为 \"0\" \r\n 值为 \"\" \r\n 值为 \"\" \r\n 值为 \"2020/7/17 10:51:46\" \r\n 值为 \"837166336438308864\" \r\n 值为 \"\" \r\n 值为 \"0\" \r\n 值为 \"1156446538597142529\" \r\n', '2020-07-17 10:51:47');
+INSERT INTO `operatelog` VALUES ('1283945582684016642', '837166336438308864', 'admin', '添加用户', '127.0.0.1', ' 值为 \"988898989\" \r\n 值为 \"8718a4101d50a4abcc1af658c5f899be\" \r\n 值为 \"\" \r\n 值为 \"\" \r\n 值为 \"\" \r\n 值为 \"908523002543083520\" \r\n 值为 \"837141298535731200\" \r\n 值为 \"False\" \r\n 值为 \"1\" \r\n 值为 \"\" \r\n 值为 \"0\" \r\n 值为 \"\" \r\n 值为 \"\" \r\n 值为 \"2020/7/17 14:01:35\" \r\n 值为 \"837166336438308864\" \r\n 值为 \"\" \r\n 值为 \"0\" \r\n 值为 \"1156446538597142530\" \r\n', '2020-07-17 14:01:36');
 
 -- ----------------------------
 -- Table structure for role
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-  `Id` bigint(20) NOT NULL,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
   `AllowEdit` bit(1) DEFAULT NULL,
   `AllowDelete` bit(1) DEFAULT NULL,
@@ -4529,7 +4576,7 @@ CREATE TABLE `role` (
   `Description` varchar(200) DEFAULT NULL,
   `CreatorTime` datetime NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1154316595633328129 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role
@@ -4570,14 +4617,14 @@ INSERT INTO `role` VALUES ('1154316595633328128', '656', '\0', '\0', '0', null, 
 -- ----------------------------
 DROP TABLE IF EXISTS `roleauthorize`;
 CREATE TABLE `roleauthorize` (
-  `Id` bigint(20) NOT NULL,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ObjectId` bigint(20) NOT NULL,
   `ObjectType` int(4) NOT NULL,
   `ItemId` bigint(20) NOT NULL,
   `ItemType` int(4) NOT NULL,
   `CreatorTime` datetime NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1154318534379048984 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of roleauthorize
@@ -4917,7 +4964,7 @@ INSERT INTO `roleauthorize` VALUES ('1154318534379048983', '1154318533720543232'
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `Id` bigint(20) NOT NULL DEFAULT '0',
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `Account` varchar(50) DEFAULT NULL,
   `UserSecretkey` varchar(50) DEFAULT NULL,
   `Password` varchar(100) DEFAULT NULL,
@@ -4936,13 +4983,13 @@ CREATE TABLE `user` (
   `DeleteTime` datetime DEFAULT NULL,
   `DeleteUserId` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1156446538597142531 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('835038510155173888', 'abc123456', '', '0', null, '837141298535731200', '\0', '1', '183', '工作', '2017-04-17 17:49:10', '0', null, null, '2017-02-24 16:07:50', null, null, '0');
-INSERT INTO `user` VALUES ('837166336438308864', 'admin', '', 'c4ca4238a0b923820dcc509a6f75849b', '908523002543083520', '837209487626997760', '', '1', '183', 'aacc', '2019-08-02 17:35:32', '0', '\\upload\\user\\icon\\47c526ea-1302-4f6c-90cd-ebe6e908aa7f_100_100.jpg', null, '2017-03-02 13:03:03', '835038510155173888', null, '0');
+INSERT INTO `user` VALUES ('837166336438308864', 'admin', '', 'c4ca4238a0b923820dcc509a6f75849b', '908523002543083520', '837209487626997760', '', '1', '183', 'aacc', '2020-07-17 10:04:18', '0', '\\upload\\user\\icon\\47c526ea-1302-4f6c-90cd-ebe6e908aa7f_100_100.jpg', null, '2017-03-02 13:03:03', '835038510155173888', null, '0');
 INSERT INTO `user` VALUES ('842626682289000448', 'conan', '', '0', null, '837141298535731200', '\0', '1', null, 'cc', '2017-09-05 16:50:56', '0', '\\upload\\user\\icon\\ce931c91-670a-4b14-a5b3-97b81af95bdf_100_100.jpg', null, '2017-03-17 14:40:31', '837166336438308864', null, '0');
 INSERT INTO `user` VALUES ('844750251843915776', '7676', '', '0', null, '837141298535731200', '\0', '1', null, '6776', null, '0', '\\upload\\user\\icon\\82162d5b-f6e0-457a-b91f-a08e4d1b764d_100_100.jpg', null, '2017-03-23 11:18:49', '837166336438308864', null, '0');
 INSERT INTO `user` VALUES ('844750953773273088', 'rr7887877', '', '0', null, '837141298535731200', '\0', '1', null, '7676', null, '0', null, null, '2017-03-23 11:21:37', '837166336438308864', null, '0');
@@ -4973,10 +5020,12 @@ INSERT INTO `user` VALUES ('910778868596084736', 'oiiooi', '', '3743a5e27ba34734
 INSERT INTO `user` VALUES ('928072755354144768', '8998', '', 'e1f979ea2b94f4a754835ee9f85cf0d0', '908523002543083520', '837209533827256320', '\0', '1', null, null, null, '0', '\\upload\\user\\icon\\905424b7-fd85-424f-946d-73601bf9cc0d_100_100.jpg', null, '2017-11-08 09:32:42', '837166336438308864', null, '0');
 INSERT INTO `user` VALUES ('930266275821260800', '2121', '', 'e10adc3949ba59abbe56e057f20f883e', '908523002543083520', '837141298535731200', '\0', '0', null, '、=、=', null, '0', null, '', '2017-11-14 10:48:58', '837166336438308864', '2017-11-14 10:49:27', '837166336438308864');
 INSERT INTO `user` VALUES ('1154299165171519488', 'tyty', '', 'fdac51367503ce69c2a7f2f3c64a786d', '908523002543083520', '837141298535731200', '\0', '1', null, 'tyty', null, '0', null, null, '2019-07-25 15:55:41', '837166336438308864', null, '0');
-INSERT INTO `user` VALUES ('1154305599275798528', '8989', '', 'bc29e1f123ed6f213520caad629ee432', '908523002543083520', '837209533827256320', '\0', '1', null, null, null, '0', null, null, '2019-07-25 16:21:15', '837166336438308864', null, '0');
+INSERT INTO `user` VALUES ('1154305599275798528', '8989', '', 'bc29e1f123ed6f213520caad629ee432', '908523002543083520', '837209533827256320', '\0', '1', null, null, null, '0', '\\upload\\user\\icon\\1243af62-52f0-4f76-943c-aa3627e7cdce_100_100.jpg', null, '2019-07-25 16:21:15', '837166336438308864', null, '0');
 INSERT INTO `user` VALUES ('1154313401171709952', '1', '', 'e10adc3949ba59abbe56e057f20f883e', '908523002543083520', '837141298535731200', '\0', '0', '878', '1', null, '0', '\\upload\\user\\icon\\9eea3839-2a02-4fe1-a30e-fa3cbb6e27de_100_100.jpg', '', '2019-07-25 16:52:16', '837166336438308864', '2019-07-25 17:03:12', '837166336438308864');
 INSERT INTO `user` VALUES ('1156403030528102400', 'qqqqqqqqqqqqq', '', '7694f4a66316e53c8cdd9d9954bd611d', '908523002543083520', '837209578051997696', '\0', '1', null, 'q', null, '0', null, '', '2019-07-31 11:15:42', '837166336438308864', '2019-07-31 11:15:50', '837166336438308864');
 INSERT INTO `user` VALUES ('1156446538597142528', '54', '', 'a684eceee76fc522773286a895bc8436', '908523002543083520', '837141298535731200', '\0', '1', null, '54', null, '0', null, '', '2019-07-31 14:08:35', '837166336438308864', '2019-07-31 14:08:43', '837166336438308864');
+INSERT INTO `user` VALUES ('1156446538597142529', '1112222222', '', 'bbb8aae57c104cda40c93843ad5e6db8', '908523002543083520', '837141298535731200', '\0', '1', null, null, null, '0', null, '', '2020-07-17 10:51:46', '837166336438308864', '2020-07-17 10:52:11', '837166336438308864');
+INSERT INTO `user` VALUES ('1156446538597142530', '988898989', '', '8718a4101d50a4abcc1af658c5f899be', '908523002543083520', '837141298535731200', '\0', '1', null, null, null, '0', null, '', '2020-07-17 14:01:35', '837166336438308864', '2020-07-17 14:01:44', '837166336438308864');
 
 -- ----------------------------
 -- Table structure for webconfig
@@ -4984,14 +5033,14 @@ INSERT INTO `user` VALUES ('1156446538597142528', '54', '', 'a684eceee76fc522773
 DROP TABLE IF EXISTS `webconfig`;
 CREATE TABLE `webconfig` (
   `CreatorTime` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `Id` bigint(64) NOT NULL,
+  `Id` bigint(64) NOT NULL AUTO_INCREMENT,
   `ConfigKey` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `ConfigValue` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `ConfigType` int(11) NOT NULL DEFAULT '0',
   `ConfigDetail` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `CreatorUserId` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1154592842524266497 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of webconfig
